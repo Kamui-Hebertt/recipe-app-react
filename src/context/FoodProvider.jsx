@@ -1,8 +1,11 @@
+import { useMemo } from 'react';
+
 import FoodContext from './FoodContext';
 
 export default function FoodProvider({ children }) {
+  const value = useMemo(() => ({}), []);
   return (
-    <FoodContext.Provider value={ {} }>
+    <FoodContext.Provider value={ value }>
       <div>
         { children }
       </div>
