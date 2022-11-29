@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import './Header.css';
+import SearchBar from './SearchBar';
 
 function Header(props) {
   const history = useHistory();
@@ -34,7 +35,13 @@ function Header(props) {
 
       </button>
       <div data-testid="page-title">{pageName}</div>
-      {searchBar ? <input type="text" data-testid="search-input" /> : null}
+      {searchBar ? (
+        <div>
+          <input type="text" data-testid="search-input" />
+          <SearchBar />
+
+        </div>
+      ) : null}
     </section>
   );
 }
