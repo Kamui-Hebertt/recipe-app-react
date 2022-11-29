@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import FoodContext from './FoodContext';
 
 export default function FoodProvider({ children }) {
