@@ -17,7 +17,11 @@ describe('Tests Header Component', () => {
 
     const searchBtn = screen.getByTestId('search-top-btn');
     expect(searchBtn).toBeInTheDocument();
-
+    userEvent.click(searchBtn);
+    const searchInput = screen.getByTestId('search-input');
+    expect(screen.getByTestId('search-input')).toBeInTheDocument();
+    userEvent.click(searchBtn);
+    expect(searchInput).not.toBeInTheDocument();
     userEvent.click(profileBtn);
   });
 });

@@ -1,16 +1,27 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { React, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import './Header.css';
 
 function Header(props) {
   const history = useHistory();
   const { search, pageName } = props;
+  const [searchBar, setSearchBar] = useState(false);
   return (
     <section>
       {search ? (
-        <img src={ searchIcon } data-testid="search-top-btn" alt="profile" />
+        <button
+          type="button"
+          src={ searchIcon }
+          data-testid="search-top-btn"
+          onClick={ () => (searchBar === false
+            ? setSearchBar(true) : setSearchBar(false)) }
+        >
+
+          <img src={ searchIcon } alt="profile" />
+        </button>
       ) : null}
       <button
         data-testid="profile-top-btn"
@@ -23,6 +34,7 @@ function Header(props) {
 
       </button>
       <div data-testid="page-title">{pageName}</div>
+      {searchBar ? <input type="text" data-testid="search-input" /> : null}
     </section>
   );
 }
