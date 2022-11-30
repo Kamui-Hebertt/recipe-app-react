@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import FoodContext from '../context/FoodContext';
 
 function SearchBar() {
-  const { searchFilter, setSearchFilter, handleSearchClick } = useContext(FoodContext);
-  console.log(searchFilter);
+  const { searchFilter, setSearchFilter,
+    handleSearchClick, foodRecipes, drinkRecipes } = useContext(FoodContext);
+  const location = useLocation();
+  const twelve = 12;
+  console.log(foodRecipes);
   return (
     <div>
       <label htmlFor="ingredient">
@@ -47,6 +51,27 @@ function SearchBar() {
         Search
 
       </button>
+      {location.pathname === '/meals'
+        ? foodRecipes.slice(0, twelve).map((recipe, index) => (
+          <div key={ index } data-testid={ `${index}-recipe-card` }>
+            <img
+              src={ recipe.strMealThumb }
+              alt="food"
+              data-testid={ `${index}-card-img` }
+            />
+            <p data-testid={ `${index}-card-name` }>{recipe.strMeal}</p>
+          </div>
+        ))
+        : drinkRecipes.slice(0, twelve).map((recipe, index) => (
+          <div key={ index } data-testid={ `${index}-recipe-card` }>
+            <img
+              src={ recipe.strDrinkThumb }
+              alt="food"
+              data-testid={ `${index}-card-img` }
+            />
+            <p data-testid={ `${index}-card-name` }>{recipe.strDrink}</p>
+          </div>
+        ))}
     </div>
   );
 }

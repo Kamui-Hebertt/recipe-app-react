@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+
+import { useHistory, useLocation } from 'react-router-dom';
 import fetchSearchDrink from '../services/fetchSearchDrink';
 import fetchSearchFood from '../services/fetchSearchFood';
 import FoodContext from './FoodContext';
@@ -10,8 +11,7 @@ export default function FoodProvider({ children }) {
   const [foodRecipes, setFoodRecipes] = useState([]);
   const [drinkRecipes, setDrinkRecipes] = useState([]);
   const location = useLocation();
-
-  console.log(location);
+  const history = useHistory();
 
   const handleSearchClick = async () => {
     if (searchFilter === 'first-letter' && searchValue.length > 1) {
@@ -23,12 +23,24 @@ export default function FoodProvider({ children }) {
     }
   };
 
+  useEffect(() => {
+    if (foodRecipes.length === 1) {
+      history.push(`/meals/${foodRecipes[0].idMeal}`);
+    }
+    if (drinkRecipes.length === 1) {
+      console.log(drinkRecipes[0].idDrink);
+      history.push(`/drinks/${drinkRecipes[0].idDrink}`);
+    }
+  }, [JSON.stringify(foodRecipes), JSON.stringify(drinkRecipes)]);
+
   const value = useMemo(() => ({ searchFilter,
     setSearchFilter,
     searchValue,
     setSearchValue,
     handleSearchClick,
-  }), [searchFilter, searchValue]);
+    foodRecipes,
+    drinkRecipes,
+  }), [searchFilter, searchValue, foodRecipes, drinkRecipes]);
   return (
     <FoodContext.Provider value={ value }>
       <div>
