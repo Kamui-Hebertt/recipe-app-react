@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginContext from '../context/LoginContext';
+import './Login.css';
 
 export default function Login() {
   const history = useHistory();
