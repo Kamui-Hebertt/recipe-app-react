@@ -1,4 +1,4 @@
-const fetchSearch = async (searchValue, searchFilter) => {
+const fetchSearchFood = async (searchValue, searchFilter) => {
   try {
     if (searchFilter === 'ingredient') {
       const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchValue}`);
@@ -20,4 +20,4 @@ const fetchSearch = async (searchValue, searchFilter) => {
   }
 };
 
-export default fetchSearch;
+export default fetchSearchFood;
