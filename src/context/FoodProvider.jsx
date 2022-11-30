@@ -17,9 +17,21 @@ export default function FoodProvider({ children }) {
     if (searchFilter === 'first-letter' && searchValue.length > 1) {
       global.alert('Your search must have only 1 (one) character');
     } else if (location.pathname === '/meals') {
-      setFoodRecipes(await fetchSearchFood(searchValue, searchFilter));
+      const data = await fetchSearchFood(searchValue, searchFilter);
+      if (data == null || data.length < 1) {
+        global.alert('Sorry, we haven\'t found any recipes for these filters.');
+        setFoodRecipes([]);
+      } else {
+        setFoodRecipes(data);
+      }
     } else if (location.pathname === '/drinks') {
-      setDrinkRecipes(await fetchSearchDrink(searchValue, searchFilter));
+      const data = await fetchSearchDrink(searchValue, searchFilter);
+      if (data.length < 1) {
+        global.alert('Sorry, we haven\'t found any recipes for these filters.');
+        setDrinkRecipes([]);
+      } else {
+        setDrinkRecipes(data);
+      }
     }
   };
 
@@ -28,7 +40,6 @@ export default function FoodProvider({ children }) {
       history.push(`/meals/${foodRecipes[0].idMeal}`);
     }
     if (drinkRecipes.length === 1) {
-      console.log(drinkRecipes[0].idDrink);
       history.push(`/drinks/${drinkRecipes[0].idDrink}`);
     }
   }, [JSON.stringify(foodRecipes), JSON.stringify(drinkRecipes)]);

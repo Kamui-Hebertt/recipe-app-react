@@ -21,24 +21,28 @@ describe('Tests SearchBar Component', () => {
 
     expect(await screen.findByText(/meals/i)).toBeInTheDocument();
     expect(history.location.pathname).toBe('/meals');
-    const openSeachBtn = screen.getByTestId('search-top-btn');
-    userEvent.click(openSeachBtn);
+
+    const openSearchBtn = screen.getByTestId('search-top-btn');
+    userEvent.click(openSearchBtn);
+
     const searchInput = screen.getByTestId('search-input');
     const ingredientInput = screen.getByTestId('ingredient-search-radio');
     const nameInput = screen.getByTestId('name-search-radio');
     const firstLInput = screen.getByTestId('first-letter-search-radio');
     const searchBtn = screen.getByTestId('exec-search-btn');
 
+    userEvent.type(searchInput, 'rice');
     userEvent.click(ingredientInput);
     userEvent.click(searchBtn);
 
+    expect(await screen.findByText(/beef banh/i)).toBeInTheDocument();
+
+    userEvent.type(searchInput, 'Arrabiata');
     userEvent.click(nameInput);
     userEvent.click(searchBtn);
 
-    userEvent.click(firstLInput);
-    userEvent.click(searchBtn);
-
     userEvent.type(searchInput, 'aa');
+    userEvent.click(firstLInput);
     userEvent.click(searchBtn);
   });
 
@@ -60,20 +64,26 @@ describe('Tests SearchBar Component', () => {
     act(() => history.push('/drinks'));
     expect(history.location.pathname).toBe('/drinks');
 
-    const openSeachBtn = screen.getByTestId('search-top-btn');
-    userEvent.click(openSeachBtn);
+    const openSearchBtn = screen.getByTestId('search-top-btn');
+    userEvent.click(openSearchBtn);
+
+    const searchInput = screen.getByTestId('search-input');
 
     const ingredientInput = screen.getByTestId('ingredient-search-radio');
     const nameInput = screen.getByTestId('name-search-radio');
     const firstLInput = screen.getByTestId('first-letter-search-radio');
     const searchBtn = screen.getByTestId('exec-search-btn');
 
+    userEvent.type(searchInput, 'vodka');
     userEvent.click(ingredientInput);
     userEvent.click(searchBtn);
 
+    expect(await screen.findByText(/155 Belmont/i)).toBeInTheDocument();
+    userEvent.type(searchInput, 'gin');
     userEvent.click(nameInput);
     userEvent.click(searchBtn);
 
+    userEvent.type(searchInput, 'aa');
     userEvent.click(firstLInput);
     userEvent.click(searchBtn);
   });
