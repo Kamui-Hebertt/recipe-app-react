@@ -1,15 +1,26 @@
-import React from 'react';
-import drinkCategoryMock from '../helpers/drinkCategoryMock';
+import React, { useEffect, useState } from 'react';
 
 function DrinkCategory() {
-  const theDrinksCategory = drinkCategoryMock.drinks;
+  const [categories, setCategories] = useState([]);
+  console.log(categories);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+      const data = await request.json();
+      console.log(data);
+      setCategories(data.drinks);
+    };
+    fetchCategories();
+  }, []);
+
   const five = 5;
   return (
     <div>
       <div>
         <button type="button" data-testid="All-category-filter">All</button>
       </div>
-      {theDrinksCategory.slice(0, five)
+      {categories.slice(0, five)
         .map((element, i) => (
           <button
             type="button"

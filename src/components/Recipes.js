@@ -1,53 +1,61 @@
-import { React } from 'react';
-import { useLocation } from 'react-router-dom';
+import { React, useContext } from 'react';
 import PropTypes from 'prop-types';
-import mealsMock from '../helpers/mealsMock';
-import drinkMock from '../helpers/drinkMock';
+
+import FoodContext from '../context/FoodContext';
 
 function Recipes() {
-  const location = useLocation();
-  const theMeal = mealsMock.meals;
-  const theDrinks = drinkMock.drinks;
+  const { initialRecipes } = useContext(FoodContext);
   const twelve = 12;
   return (
-    <div>
-      <p>Recipes</p>
-      {location.pathname === '/meals' ? theMeal
-        .map((element, i) => (
-          <>
-            <p
-              key={ i }
-              data-testid={ `${element.strMeal}-card-name` }
-            >
-              {element.strMeal}
+    <>
+      {initialRecipes.meals ? (
+        <div>
+          <p>Recipes</p>
+          {initialRecipes.meals.slice(0, twelve)
+            .map((element, i) => (
+              <div key={ i } data-testid={ `${i}-recipe-card` }>
+                <p
+                  key={ i }
+                  data-testid={ `${i}-card-name` }
+                >
+                  {element.strMeal}
 
-            </p>
-            <img
-              data-testid={ `${i}-card-img` }
-              src={ element.strMealThumb }
-              alt={ element.strMeal }
-            />
-          </>
-        ))
-        : theDrinks.slice(0, twelve).map((element1, i) => (
+                </p>
+                <img
+                  data-testid={ `${i}-card-img` }
+                  src={ element.strMealThumb }
+                  alt={ element.strMeal }
+                />
+              </div>
+            ))}
+        </div>
+      ) : null}
 
-          <div key={ i }>
+      {initialRecipes.drinks ? (
+        <div>
+          <p>Recipes</p>
+          {initialRecipes.drinks.slice(0, twelve).map((element1, i) => (
 
-            <p key={ i } data-testid={ `${element1.strDrink}-card-name` }>
+            <div key={ i } data-testid={ `${i}-recipe-card` }>
 
-              {element1.strDrink}
+              <p key={ i } data-testid={ `${i}-card-name` }>
 
-            </p>
-            <img
-              src={ element1.strDrinkThumb }
-              alt={ element1.strDrink }
-              data-testid={ `${i}-card-img` }
-            />
+                {element1.strDrink}
 
-          </div>
-        ))}
-    </div>
+              </p>
+              <img
+                src={ element1.strDrinkThumb }
+                alt={ element1.strDrink }
+                data-testid={ `${i}-card-img` }
+              />
 
+            </div>
+          ))}
+        </div>
+      )
+        : null}
+
+    </>
   );
 }
 
