@@ -1,9 +1,16 @@
 import React from 'react';
 import Header from '../components/Header';
+import MealCategory from '../components/MealCategory';
+import Recipes from '../components/Recipes';
 
 function Meals() {
   return (
-    <Header search pageName="Meals" />
+    <div>
+      <Header search pageName="Meals" />
+      <MealCategory />
+      <Recipes />
+
+    </div>
   );
 }
 
