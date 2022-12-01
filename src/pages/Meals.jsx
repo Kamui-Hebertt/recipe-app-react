@@ -7,7 +7,6 @@ import FoodContext from '../context/FoodContext';
 
 function Meals() {
   const { showingRecipes } = useContext(FoodContext);
-  console.log(showingRecipes.initial);
   return (
     <div>
       <Header search pageName="Meals" />
