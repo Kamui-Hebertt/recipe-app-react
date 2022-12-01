@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+
+import FoodContext from '../context/FoodContext';
 
 function SearchBar() {
+  const { setSearchFilter,
+    handleSearchClick, foodRecipes, drinkRecipes } = useContext(FoodContext);
+  const location = useLocation();
+  const twelve = 12;
   return (
     <div>
       <label htmlFor="ingredient">
@@ -10,6 +17,7 @@ function SearchBar() {
           name="searchInput"
           data-testid="ingredient-search-radio"
           value="ingredient"
+          onClick={ ({ target }) => setSearchFilter(target.value) }
           id="ingredient"
         />
       </label>
@@ -20,6 +28,7 @@ function SearchBar() {
           type="radio"
           name="searchInput"
           data-testid="name-search-radio"
+          onClick={ ({ target }) => setSearchFilter(target.value) }
           value="name"
         />
       </label>
@@ -28,11 +37,40 @@ function SearchBar() {
         <input
           type="radio"
           name="searchInput"
+          onClick={ ({ target }) => setSearchFilter(target.value) }
           data-testid="first-letter-search-radio"
           value="first-letter"
         />
       </label>
-      <button type="button" data-testid="exec-search-btn">Search</button>
+      <button
+        type="button"
+        data-testid="exec-search-btn"
+        onClick={ handleSearchClick }
+      >
+        Search
+
+      </button>
+      {location.pathname === '/meals'
+        ? foodRecipes?.slice(0, twelve).map((recipe, index) => (
+          <div key={ index } data-testid={ `${index}-recipe-card` }>
+            <img
+              src={ recipe.strMealThumb }
+              alt="food"
+              data-testid={ `${index}-card-img` }
+            />
+            <p data-testid={ `${index}-card-name` }>{recipe.strMeal}</p>
+          </div>
+        ))
+        : drinkRecipes?.slice(0, twelve).map((recipe, index) => (
+          <div key={ index } data-testid={ `${index}-recipe-card` }>
+            <img
+              src={ recipe.strDrinkThumb }
+              alt="food"
+              data-testid={ `${index}-card-img` }
+            />
+            <p data-testid={ `${index}-card-name` }>{recipe.strDrink}</p>
+          </div>
+        ))}
     </div>
   );
 }

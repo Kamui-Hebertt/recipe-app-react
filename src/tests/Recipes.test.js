@@ -1,10 +1,13 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
+import { act } from 'react-dom/test-utils';
 import App from '../App';
 import renderWithRouter from './service';
 
-describe('Tests Login Component', () => {
-  test('Testing if profile button is showing', async () => {
+describe('Testing the Recipes Component', () => {
+  jest.setTimeout(5000);
+  test('Testing if some tags exists on meals', async () => {
     const { history } = renderWithRouter(<App />);
 
     expect(screen.getByRole('heading', { name: /login/i })).toBeInTheDocument();
@@ -20,7 +23,16 @@ describe('Tests Login Component', () => {
 
     userEvent.click(loginBtn);
 
-    expect(await screen.findByText(/meals/i)).toBeInTheDocument();
     expect(history.location.pathname).toBe('/meals');
+
+    const btnBeef = await screen.findByRole('button', { name: /Beef/i });
+    expect(btnBeef).toBeInTheDocument();
+  });
+  test('Testing if some tags exists on drinks', async () => {
+    const { history } = renderWithRouter(<App />);
+    act(() => history.push('/drinks'));
+
+    const btnShake = await screen.findByRole('button', { name: /Shake/i });
+    expect(btnShake).toBeInTheDocument();
   });
 });
