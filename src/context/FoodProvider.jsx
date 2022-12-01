@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-
 import { useHistory, useLocation } from 'react-router-dom';
 import fetchSearchDrink from '../services/fetchSearchDrink';
 import fetchSearchFood from '../services/fetchSearchFood';

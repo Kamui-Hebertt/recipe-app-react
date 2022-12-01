@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import { useContext, React, useState } from 'react';
-
 import { useHistory } from 'react-router-dom';
 import FoodContext from '../context/FoodContext';
 import profile from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import './Header.css';
 import SearchBar from './SearchBar';
 
 function Header(props) {
@@ -47,7 +45,6 @@ function Header(props) {
             onChange={ ({ target }) => setSearchValue(target.value) }
           />
           <SearchBar />
-
         </div>
       ) : null}
     </section>
