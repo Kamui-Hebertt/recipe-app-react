@@ -3,18 +3,21 @@ import FoodContext from '../context/FoodContext';
 
 function DrinkCategory() {
   const [categories, setCategories] = useState([]);
-  const { setMealFilter } = useContext(FoodContext);
-  console.log(categories);
+  const { setMealFilter, mealFilter } = useContext(FoodContext);
 
   useEffect(() => {
     const fetchCategories = async () => {
       const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
       const data = await request.json();
-      console.log(data);
       setCategories(data.drinks);
     };
     fetchCategories();
   }, []);
+
+  const setFilter = (value) => {
+    const filter = mealFilter === value ? 'all' : value;
+    setMealFilter(filter);
+  };
 
   const five = 5;
   return (
@@ -35,7 +38,7 @@ function DrinkCategory() {
           <button
             type="button"
             data-testid={ `${element.strCategory}-category-filter` }
-            onClick={ ({ target }) => setMealFilter(target.value) }
+            onClick={ ({ target }) => setFilter(target.value) }
             value={ element.strCategory }
             key={ i }
           >

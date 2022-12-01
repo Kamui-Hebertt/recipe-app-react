@@ -17,7 +17,6 @@ export default function FoodProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const location = useLocation();
   const history = useHistory();
-  console.log(mealFilter);
   const handleSearchClick = async () => {
     if (searchFilter === 'first-letter' && searchValue.length > 1) {
       global.alert('Your search must have only 1 (one) character');

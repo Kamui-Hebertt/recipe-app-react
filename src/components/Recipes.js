@@ -1,11 +1,10 @@
 import { React, useContext } from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 import FoodContext from '../context/FoodContext';
 
 function Recipes() {
   const { recipes } = useContext(FoodContext);
-  console.log(recipes);
   const twelve = 12;
   return (
     <>
@@ -14,20 +13,23 @@ function Recipes() {
           <p>recipes</p>
           {recipes.meals.slice(0, twelve)
             .map((element, i) => (
-              <div key={ i } data-testid={ `${i}-recipe-card` }>
-                <p
-                  key={ i }
-                  data-testid={ `${i}-card-name` }
+              <Link to={ `/meals/${element.idMeal}` } key={ i }>
+                <div
+                  data-testid={ `${i}-recipe-card` }
                 >
-                  {element.strMeal}
-
-                </p>
-                <img
-                  data-testid={ `${i}-card-img` }
-                  src={ element.strMealThumb }
-                  alt={ element.strMeal }
-                />
-              </div>
+                  <p
+                    key={ i }
+                    data-testid={ `${i}-card-name` }
+                  >
+                    {element.strMeal}
+                  </p>
+                  <img
+                    data-testid={ `${i}-card-img` }
+                    src={ element.strMealThumb }
+                    alt={ element.strMeal }
+                  />
+                </div>
+              </Link>
             ))}
         </div>
       ) : null}
@@ -36,21 +38,26 @@ function Recipes() {
         <div>
           <p>recipes</p>
           {recipes.drinks.slice(0, twelve).map((element1, i) => (
+            <Link to={ `/drinks/${element1.idDrink}` } key={ i }>
 
-            <div key={ i } data-testid={ `${i}-recipe-card` }>
+              <div
+                data-testid={ `${i}-recipe-card` }
+              >
 
-              <p key={ i } data-testid={ `${i}-card-name` }>
+                <p data-testid={ `${i}-card-name` }>
 
-                {element1.strDrink}
+                  {element1.strDrink}
 
-              </p>
-              <img
-                src={ element1.strDrinkThumb }
-                alt={ element1.strDrink }
-                data-testid={ `${i}-card-img` }
-              />
+                </p>
+                <img
+                  src={ element1.strDrinkThumb }
+                  alt={ element1.strDrink }
+                  data-testid={ `${i}-card-img` }
+                />
 
-            </div>
+              </div>
+            </Link>
+
           ))}
         </div>
       )

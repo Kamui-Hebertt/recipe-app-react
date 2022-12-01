@@ -2,9 +2,8 @@ import { React, useContext, useEffect, useState } from 'react';
 import FoodContext from '../context/FoodContext';
 
 function MealCategory() {
-  const { setMealFilter } = useContext(FoodContext);
+  const { setMealFilter, mealFilter } = useContext(FoodContext);
   const [categories, setCategories] = useState([]);
-  console.log(categories);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -14,6 +13,11 @@ function MealCategory() {
     };
     fetchCategories();
   }, []);
+
+  const setFilter = (value) => {
+    const filter = mealFilter === value ? 'all' : value;
+    setMealFilter(filter);
+  };
 
   const five = 5;
 
@@ -32,7 +36,7 @@ function MealCategory() {
           type="button"
           data-testid="All-category-filter"
           value="all"
-          onClick={ ({ target }) => setMealFilter(target.value) }
+          onClick={ () => setMealFilter('all') }
         >
           All
 
@@ -47,7 +51,7 @@ function MealCategory() {
               data-testid={ `${element.strCategory}-category-filter` }
               name={ element.strCategory }
               value={ element.strCategory }
-              onClick={ ({ target }) => setMealFilter(target.value) }
+              onClick={ ({ target }) => setFilter(target.value) }
             >
               {element.strCategory}
 
