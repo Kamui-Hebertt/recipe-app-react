@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
+import MealCategory from '../components/MealCategory';
+import Recipes from '../components/Recipes';
+import FoodContext from '../context/FoodContext';
 import RecipeDetails from './RecipeDetails';
 
 function Meals() {
+  const { showingRecipes } = useContext(FoodContext);
   const mock = { meals: [
     {
       idMeal: '52771',
@@ -63,11 +68,15 @@ function Meals() {
   };
   const idMeals = mock.meals[0].idMeal;
   console.log(idMeals);
+  console.log(showingRecipes.initial);
   return (
-    <>
+    <div>
       <Header search pageName="Meals" />
       <RecipeDetails id={ idMeals } />
-    </>
+      <MealCategory />
+      {showingRecipes.initial && <Recipes />}
+      <Footer />
+    </div>
   );
 }
 export default Meals;
