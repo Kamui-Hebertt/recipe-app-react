@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import FoodContext from '../context/FoodContext';
 
 function DrinkCategory() {
   const [categories, setCategories] = useState([]);
+  const { setMealFilter } = useContext(FoodContext);
   console.log(categories);
 
   useEffect(() => {
@@ -18,13 +20,23 @@ function DrinkCategory() {
   return (
     <div>
       <div>
-        <button type="button" data-testid="All-category-filter">All</button>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ ({ target }) => setMealFilter(target.value) }
+          value="all"
+        >
+          All
+
+        </button>
       </div>
       {categories.slice(0, five)
         .map((element, i) => (
           <button
             type="button"
             data-testid={ `${element.strCategory}-category-filter` }
+            onClick={ ({ target }) => setMealFilter(target.value) }
+            value={ element.strCategory }
             key={ i }
           >
             {element.strCategory}

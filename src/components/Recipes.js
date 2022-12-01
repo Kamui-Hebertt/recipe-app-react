@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import FoodContext from '../context/FoodContext';
 
 function Recipes() {
-  const { initialRecipes } = useContext(FoodContext);
+  const { recipes } = useContext(FoodContext);
+  console.log(recipes);
   const twelve = 12;
   return (
     <>
-      {initialRecipes.meals ? (
+      {recipes.meals ? (
         <div>
-          <p>Recipes</p>
-          {initialRecipes.meals.slice(0, twelve)
+          <p>recipes</p>
+          {recipes.meals.slice(0, twelve)
             .map((element, i) => (
               <div key={ i } data-testid={ `${i}-recipe-card` }>
                 <p
@@ -31,10 +32,10 @@ function Recipes() {
         </div>
       ) : null}
 
-      {initialRecipes.drinks ? (
+      {recipes.drinks ? (
         <div>
-          <p>Recipes</p>
-          {initialRecipes.drinks.slice(0, twelve).map((element1, i) => (
+          <p>recipes</p>
+          {recipes.drinks.slice(0, twelve).map((element1, i) => (
 
             <div key={ i } data-testid={ `${i}-recipe-card` }>
 

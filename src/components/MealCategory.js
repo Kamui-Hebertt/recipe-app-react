@@ -17,18 +17,26 @@ function MealCategory() {
 
   const five = 5;
 
-  const categoryFilter = async (theName) => {
-    const linkMeals = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${theName}`;
-    const respose = await fetch(linkMeals);
-    const resposejson = await respose.json();
-    // console.log(resposejson);
-    setMealFilter(resposejson);
-  };
+  // const categoryFilter =  (theName) => {
+  //   const linkMeals = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${theName}`;
+  //   const respose = await fetch(linkMeals);
+  //   const resposejson = await respose.json();
+  //   // console.log(resposejson);
+  //   setMealFilter(resposejson);
+  // };
 
   return (
     <div>
       <div>
-        <button type="button" data-testid="All-category-filter">All</button>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          value="all"
+          onClick={ ({ target }) => setMealFilter(target.value) }
+        >
+          All
+
+        </button>
       </div>
       <div>
         {categories.slice(0, five)
@@ -38,7 +46,8 @@ function MealCategory() {
               type="button"
               data-testid={ `${element.strCategory}-category-filter` }
               name={ element.strCategory }
-              onClick={ ({ target }) => categoryFilter(target.name) }
+              value={ element.strCategory }
+              onClick={ ({ target }) => setMealFilter(target.value) }
             >
               {element.strCategory}
 

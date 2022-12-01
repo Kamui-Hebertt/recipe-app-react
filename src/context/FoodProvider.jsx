@@ -5,7 +5,7 @@ import fetchSearchFood from '../services/fetchSearchFood';
 import FoodContext from './FoodContext';
 
 export default function FoodProvider({ children }) {
-  const [mealFilter, setMealFilter] = useState('');
+  const [mealFilter, setMealFilter] = useState('all');
   const [searchFilter, setSearchFilter] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [foodRecipes, setFoodRecipes] = useState([]);
@@ -14,10 +14,10 @@ export default function FoodProvider({ children }) {
     initial: true,
     category: false,
   });
-  const [initialRecipes, setInitialRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const location = useLocation();
   const history = useHistory();
-
+  console.log(mealFilter);
   const handleSearchClick = async () => {
     if (searchFilter === 'first-letter' && searchValue.length > 1) {
       global.alert('Your search must have only 1 (one) character');
@@ -44,26 +44,38 @@ export default function FoodProvider({ children }) {
 
   useEffect(() => {
     // fazer um if para decidir o type do fetch
-    const initialFetchFoods = async () => {
-      const request = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-      const data = await request.json();
-      setInitialRecipes(data);
+    const fetchFoods = async () => {
+      if (mealFilter === 'all') {
+        const request = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+        const data = await request.json();
+        setRecipes(data);
       // fazer um estado filterBtn = {type: all ou meal ou drink}, category: vai vir do botão ex(beef)}
       // fazer outro if e usar o link abaixo para fetch dinamico
       // 'https://www.themealdb.com/api/json/v1/1/filter.php?c=${filterBtn.category}'
       // não esquecer dependencia
+      } else {
+        const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealFilter}`);
+        const data = await request.json();
+        setRecipes(data);
+      }
     };
-    const initialFetchDrinks = async () => {
-      const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-      const data = await request.json();
-      setInitialRecipes(data);
+    const fetchDrinks = async () => {
+      if (mealFilter === 'all') {
+        const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+        const data = await request.json();
+        setRecipes(data);
+      } else {
+        const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${mealFilter}`);
+        const data = await request.json();
+        setRecipes(data);
+      }
     };
     if (location.pathname === '/meals') {
-      initialFetchFoods();
+      fetchFoods();
     } else if (location.pathname === '/drinks') {
-      initialFetchDrinks();
+      fetchDrinks();
     }
-  }, [location.pathname]);
+  }, [location.pathname, mealFilter]);
 
   useEffect(() => {
     if (foodRecipes.length === 1) {
@@ -83,14 +95,14 @@ export default function FoodProvider({ children }) {
     drinkRecipes,
     mealFilter,
     setMealFilter,
-    initialRecipes,
+    recipes,
     showingRecipes,
   }), [searchFilter,
     searchValue,
     foodRecipes,
     drinkRecipes,
     mealFilter,
-    initialRecipes,
+    recipes,
     showingRecipes]);
   return (
     <FoodContext.Provider value={ value }>
