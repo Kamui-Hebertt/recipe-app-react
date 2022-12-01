@@ -13,26 +13,6 @@ export default function DetailsPageProvider({ children }) {
     measures: [],
   });
 
-  console.log(ingredientsAndMeasures);
-
-  const mountIngredientAndMeasuresArr = () => {
-    const NINE = 9;
-    const TWENTY_NINE = 29;
-    const FORTY_NINE = 49;
-    const objEntriesArr = Object.entries(mealInfos);
-    const ingredientsArr = objEntriesArr.slice(NINE, TWENTY_NINE);
-    const measuresArr = objEntriesArr.slice(TWENTY_NINE, FORTY_NINE);
-    setIngredientsAndMeasures({ ingredients: ingredientsArr, measures: measuresArr });
-  };
-  const mountIngredientAndMeasuresArrDrinks = () => {
-    const NINE = 17;
-    const TWENTY_NINE = 30;
-    const FORTY_NINE = 45;
-    const objEntriesArr = Object.entries(drinkInfos);
-    const ingredientsArr = objEntriesArr.slice(NINE, TWENTY_NINE);
-    const measuresArr = objEntriesArr.slice(TWENTY_NINE, FORTY_NINE);
-    setIngredientsAndMeasures({ ingredients: ingredientsArr, measures: measuresArr });
-  };
   const mountIngredientAndMeasuresArrTest = () => {
     const objEntriesArr = location.pathname.includes('/meals/')
       ? Object.entries(mealInfos)
