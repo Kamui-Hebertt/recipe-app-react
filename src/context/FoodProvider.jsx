@@ -5,10 +5,16 @@ import fetchSearchFood from '../services/fetchSearchFood';
 import FoodContext from './FoodContext';
 
 export default function FoodProvider({ children }) {
+  const [mealFilter, setMealFilter] = useState('');
   const [searchFilter, setSearchFilter] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [foodRecipes, setFoodRecipes] = useState([]);
   const [drinkRecipes, setDrinkRecipes] = useState([]);
+  const [showingRecipes, setShowingRecipes] = useState({
+    initial: true,
+    category: false,
+  });
+  const [initialRecipes, setInitialRecipes] = useState([]);
   const location = useLocation();
   const history = useHistory();
 
@@ -22,6 +28,8 @@ export default function FoodProvider({ children }) {
         setFoodRecipes([]);
       } else {
         setFoodRecipes(data);
+        setShowingRecipes({ initial: false,
+          category: false });
       }
     } else if (location.pathname === '/drinks') {
       const data = await fetchSearchDrink(searchValue, searchFilter);
@@ -33,6 +41,29 @@ export default function FoodProvider({ children }) {
       }
     }
   };
+
+  useEffect(() => {
+    // fazer um if para decidir o type do fetch
+    const initialFetchFoods = async () => {
+      const request = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+      const data = await request.json();
+      setInitialRecipes(data);
+      // fazer um estado filterBtn = {type: all ou meal ou drink}, category: vai vir do botão ex(beef)}
+      // fazer outro if e usar o link abaixo para fetch dinamico
+      // 'https://www.themealdb.com/api/json/v1/1/filter.php?c=${filterBtn.category}'
+      // não esquecer dependencia
+    };
+    const initialFetchDrinks = async () => {
+      const request = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+      const data = await request.json();
+      setInitialRecipes(data);
+    };
+    if (location.pathname === '/meals') {
+      initialFetchFoods();
+    } else if (location.pathname === '/drinks') {
+      initialFetchDrinks();
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (foodRecipes.length === 1) {
@@ -50,7 +81,17 @@ export default function FoodProvider({ children }) {
     handleSearchClick,
     foodRecipes,
     drinkRecipes,
-  }), [searchFilter, searchValue, foodRecipes, drinkRecipes]);
+    mealFilter,
+    setMealFilter,
+    initialRecipes,
+    showingRecipes,
+  }), [searchFilter,
+    searchValue,
+    foodRecipes,
+    drinkRecipes,
+    mealFilter,
+    initialRecipes,
+    showingRecipes]);
   return (
     <FoodContext.Provider value={ value }>
       <div>

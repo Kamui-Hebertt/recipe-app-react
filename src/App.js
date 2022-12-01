@@ -3,13 +3,13 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
+import FoodProvider from './context/FoodProvider';
 import Meals from './pages/Meals';
 import Drinks from './pages/Drinks';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import LoginProvider from './context/LoginProvider';
-import FoodProvider from './context/FoodProvider';
 
 function App() {
   return (
