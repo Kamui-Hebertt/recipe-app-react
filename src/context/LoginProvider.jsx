@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useEffect, useState } from 'react';
+import LoginContext from './LoginContext';
 
-const minCharacter = 6;
-const ContextLogin = () => {
+export default function LoginProvider({ children }) {
+  const minCharacter = 6;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
@@ -16,14 +17,20 @@ const ContextLogin = () => {
     }
   }, [email, password]);
 
-  const contextLoginObj = {
+  const value = useMemo(() => ({
     setEmail,
     email,
     setPassword,
     disabled,
-  };
+    password,
+  }), [email, disabled, password]);
+  return (
+    <LoginContext.Provider value={ value }>
+      <div>
+        { children }
+      </div>
+    </LoginContext.Provider>
+  );
+}
 
-  return { contextLoginObj };
-};
-
-export default ContextLogin;
+LoginProvider.propTypes = {}.isRequired;

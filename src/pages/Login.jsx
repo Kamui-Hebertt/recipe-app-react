@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
-import ContextLogin from '../context/ContextLogin';
+import { useHistory } from 'react-router-dom';
+import LoginContext from '../context/LoginContext';
+import './Login.css';
 
 export default function Login() {
-  const { setEmail, setPassword, disabled, email } = useContext(ContextLogin);
+  const history = useHistory();
+  const { setEmail, setPassword, disabled, email, password } = useContext(LoginContext);
   return (
     <section>
       <form>
@@ -27,8 +30,17 @@ export default function Login() {
             data-testid="login-submit-btn"
             className="loginBtn"
             disabled={ disabled }
+            onClick={ () => {
+              localStorage.setItem('mealToken', 1);
+              localStorage.setItem('cocktailToken', 1);
+              const user = {
+                email,
+              };
+              localStorage.setItem('user', JSON.stringify(user));
+              history.push('/meals');
+            } }
           >
-            Submeter
+            Login
 
           </button>
         </section>
