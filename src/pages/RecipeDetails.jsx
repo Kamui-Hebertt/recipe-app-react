@@ -1,57 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import DetailsPageContext from '../context/DetailsPageContext';
 // import { useLocation } from 'react-router-dom';
 
-function RecipeDetails(props) {
-  const [mealInfos, setMealInfos] = useState({});
-  const [drinkInfos, setDrinkInfos] = useState({});
-  const [ytVideo, setYtVideo] = useState('');
-  const { id } = props;
+function RecipeDetails() {
   //   const location = useLocation();
+  const {
+    ingredientsAndMeasures,
+    mealInfos,
+    drinkInfos,
+    ytVideo,
+  } = useContext(DetailsPageContext);
 
-  const mountIngredientsArr = () => {
-    const first = 9;
-    const last = 29;
-    const objEntriesArr = Object.entries(mealInfos);
-    return objEntriesArr.slice(first, last);
-  };
-
-  const mountMeasureArr = () => {
-    const first = 29;
-    const last = 49;
-    const objEntriesArr = Object.entries(mealInfos);
-    return objEntriesArr.slice(first, last);
-  };
-
-  useEffect(() => {
-    const END_POINT = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
-    const fetchMeals = async () => {
-      const request = await fetch(END_POINT);
-      const data = await request.json();
-      console.log(data.meals[0]);
-      setMealInfos(data.meals[0]);
-    };
-    fetchMeals();
-  }, [id]);
-
-  useEffect(() => {
-    const END_POINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i= ${id}`;
-    const fetchDrinks = async () => {
-      const request = await fetch(END_POINT);
-      const data = await request.json();
-      setDrinkInfos(data);
-    };
-    fetchDrinks();
-  }, [id]);
-
-  const replaceYTVideo = async () => {
-    const ytURL = await mealInfos.strYoutube;
-    const ytVideoReplace = await ytURL.replace('watch?v=', 'embed/');
-    setYtVideo(ytVideoReplace);
-  };
-  replaceYTVideo();
-
-  console.log(ytVideo);
   return (
     <div>
       <img
@@ -72,7 +31,7 @@ function RecipeDetails(props) {
       </p>
       <h4>Ingredientes:</h4>
       {
-        mountIngredientsArr().map((el, index) => (
+        ingredientsAndMeasures.ingredients.map((el, index) => (
           <p
             data-testid={ `${index}-ingredient-name-and-measure` }
             key={ el[0] }
@@ -83,7 +42,7 @@ function RecipeDetails(props) {
       }
       <h4>Medidas:</h4>
       {
-        mountMeasureArr().map((e, index) => (
+        ingredientsAndMeasures.measures.map((e, index) => (
           <p
             data-testid={ `${index}-ingredient-name-and-measure` }
             key={ e[0] }
@@ -155,9 +114,5 @@ function RecipeDetails(props) {
     </div>
   );
 }
-
-RecipeDetails.propTypes = {
-  id: PropTypes.string.isRequired,
-};
 
 export default RecipeDetails;
