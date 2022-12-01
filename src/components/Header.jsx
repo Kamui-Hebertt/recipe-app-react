@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
-import { React, useState } from 'react';
+import { useContext, React, useState } from 'react';
+
 import { useHistory } from 'react-router-dom';
+import FoodContext from '../context/FoodContext';
 import profile from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import './Header.css';
@@ -8,6 +10,7 @@ import SearchBar from './SearchBar';
 
 function Header(props) {
   const history = useHistory();
+  const { searchValue, setSearchValue } = useContext(FoodContext);
   const { search, pageName } = props;
   const [searchBar, setSearchBar] = useState(false);
   return (
@@ -37,7 +40,12 @@ function Header(props) {
       <div data-testid="page-title">{pageName}</div>
       {searchBar ? (
         <div>
-          <input type="text" data-testid="search-input" />
+          <input
+            type="text"
+            data-testid="search-input"
+            value={ searchValue }
+            onChange={ ({ target }) => setSearchValue(target.value) }
+          />
           <SearchBar />
 
         </div>
