@@ -2,9 +2,8 @@ import { React, useContext, useEffect, useState } from 'react';
 import FoodContext from '../context/FoodContext';
 
 function MealCategory() {
-  const { setMealFilter } = useContext(FoodContext);
+  const { setMealFilter, mealFilter } = useContext(FoodContext);
   const [categories, setCategories] = useState([]);
-  console.log(categories);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -15,20 +14,33 @@ function MealCategory() {
     fetchCategories();
   }, []);
 
+  const setFilter = (value) => {
+    const filter = mealFilter === value ? 'all' : value;
+    setMealFilter(filter);
+  };
+
   const five = 5;
 
-  const categoryFilter = async (theName) => {
-    const linkMeals = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${theName}`;
-    const respose = await fetch(linkMeals);
-    const resposejson = await respose.json();
-    // console.log(resposejson);
-    setMealFilter(resposejson);
-  };
+  // const categoryFilter =  (theName) => {
+  //   const linkMeals = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${theName}`;
+  //   const respose = await fetch(linkMeals);
+  //   const resposejson = await respose.json();
+  //   // console.log(resposejson);
+  //   setMealFilter(resposejson);
+  // };
 
   return (
     <div>
       <div>
-        <button type="button" data-testid="All-category-filter">All</button>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          value="all"
+          onClick={ () => setMealFilter('all') }
+        >
+          All
+
+        </button>
       </div>
       <div>
         {categories.slice(0, five)
@@ -38,7 +50,8 @@ function MealCategory() {
               type="button"
               data-testid={ `${element.strCategory}-category-filter` }
               name={ element.strCategory }
-              onClick={ ({ target }) => categoryFilter(target.name) }
+              value={ element.strCategory }
+              onClick={ ({ target }) => setFilter(target.value) }
             >
               {element.strCategory}
 

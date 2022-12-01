@@ -6,7 +6,7 @@ import App from '../App';
 import renderWithRouter from './service';
 
 describe('Testing the Recipes Component', () => {
-  jest.setTimeout(5000);
+  const cardTest = '0-card-img';
   test('Testing if some tags exists on meals', async () => {
     const { history } = renderWithRouter(<App />);
 
@@ -27,6 +27,12 @@ describe('Testing the Recipes Component', () => {
 
     const btnBeef = await screen.findByRole('button', { name: /Beef/i });
     expect(btnBeef).toBeInTheDocument();
+    userEvent.click(btnBeef);
+    expect(await screen.findByTestId('0-recipe-card')).toBeInTheDocument();
+    expect(screen.getByTestId('0-card-name')).toBeInTheDocument();
+    expect(screen.getByTestId(cardTest)).toBeInTheDocument();
+    userEvent.click(btnBeef);
+    userEvent.click(screen.getByTestId(cardTest));
   });
   test('Testing if some tags exists on drinks', async () => {
     const { history } = renderWithRouter(<App />);
@@ -34,5 +40,11 @@ describe('Testing the Recipes Component', () => {
 
     const btnShake = await screen.findByRole('button', { name: /Shake/i });
     expect(btnShake).toBeInTheDocument();
+    userEvent.click(btnShake);
+    expect(await screen.findByTestId('0-recipe-card')).toBeInTheDocument();
+    expect(screen.getByTestId('0-card-name')).toBeInTheDocument();
+    expect(screen.getByTestId(cardTest)).toBeInTheDocument();
+    userEvent.click(btnShake);
+    userEvent.click(screen.getByTestId(cardTest));
   });
 });
