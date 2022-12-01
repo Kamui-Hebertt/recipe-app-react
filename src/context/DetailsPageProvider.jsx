@@ -1,7 +1,10 @@
 import { useMemo, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import DetailsPageContext from './DetailsPageContext';
 
 export default function DetailsPageProvider({ children }) {
+  const history = useHistory();
+  const [id, setId] = useState('');
   const [mealInfos, setMealInfos] = useState({});
   const [drinkInfos, setDrinkInfos] = useState({});
   const [ytVideo, setYtVideo] = useState('');
@@ -9,6 +12,10 @@ export default function DetailsPageProvider({ children }) {
     ingredients: [],
     measures: [],
   });
+
+  console.log(id);
+
+  //   const id = history.location.pathname;
 
   const mountIngredientAndMeasuresArr = () => {
     const NINE = 9;
@@ -20,7 +27,6 @@ export default function DetailsPageProvider({ children }) {
     setIngredientsAndMeasures({ ...ingredientsAndMeasures, ingredients: ingredientsArr });
     setIngredientsAndMeasures({ ...ingredientsAndMeasures, measures: measuresArr });
   };
-  mountIngredientAndMeasuresArr();
 
   console.log(ingredientsAndMeasures);
 
@@ -32,18 +38,21 @@ export default function DetailsPageProvider({ children }) {
       console.log(data.meals[0]);
       setMealInfos(data.meals[0]);
     };
+    console.log('meals');
     fetchMeals();
-  }, []);
+    mountIngredientAndMeasuresArr();
+  }, [id]);
 
-  useEffect(() => {
-    const END_POINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i= ${id}`;
-    const fetchDrinks = async () => {
-      const request = await fetch(END_POINT);
-      const data = await request.json();
-      setDrinkInfos(data);
-    };
-    fetchDrinks();
-  }, []);
+  //   useEffect(() => {
+  //     const END_POINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i= ${id}`;
+  //     const fetchDrinks = async () => {
+  //       const request = await fetch(END_POINT);
+  //       const data = await request.json();
+  //       setDrinkInfos(data);
+  //     };
+  //     console.log('drinks');
+  //     fetchDrinks();
+  //   }, [id]);
 
   const ytVideoUrlConvert = async () => {
     const ytURL = await mealInfos.strYoutube;
@@ -57,10 +66,12 @@ export default function DetailsPageProvider({ children }) {
     mealInfos,
     drinkInfos,
     ytVideo,
+    setId,
   }), [ingredientsAndMeasures,
     mealInfos,
     drinkInfos,
-    ytVideo]);
+    ytVideo,
+    id]);
   return (
     <DetailsPageContext.Provider value={ value }>
       <div>

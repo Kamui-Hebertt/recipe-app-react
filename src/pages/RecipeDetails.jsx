@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
-// import { useLocation } from 'react-router-dom';
 
 function RecipeDetails() {
-  //   const location = useLocation();
+  const location = useLocation();
   const {
     ingredientsAndMeasures,
     mealInfos,
     drinkInfos,
     ytVideo,
+    setId,
   } = useContext(DetailsPageContext);
+
+  // useEffect(() => setId(location.pathname.split('/')), []);
+  setId(location.pathname.split('/'));
+  console.log(1);
 
   return (
     <div>
