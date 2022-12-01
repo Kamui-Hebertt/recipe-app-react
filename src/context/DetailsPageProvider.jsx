@@ -1,10 +1,10 @@
 import { useMemo, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import DetailsPageContext from './DetailsPageContext';
 
 export default function DetailsPageProvider({ children }) {
-  const history = useHistory();
-  const [id, setId] = useState('');
+  const location = useLocation();
+  const [id, setId] = useState(location.pathname.split('/')[2]);
   const [mealInfos, setMealInfos] = useState({});
   const [drinkInfos, setDrinkInfos] = useState({});
   const [ytVideo, setYtVideo] = useState('');
@@ -13,9 +13,7 @@ export default function DetailsPageProvider({ children }) {
     measures: [],
   });
 
-  console.log(id);
-
-  //   const id = history.location.pathname;
+  console.log(ingredientsAndMeasures);
 
   const mountIngredientAndMeasuresArr = () => {
     const NINE = 9;
@@ -24,24 +22,57 @@ export default function DetailsPageProvider({ children }) {
     const objEntriesArr = Object.entries(mealInfos);
     const ingredientsArr = objEntriesArr.slice(NINE, TWENTY_NINE);
     const measuresArr = objEntriesArr.slice(TWENTY_NINE, FORTY_NINE);
-    setIngredientsAndMeasures({ ...ingredientsAndMeasures, ingredients: ingredientsArr });
-    setIngredientsAndMeasures({ ...ingredientsAndMeasures, measures: measuresArr });
+    setIngredientsAndMeasures({ ingredients: ingredientsArr, measures: measuresArr });
+  };
+  const mountIngredientAndMeasuresArrDrinks = () => {
+    const NINE = 17;
+    const TWENTY_NINE = 30;
+    const FORTY_NINE = 45;
+    const objEntriesArr = Object.entries(drinkInfos);
+    const ingredientsArr = objEntriesArr.slice(NINE, TWENTY_NINE);
+    const measuresArr = objEntriesArr.slice(TWENTY_NINE, FORTY_NINE);
+    setIngredientsAndMeasures({ ingredients: ingredientsArr, measures: measuresArr });
+  };
+  const mountIngredientAndMeasuresArrTest = () => {
+    const objEntriesArr = location.pathname.includes('/meals/')
+      ? Object.entries(mealInfos)
+      : Object.entries(drinkInfos);
+    location.pathname.includes('/meals/');
+    const ingredientsArr = objEntriesArr.filter((keyArr) => keyArr[0]
+      .includes('Ingredient'));
+    const measuresArr = objEntriesArr.filter((keyArr) => keyArr[0]
+      .includes('Measure'));
+    setIngredientsAndMeasures({ ingredients: ingredientsArr, measures: measuresArr });
   };
 
-  console.log(ingredientsAndMeasures);
+  useEffect(() => {
+    if (location.pathname.includes('/meals/')) {
+      const END_POINT = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+      const fetchMeals = async () => {
+        const request = await fetch(END_POINT);
+        const data = await request.json();
+        setMealInfos(data.meals[0]);
+      };
+      fetchMeals();
+    } else if (location.pathname.includes('/drinks/')) {
+      const END_POINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+      const fetchDrinks = async () => {
+        const request = await fetch(END_POINT);
+        const data = await request.json();
+        setDrinkInfos(data.drinks[0]);
+      };
+      fetchDrinks();
+    }
+  }, [id]);
 
   useEffect(() => {
-    const END_POINT = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
-    const fetchMeals = async () => {
-      const request = await fetch(END_POINT);
-      const data = await request.json();
-      console.log(data.meals[0]);
-      setMealInfos(data.meals[0]);
-    };
-    console.log('meals');
-    fetchMeals();
-    mountIngredientAndMeasuresArr();
-  }, [id]);
+    // if (location.pathname.includes('/meals')) {
+    //   mountIngredientAndMeasuresArr();
+    // } else if (location.pathname.includes('/drinks')) {
+    //   mountIngredientAndMeasuresArrDrinks();
+    // }
+    mountIngredientAndMeasuresArrTest();
+  }, [mealInfos, drinkInfos]);
 
   //   useEffect(() => {
   //     const END_POINT = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i= ${id}`;
@@ -50,16 +81,19 @@ export default function DetailsPageProvider({ children }) {
   //       const data = await request.json();
   //       setDrinkInfos(data);
   //     };
-  //     console.log('drinks');
   //     fetchDrinks();
   //   }, [id]);
 
-  const ytVideoUrlConvert = async () => {
-    const ytURL = await mealInfos.strYoutube;
-    const ytVideoReplace = await ytURL.replace('watch?v=', 'embed/');
-    setYtVideo(ytVideoReplace);
-  };
-  ytVideoUrlConvert();
+  useEffect(() => {
+    if (mealInfos.strYoutube) {
+      const ytVideoUrlConvert = () => {
+        const ytURL = mealInfos.strYoutube;
+        const ytVideoReplace = ytURL.replace('watch?v=', 'embed/');
+        setYtVideo(ytVideoReplace);
+      };
+      ytVideoUrlConvert();
+    }
+  }, [mealInfos]);
 
   const value = useMemo(() => ({
     ingredientsAndMeasures,

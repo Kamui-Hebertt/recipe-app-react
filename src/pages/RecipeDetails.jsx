@@ -12,112 +12,120 @@ function RecipeDetails() {
     setId,
   } = useContext(DetailsPageContext);
 
-  // useEffect(() => setId(location.pathname.split('/')), []);
-  setId(location.pathname.split('/'));
-  console.log(1);
+  useEffect(() => setId(location.pathname.split('/')[2]), []);
+  // setId(location.pathname.split('/'));
+  console.log(ingredientsAndMeasures);
 
   return (
     <div>
-      <img
-        src={ mealInfos.strMealThumb }
-        alt="imagem"
-        data-testid="recipe-photo"
-      />
-      <p
-        data-testid="recipe-title"
-      >
-        {mealInfos.strMeal}
+      {location.pathname.includes('/meals') ? (
+        <div>
+          <img
+            src={ mealInfos.strMealThumb }
+            alt="imagem"
+            data-testid="recipe-photo"
+          />
+          <p
+            data-testid="recipe-title"
+          >
+            {mealInfos.strMeal}
 
-      </p>
-      <p
-        data-testid="recipe-category"
-      >
-        {mealInfos.strCategory}
-      </p>
-      <h4>Ingredientes:</h4>
-      {
-        ingredientsAndMeasures.ingredients.map((el, index) => (
-          <p
-            data-testid={ `${index}-ingredient-name-and-measure` }
-            key={ el[0] }
-          >
-            {el[1]}
           </p>
-        ))
-      }
-      <h4>Medidas:</h4>
-      {
-        ingredientsAndMeasures.measures.map((e, index) => (
           <p
-            data-testid={ `${index}-ingredient-name-and-measure` }
-            key={ e[0] }
+            data-testid="recipe-category"
           >
-            {e[1]}
+            {mealInfos.strCategory}
           </p>
-        ))
-      }
-      <p
-        data-testid="instructions"
-      >
-        {mealInfos.strInstructions}
-      </p>
-      <iframe
-        width="853"
-        height="480"
-        data-testid="video"
-        src={ ytVideo }
-        title="YouTube Video Player"
-        frameBorder="0"
-        allowFullScreen
-      />
-      {/* <img
-        src={ drinkInfos.strDrinkThumb }
-        alt="imagem"
-        data-testid="recipe-photo"
-      />
-      <p
-        data-testid="recipe-title"
-      >
-        {drinkInfos.strDrink}
+          <h4>Ingredientes:</h4>
+          {
+            ingredientsAndMeasures.ingredients.map((el, index) => (
+              <p
+                data-testid={ `${index}-ingredient-name-and-measure` }
+                key={ el[0] }
+              >
+                {el[1]}
+              </p>
+            ))
+          }
+          <h4>Medidas:</h4>
+          {
+            ingredientsAndMeasures.measures.map((e, index) => (
+              <p
+                data-testid={ `${index}-ingredient-name-and-measure` }
+                key={ e[0] }
+              >
+                {e[1]}
+              </p>
+            ))
+          }
+          <p
+            data-testid="instructions"
+          >
+            {mealInfos.strInstructions}
+          </p>
+          <iframe
+            width="853"
+            height="480"
+            data-testid="video"
+            src={ ytVideo }
+            title="YouTube Video Player"
+            frameBorder="0"
+            allowFullScreen
+          />
+        </div>
+      )
+        : null}
 
-      </p>
-      <p
-        data-testid="recipe-category"
-      >
-        {drinkInfos.strCategory}
-      </p>
-      <p>
-       {drinkInfos.strCategory}
-      </p>
-      <h4>Ingredientes: </h4>
-      {
-        mountIngredientsArr().map((el, index) => (
+      {location.pathname.includes('/drinks') ? (
+
+        <div>
+          <img
+            src={ drinkInfos.strDrinkThumb }
+            alt="imagem"
+            data-testid="recipe-photo"
+          />
           <p
-            data-testid={ `${index}-ingredient-name-and-measure` }
-            key={ el[0] }
+            data-testid="recipe-title"
           >
-            {el[1]}
+            {drinkInfos.strDrink}
+
           </p>
-        ))
-      }
-      <h4>Medidas: </h4>
-      {
-        mountMeasureArr().map((e, index) => (
           <p
-            data-testid={ `${index}-ingredient-name-and-measure` }
-            key={ e[0] }
+            data-testid="recipe-category"
           >
-            {e[1]}
+            {drinkInfos.strCategory}
+            {drinkInfos.strAlcoholic}
           </p>
-        ))
-      }
-      <p
-        data-testid="instructions"
-      >
-        {drinkInfos.strInstructions}
-      </p> */}
+          <h4>Ingredientes: </h4>
+          {
+            ingredientsAndMeasures.ingredients.map((el1, index) => (
+              <p
+                data-testid={ `${index}-ingredient-name-and-measure` }
+                key={ el1[0] }
+              >
+                {el1[1]}
+              </p>
+            ))
+          }
+          <h4>Medidas: </h4>
+          {
+            ingredientsAndMeasures.measures.map((e1, index) => (
+              <p
+                data-testid={ `${index}-ingredient-name-and-measure` }
+                key={ e1[0] }
+              >
+                {e1[1]}
+              </p>
+            ))
+          }
+          <p
+            data-testid="instructions"
+          >
+            {drinkInfos.strInstructions}
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }
-
 export default RecipeDetails;
