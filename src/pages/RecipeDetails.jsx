@@ -1,8 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
 import { useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
+import './RecipeDetails.css';
 
 function RecipeDetails() {
+  const six = 6;
   const location = useLocation();
   const {
     ingredientsAndMeasures,
@@ -10,11 +13,31 @@ function RecipeDetails() {
     drinkInfos,
     ytVideo,
     setId,
+    foodRecomendation,
+    drinkRecomendation,
   } = useContext(DetailsPageContext);
+  const [mealsReco, setMealsReco] = useState([]);
+  const [drinksReco, setDrinksReco] = useState([]);
+  const [recipeIsDone, setRecipeIsDone] = useState(false);
 
   useEffect(() => setId(location.pathname.split('/')[2]), []);
-  // setId(location.pathname.split('/'));
-  console.log(ingredientsAndMeasures);
+
+  useEffect(() => {
+    if (foodRecomendation) {
+      setMealsReco(foodRecomendation);
+      const done = JSON.parse(localStorage.getItem('doneRecipes')) !== null
+        ? JSON.parse(localStorage.getItem('doneRecipes'))
+        : [];
+      setRecipeIsDone(done.some((recipe) => mealInfos.strMeal === recipe));
+    }
+    if (drinkRecomendation) {
+      setDrinksReco(drinkRecomendation);
+      const done = JSON.parse(localStorage.getItem('doneRecipes')) !== null
+        ? JSON.parse(localStorage.getItem('doneRecipes'))
+        : [];
+      setRecipeIsDone(done.some((recipe) => drinkInfos.strDrink === recipe));
+    }
+  }, [JSON.stringify(foodRecomendation), JSON.stringify(drinkRecomendation)]);
 
   return (
     <div>
@@ -72,7 +95,26 @@ function RecipeDetails() {
             frameBorder="0"
             allowFullScreen
           />
+          <div className="carousel">
+            {drinkRecomendation ? drinksReco.slice(0, six).map((element, i) => (
+              <div key={ i } data-testid={ `${i}-recommendation-card` }>
+                <p data-testid={ `${i}-recommendation-title` }>{element.strDrink}</p>
+                <img className="img-carousel" src={ element.strDrinkThumb } alt="drink" />
+              </div>
+            )) : null}
+          </div>
+          {!recipeIsDone && (
+            <button
+              data-testid="start-recipe-btn"
+              className="startBtn"
+              type="button"
+            >
+              Start Recipe
+
+            </button>
+          )}
         </div>
+
       )
         : null}
 
@@ -123,6 +165,24 @@ function RecipeDetails() {
           >
             {drinkInfos.strInstructions}
           </p>
+          <div className="carousel">
+            {foodRecomendation ? mealsReco.slice(0, six).map((element, i) => (
+              <div key={ i } data-testid={ `${i}-recommendation-card` }>
+                <p data-testid={ `${i}-recommendation-title` }>{element.strMeal}</p>
+                <img className="img-carousel" src={ element.strMealThumb } alt="drink" />
+              </div>
+            )) : null}
+          </div>
+          {recipeIsDone || (
+            <button
+              data-testid="start-recipe-btn"
+              className="startBtn"
+              type="button"
+            >
+              Start Recipe
+
+            </button>
+          )}
         </div>
       ) : null}
     </div>

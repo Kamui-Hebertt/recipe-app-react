@@ -12,6 +12,25 @@ export default function DetailsPageProvider({ children }) {
     ingredients: [],
     measures: [],
   });
+  const [foodRecomendation, setFoodRecomendation] = useState([]);
+  const [drinkRecomendation, setDrinkRecomendation] = useState([]);
+
+  const foodRecomendationFunc = async () => {
+    const foodRequest = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    const foodJson = await foodRequest.json();
+    setFoodRecomendation(foodJson.meals);
+  };
+
+  const drinkRecomendationFunc = async () => {
+    const drinkRequest = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+    const drinkJson = await drinkRequest.json();
+    setDrinkRecomendation(drinkJson.drinks);
+  };
+
+  useEffect(() => {
+    foodRecomendationFunc();
+    drinkRecomendationFunc();
+  }, [mealInfos, drinkInfos]);
 
   const mountIngredientAndMeasuresArrTest = () => {
     const objEntriesArr = location.pathname.includes('/meals/')
@@ -81,10 +100,18 @@ export default function DetailsPageProvider({ children }) {
     drinkInfos,
     ytVideo,
     setId,
+    foodRecomendation,
+    setFoodRecomendation,
+    drinkRecomendation,
+    setDrinkRecomendation,
+
   }), [ingredientsAndMeasures,
     mealInfos,
     drinkInfos,
     ytVideo,
+    foodRecomendation,
+    drinkRecomendation,
+
     id]);
   return (
     <DetailsPageContext.Provider value={ value }>
