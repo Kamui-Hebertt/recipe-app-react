@@ -41,7 +41,7 @@ describe('Testing the Peofile Component', () => {
     userEvent.click(favoriteBtn);
 
     waitFor(() => {
-      const { location: {pathname} } = history;
+      const { location: { pathname } } = history;
       expect(pathname).toBe('/favorite-recipes');
     }, { timeout: 500 });
   });
