@@ -17,13 +17,17 @@ export default function LoginProvider({ children }) {
     }
   }, [email, password]);
 
+  const [emailProfile, setEmailProfile] = useState({ email: '' });
+
   const value = useMemo(() => ({
     setEmail,
     email,
     setPassword,
     disabled,
     password,
-  }), [email, disabled, password]);
+    setEmailProfile,
+    emailProfile,
+  }), [email, disabled, password, emailProfile]);
   return (
     <LoginContext.Provider value={ value }>
       <div>
