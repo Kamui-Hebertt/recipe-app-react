@@ -6,7 +6,7 @@ import ProfileContext from '../context/ProfileContext';
 
 function Profile() {
   const history = useHistory();
-  const { setEmail, emailProfile, setEmailProfile } = useContext(ProfileContext);
+  const { emailProfile, setEmailProfile } = useContext(ProfileContext);
   const timeOut = 300;
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function Profile() {
           data-testid="profile-logout-btn"
           onClick={ () => {
             localStorage.clear();
-            setEmail('');
+            setEmailProfile('');
             setTimeout(() => history.push('/'), timeOut);
           } }
         >

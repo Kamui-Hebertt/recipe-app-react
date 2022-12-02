@@ -1,14 +1,21 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import ProfileContext from './ProfileContext';
 
-const ProfileProvider = () => {
+export default function ProfileProvider({ children }) {
   const [emailProfile, setEmailProfile] = useState({ email: '' });
 
-  const profileProviderObj = {
+  const value = useMemo(() => ({
     emailProfile,
     setEmailProfile,
-  };
+  }), [emailProfile]);
 
-  return { profileProviderObj };
-};
+  return (
+    <ProfileContext.Provider value={ value }>
+      <div>
+        { children }
+      </div>
+    </ProfileContext.Provider>
+  );
+}
 
-export default ProfileProvider;
+ProfileProvider.propTypes = {}.isRequired;
