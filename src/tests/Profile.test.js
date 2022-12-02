@@ -41,9 +41,9 @@ describe('Testing the Peofile Component', () => {
     userEvent.click(favoriteBtn);
 
     waitFor(() => {
-        const { location: {pathname} } = history;
-        expect(pathname).toBe('/favorite-recipes');
-      }, {timeout: 500});
+      const { location: {pathname} } = history;
+      expect(pathname).toBe('/favorite-recipes');
+    }, { timeout: 500 });
   });
   test('is there a button which redirects to  /done-recipes?', async () => {
     const { history } = renderWithRouter(<App />);
@@ -63,9 +63,9 @@ describe('Testing the Peofile Component', () => {
     userEvent.click(doneBtn);
 
     waitFor(() => {
-        const { location: {pathname} } = history;
-        expect(pathname).toBe('/done-recipes');
-    }, {timeout: 500});
+      const { location: { pathname } } = history;
+      expect(pathname).toBe('/done-recipes');
+    }, { timeout: 500 });
   });
   test('is there a logout button which redirects to /login?', async () => {
     const { history } = renderWithRouter(<App />);
@@ -84,9 +84,9 @@ describe('Testing the Peofile Component', () => {
     const logoutBtn = await screen.findByRole('button', { name: /logout/i });
     userEvent.click(logoutBtn);
 
-    expect(await screen.findByRole('button', {name: /login/i})).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: /login/i })).toBeInTheDocument();
 
-    const { location: {pathname} } = history;
+    const { location: { pathname } } = history;
     expect(pathname).toBe('/');
   });
 });
