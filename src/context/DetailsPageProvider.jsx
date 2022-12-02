@@ -16,13 +16,13 @@ export default function DetailsPageProvider({ children }) {
   const [drinkRecomendation, setDrinkRecomendation] = useState([]);
 
   const foodRecomendationFunc = async () => {
-    const foodRequest = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+    const foodRequest = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
     const foodJson = await foodRequest.json();
     setFoodRecomendation(foodJson);
   };
 
   const drinkRecomendationFunc = async () => {
-    const drinkRequest = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    const drinkRequest = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const drinkJson = await drinkRequest.json();
     setDrinkRecomendation(drinkJson);
   };

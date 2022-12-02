@@ -1,0 +1,10 @@
+.caroussel {
+  width: 400px;
+
+}
+
+.carouPosition {
+  display: flex;
+
+  justify-content: center;
+}

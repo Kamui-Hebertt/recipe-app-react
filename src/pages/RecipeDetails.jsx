@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
+import './caroussel.css';
 
 function RecipeDetails() {
+  const six = 6;
   const location = useLocation();
   const {
     ingredientsAndMeasures,
@@ -17,7 +19,9 @@ function RecipeDetails() {
   // setId(location.pathname.split('/'));
   // console.log(ingredientsAndMeasures);
   console.log(foodRecomendation);
-  console.log(drinkRecomendation);
+  // console.log(drinkRecomendation);
+  const mealsreco = foodRecomendation.meals;
+  //  console.log(mealsreco);
   // console.log(drinkRecomendation);
 
   return (
@@ -76,7 +80,47 @@ function RecipeDetails() {
             frameBorder="0"
             allowFullScreen
           />
+          {mealsreco.slice(0, six).map((element, i) => (
+            <div className="carouPosition" key={ i }>
+              <div
+                id="carouselExampleControls"
+                className="carousel slide caroussel"
+                data-ride="carousel"
+              >
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img
+                      className="d-block w-100"
+                      src={ element.strMealThumb }
+                      alt={ element.strDrink }
+                    />
+
+                  </div>
+                  <a
+                    className="carousel-control-prev"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <span className="carousel-control-prev-icon" aria-hidden="true" />
+                    <span className="sr-only">Previous</span>
+                  </a>
+                  <a
+                    className="carousel-control-next"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span className="carousel-control-next-icon" aria-hidden="true" />
+                    <span className="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+
         </div>
+
       )
         : null}
 
