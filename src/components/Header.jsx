@@ -3,7 +3,6 @@ import { React, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import './Header.css';
 import SearchBar from './SearchBar';
 
 function Header(props) {
