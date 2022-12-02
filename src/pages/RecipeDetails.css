@@ -7,3 +7,8 @@
 .img-carousel {
   width: 200px;
 }
+
+.startBtn {
+  position: fixed;
+  bottom: 0px;
+}

@@ -28,8 +28,8 @@ export default function DetailsPageProvider({ children }) {
   };
 
   useEffect(() => {
-    drinkRecomendationFunc();
     foodRecomendationFunc();
+    drinkRecomendationFunc();
   }, [mealInfos, drinkInfos]);
 
   const mountIngredientAndMeasuresArrTest = () => {

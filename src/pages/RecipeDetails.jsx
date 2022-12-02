@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
-import './caroussel.css';
+import './RecipeDetails.css';
 
 function RecipeDetails() {
   const six = 6;
@@ -18,16 +18,24 @@ function RecipeDetails() {
   } = useContext(DetailsPageContext);
   const [mealsReco, setMealsReco] = useState([]);
   const [drinksReco, setDrinksReco] = useState([]);
-  console.log(mealsReco);
+  const [recipeIsDone, setRecipeIsDone] = useState(false);
 
   useEffect(() => setId(location.pathname.split('/')[2]), []);
 
   useEffect(() => {
     if (foodRecomendation) {
       setMealsReco(foodRecomendation);
+      const done = JSON.parse(localStorage.getItem('doneRecipes')) !== null
+        ? JSON.parse(localStorage.getItem('doneRecipes'))
+        : [];
+      setRecipeIsDone(done.some((recipe) => mealInfos.strMeal === recipe));
     }
     if (drinkRecomendation) {
       setDrinksReco(drinkRecomendation);
+      const done = JSON.parse(localStorage.getItem('doneRecipes')) !== null
+        ? JSON.parse(localStorage.getItem('doneRecipes'))
+        : [];
+      setRecipeIsDone(done.some((recipe) => drinkInfos.strDrink === recipe));
     }
   }, [JSON.stringify(foodRecomendation), JSON.stringify(drinkRecomendation)]);
 
@@ -95,6 +103,16 @@ function RecipeDetails() {
               </div>
             )) : null}
           </div>
+          {!recipeIsDone && (
+            <button
+              data-testid="start-recipe-btn"
+              className="startBtn"
+              type="button"
+            >
+              Start Recipe
+
+            </button>
+          )}
         </div>
 
       )
@@ -155,6 +173,16 @@ function RecipeDetails() {
               </div>
             )) : null}
           </div>
+          {recipeIsDone || (
+            <button
+              data-testid="start-recipe-btn"
+              className="startBtn"
+              type="button"
+            >
+              Start Recipe
+
+            </button>
+          )}
         </div>
       ) : null}
     </div>
