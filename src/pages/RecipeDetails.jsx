@@ -11,10 +11,14 @@ function RecipeDetails() {
     ytVideo,
     setId,
   } = useContext(DetailsPageContext);
+  const { foodRecomendation, drinkRecomendation } = useContext(DetailsPageContext);
 
   useEffect(() => setId(location.pathname.split('/')[2]), []);
   // setId(location.pathname.split('/'));
-  console.log(ingredientsAndMeasures);
+  // console.log(ingredientsAndMeasures);
+  console.log(foodRecomendation);
+  console.log(drinkRecomendation);
+  // console.log(drinkRecomendation);
 
   return (
     <div>

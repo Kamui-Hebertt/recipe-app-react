@@ -87,6 +87,7 @@ export default function FoodProvider({ children }) {
 
   const value = useMemo(() => ({ searchFilter,
     setSearchFilter,
+
     searchValue,
     setSearchValue,
     handleSearchClick,
@@ -96,13 +97,15 @@ export default function FoodProvider({ children }) {
     setMealFilter,
     recipes,
     showingRecipes,
+
   }), [searchFilter,
     searchValue,
     foodRecipes,
     drinkRecipes,
     mealFilter,
     recipes,
-    showingRecipes]);
+    showingRecipes,
+]);
   return (
     <FoodContext.Provider value={ value }>
       <div>
