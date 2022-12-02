@@ -1,10 +1,9 @@
-.caroussel {
-  width: 400px;
+.carousel {
+  display: flex;
+  overflow-y: auto;
 
 }
 
-.carouPosition {
-  display: flex;
-
-  justify-content: center;
+.img-carousel {
+  width: 200px;
 }

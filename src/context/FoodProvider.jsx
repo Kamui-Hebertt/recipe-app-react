@@ -105,7 +105,7 @@ export default function FoodProvider({ children }) {
     mealFilter,
     recipes,
     showingRecipes,
-]);
+  ]);
   return (
     <FoodContext.Provider value={ value }>
       <div>

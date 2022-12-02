@@ -21,14 +21,6 @@ function MealCategory() {
 
   const five = 5;
 
-  // const categoryFilter =  (theName) => {
-  //   const linkMeals = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${theName}`;
-  //   const respose = await fetch(linkMeals);
-  //   const resposejson = await respose.json();
-  //   // console.log(resposejson);
-  //   setMealFilter(resposejson);
-  // };
-
   return (
     <div>
       <div>

@@ -18,13 +18,13 @@ export default function DetailsPageProvider({ children }) {
   const foodRecomendationFunc = async () => {
     const foodRequest = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
     const foodJson = await foodRequest.json();
-    setFoodRecomendation(foodJson);
+    setFoodRecomendation(foodJson.meals);
   };
 
   const drinkRecomendationFunc = async () => {
     const drinkRequest = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const drinkJson = await drinkRequest.json();
-    setDrinkRecomendation(drinkJson);
+    setDrinkRecomendation(drinkJson.drinks);
   };
 
   useEffect(() => {

@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
 import { useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
 import './caroussel.css';
@@ -12,17 +13,23 @@ function RecipeDetails() {
     drinkInfos,
     ytVideo,
     setId,
+    foodRecomendation,
+    drinkRecomendation,
   } = useContext(DetailsPageContext);
-  const { foodRecomendation, drinkRecomendation } = useContext(DetailsPageContext);
+  const [mealsReco, setMealsReco] = useState([]);
+  const [drinksReco, setDrinksReco] = useState([]);
+  console.log(mealsReco);
 
   useEffect(() => setId(location.pathname.split('/')[2]), []);
-  // setId(location.pathname.split('/'));
-  // console.log(ingredientsAndMeasures);
-  console.log(foodRecomendation);
-  // console.log(drinkRecomendation);
-  const mealsreco = foodRecomendation.meals;
-  //  console.log(mealsreco);
-  // console.log(drinkRecomendation);
+
+  useEffect(() => {
+    if (foodRecomendation) {
+      setMealsReco(foodRecomendation);
+    }
+    if (drinkRecomendation) {
+      setDrinksReco(drinkRecomendation);
+    }
+  }, [JSON.stringify(foodRecomendation), JSON.stringify(drinkRecomendation)]);
 
   return (
     <div>
@@ -80,45 +87,14 @@ function RecipeDetails() {
             frameBorder="0"
             allowFullScreen
           />
-          {mealsreco.slice(0, six).map((element, i) => (
-            <div className="carouPosition" key={ i }>
-              <div
-                id="carouselExampleControls"
-                className="carousel slide caroussel"
-                data-ride="carousel"
-              >
-                <div className="carousel-inner">
-                  <div className="carousel-item active">
-                    <img
-                      className="d-block w-100"
-                      src={ element.strMealThumb }
-                      alt={ element.strDrink }
-                    />
-
-                  </div>
-                  <a
-                    className="carousel-control-prev"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="prev"
-                  >
-                    <span className="carousel-control-prev-icon" aria-hidden="true" />
-                    <span className="sr-only">Previous</span>
-                  </a>
-                  <a
-                    className="carousel-control-next"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="next"
-                  >
-                    <span className="carousel-control-next-icon" aria-hidden="true" />
-                    <span className="sr-only">Next</span>
-                  </a>
-                </div>
+          <div className="carousel">
+            {drinkRecomendation ? drinksReco.slice(0, six).map((element, i) => (
+              <div key={ i } data-testid={ `${i}-recommendation-card` }>
+                <p data-testid={ `${i}-recommendation-title` }>{element.strDrink}</p>
+                <img className="img-carousel" src={ element.strDrinkThumb } alt="drink" />
               </div>
-            </div>
-          ))}
-
+            )) : null}
+          </div>
         </div>
 
       )
@@ -171,6 +147,14 @@ function RecipeDetails() {
           >
             {drinkInfos.strInstructions}
           </p>
+          <div className="carousel">
+            {foodRecomendation ? mealsReco.slice(0, six).map((element, i) => (
+              <div key={ i } data-testid={ `${i}-recommendation-card` }>
+                <p data-testid={ `${i}-recommendation-title` }>{element.strMeal}</p>
+                <img className="img-carousel" src={ element.strMealThumb } alt="drink" />
+              </div>
+            )) : null}
+          </div>
         </div>
       ) : null}
     </div>
