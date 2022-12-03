@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ProfileContext from '../context/ProfileContext';
+import LoginContext from '../context/LoginContext';
 
 function Profile() {
   const history = useHistory();
-  const { setEmail, emailProfile, setEmailProfile } = useContext(ProfileContext);
+  const { emailProfile, setEmailProfile } = useContext(LoginContext);
   const timeOut = 300;
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function Profile() {
           data-testid="profile-logout-btn"
           onClick={ () => {
             localStorage.clear();
-            setEmail('');
+            setEmailProfile('');
             setTimeout(() => history.push('/'), timeOut);
           } }
         >

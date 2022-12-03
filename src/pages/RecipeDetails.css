@@ -1,0 +1,14 @@
+.carousel {
+  display: flex;
+  overflow-y: auto;
+
+}
+
+.img-carousel {
+  width: 200px;
+}
+
+.startBtn {
+  bottom: 0;
+  position: fixed;
+}
