@@ -29,8 +29,8 @@ const doneRecipes = [
   },
 ];
 
-const doneRecipesRoute = '/done-recipes'
-const filterDrinkTestId = 'filter-by-drink-btn'
+const doneRecipesRoute = '/done-recipes';
+const filterDrinkTestId = 'filter-by-drink-btn';
 
 describe('Tests Done Recipe Page', () => {
   test('Testing if profile button is showing', async () => {
