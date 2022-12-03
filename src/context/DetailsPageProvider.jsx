@@ -96,6 +96,7 @@ export default function DetailsPageProvider({ children }) {
 
   const value = useMemo(() => ({
     ingredientsAndMeasures,
+    id,
     mealInfos,
     drinkInfos,
     ytVideo,

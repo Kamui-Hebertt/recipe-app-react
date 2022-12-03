@@ -6,6 +6,7 @@ import FoodContext from '../context/FoodContext';
 function Recipes() {
   const { recipes } = useContext(FoodContext);
   const twelve = 12;
+
   return (
     <>
       {recipes.meals ? (
@@ -13,7 +14,11 @@ function Recipes() {
           <p>recipes</p>
           {recipes.meals.slice(0, twelve)
             .map((element, i) => (
-              <Link to={ `/meals/${element.idMeal}` } key={ i }>
+              <Link
+                to={ `/meals/${element.idMeal}` }
+                key={ i }
+
+              >
                 <div
                   data-testid={ `${i}-recipe-card` }
                 >

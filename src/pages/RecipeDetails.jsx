@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
+import FoodContext from '../context/FoodContext';
 import './RecipeDetails.css';
 
 function RecipeDetails() {
@@ -13,9 +14,12 @@ function RecipeDetails() {
     drinkInfos,
     ytVideo,
     setId,
+    id,
     foodRecomendation,
     drinkRecomendation,
   } = useContext(DetailsPageContext);
+
+  const { foodLocal, setFoodLocal, setChangeBtn, changeBtn } = useContext(FoodContext);
   const [mealsReco, setMealsReco] = useState([]);
   const [drinksReco, setDrinksReco] = useState([]);
   const [recipeIsDone, setRecipeIsDone] = useState(false);
@@ -38,6 +42,22 @@ function RecipeDetails() {
       setRecipeIsDone(done.some((recipe) => drinkInfos.strDrink === recipe));
     }
   }, [JSON.stringify(foodRecomendation), JSON.stringify(drinkRecomendation)]);
+
+  const click = () => {
+    // console.log(foodId);
+    setFoodLocal([...foodLocal, id]);
+    //  console.log(foodLocal);
+    localStorage.setItem('inProgressRecipes', JSON.stringify(foodLocal));
+    // console.log(checkTheState());
+    console.log(id);
+  };
+  useEffect(() => {
+    const check = foodLocal.some((element1) => element1.includes(id));
+    console.log(foodLocal);
+    console.log(check);
+    if (check) { setChangeBtn(true); }
+  }, [id, JSON.stringify(foodLocal)]);
+  // console.log(drinksReco);
 
   return (
     <div>
@@ -96,10 +116,14 @@ function RecipeDetails() {
             allowFullScreen
           />
           <div className="carousel">
-            {drinkRecomendation ? drinksReco.slice(0, six).map((element, i) => (
+            {drinkRecomendation ? drinksReco.slice(0, six).map((element2, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
-                <p data-testid={ `${i}-recommendation-title` }>{element.strDrink}</p>
-                <img className="img-carousel" src={ element.strDrinkThumb } alt="drink" />
+                <p data-testid={ `${i}-recommendation-title` }>{element2.strDrink}</p>
+                <img
+                  className="img-carousel"
+                  src={ element2.strDrinkThumb }
+                  alt="drink"
+                />
               </div>
             )) : null}
           </div>
@@ -166,22 +190,31 @@ function RecipeDetails() {
             {drinkInfos.strInstructions}
           </p>
           <div className="carousel">
-            {foodRecomendation ? mealsReco.slice(0, six).map((element, i) => (
+            {foodRecomendation ? mealsReco.slice(0, six).map((element1, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
-                <p data-testid={ `${i}-recommendation-title` }>{element.strMeal}</p>
-                <img className="img-carousel" src={ element.strMealThumb } alt="drink" />
+                <p data-testid={ `${i}-recommendation-title` }>{element1.strMeal}</p>
+                <img className="img-carousel" src={ element1.strMealThumb } alt="drink" />
               </div>
             )) : null}
           </div>
           {recipeIsDone || (
-            <button
-              data-testid="start-recipe-btn"
-              className="startBtn"
-              type="button"
-            >
-              Start Recipe
+            <>
+              { drinksReco.slice(0, six).map((ele, i) => (
 
-            </button>
+                <button
+                  key={ i }
+                  name={ ele.idDrink }
+                  data-testid="start-recipe-btn"
+                  className="startBtn"
+                  type="button"
+                  onClick={ click }
+                >
+                  {changeBtn ? 'Continue Recipe' : 'Start Recipe' }
+
+                </button>
+              ))}
+
+            </>
           )}
         </div>
       ) : null}

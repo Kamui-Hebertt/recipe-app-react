@@ -5,6 +5,8 @@ import fetchSearchFood from '../services/fetchSearchFood';
 import FoodContext from './FoodContext';
 
 export default function FoodProvider({ children }) {
+  const [foodLocal, setFoodLocal] = useState([]);
+  const [changeBtn, setChangeBtn] = useState(false);
   const [mealFilter, setMealFilter] = useState('all');
   const [searchFilter, setSearchFilter] = useState('');
   const [searchValue, setSearchValue] = useState('');
@@ -87,7 +89,8 @@ export default function FoodProvider({ children }) {
 
   const value = useMemo(() => ({ searchFilter,
     setSearchFilter,
-
+    changeBtn,
+    setChangeBtn,
     searchValue,
     setSearchValue,
     handleSearchClick,
@@ -97,14 +100,18 @@ export default function FoodProvider({ children }) {
     setMealFilter,
     recipes,
     showingRecipes,
+    foodLocal,
+    setFoodLocal,
 
   }), [searchFilter,
+    changeBtn,
     searchValue,
     foodRecipes,
     drinkRecipes,
     mealFilter,
     recipes,
     showingRecipes,
+    foodLocal,
   ]);
   return (
     <FoodContext.Provider value={ value }>
