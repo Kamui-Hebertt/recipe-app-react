@@ -15,7 +15,6 @@ import DetailsPageProvider from './context/DetailsPageProvider';
 
 function App() {
   return (
-
     <DetailsPageProvider>
       <FoodProvider>
         <LoginProvider>
