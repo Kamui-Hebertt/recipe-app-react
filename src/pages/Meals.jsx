@@ -16,5 +16,4 @@ function Meals() {
     </div>
   );
 }
-
 export default Meals;
