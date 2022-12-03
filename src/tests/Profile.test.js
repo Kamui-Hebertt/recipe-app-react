@@ -37,13 +37,13 @@ describe('Testing the Peofile Component', () => {
 
     history.push('/profile');
 
-    const favoriteBtn = await screen.findByRole('button', { name: /favorite/i });
+    const favoriteBtn = await screen.findByTestId('profile-favorite-btn');
     userEvent.click(favoriteBtn);
 
     waitFor(() => {
       const { location: { pathname } } = history;
       expect(pathname).toBe('/favorite-recipes');
-    }, { timeout: 500 });
+    }, { timeout: 600 });
   });
   test('is there a button which redirects to  /done-recipes?', async () => {
     const { history } = renderWithRouter(<App />);
@@ -59,13 +59,13 @@ describe('Testing the Peofile Component', () => {
 
     history.push('/profile');
 
-    const doneBtn = await screen.findByRole('button', { name: /Done Recipes/i });
+    const doneBtn = await screen.findByTestId('profile-done-btn');
     userEvent.click(doneBtn);
 
     waitFor(() => {
       const { location: { pathname } } = history;
       expect(pathname).toBe('/done-recipes');
-    }, { timeout: 500 });
+    }, { timeout: 600 });
   });
   test('is there a logout button which redirects to /login?', async () => {
     const { history } = renderWithRouter(<App />);
@@ -81,7 +81,7 @@ describe('Testing the Peofile Component', () => {
 
     history.push('/profile');
 
-    const logoutBtn = await screen.findByRole('button', { name: /logout/i });
+    const logoutBtn = await screen.findByTestId('profile-logout-btn');
     userEvent.click(logoutBtn);
 
     expect(await screen.findByRole('button', { name: /login/i })).toBeInTheDocument();
