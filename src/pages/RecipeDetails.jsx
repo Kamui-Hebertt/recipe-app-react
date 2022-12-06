@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
 import FoodContext from '../context/FoodContext';
 import './RecipeDetails.css';
@@ -8,6 +8,7 @@ import './RecipeDetails.css';
 function RecipeDetails() {
   const six = 6;
   const location = useLocation();
+  const history = useHistory();
   const {
     ingredientsAndMeasures,
     mealInfos,
@@ -19,7 +20,7 @@ function RecipeDetails() {
     drinkRecomendation,
   } = useContext(DetailsPageContext);
 
-  const { foodLocal, setFoodLocal, setChangeBtn, changeBtn } = useContext(FoodContext);
+  const { setChangeBtn, changeBtn } = useContext(FoodContext);
   const [mealsReco, setMealsReco] = useState([]);
   const [drinksReco, setDrinksReco] = useState([]);
   const [recipeIsDone, setRecipeIsDone] = useState(false);
@@ -61,6 +62,9 @@ function RecipeDetails() {
     setChangeBtn(true);
     // console.log(checkTheState());
     console.log(id);
+    if (location.pathname === `/drinks/${id}`) {
+      history.push(`/drinks/${id}/in-progress`);
+    } else { history.push(`/meals/${id}/in-progress`); }
   };
   useEffect(() => {
     const getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -70,7 +74,7 @@ function RecipeDetails() {
     console.log(check);
 
     // console.log(getLocal);
-  }, [id, JSON.stringify(foodLocal)]);
+  }, [id]);
   // console.log(drinksReco);
 
   return (
