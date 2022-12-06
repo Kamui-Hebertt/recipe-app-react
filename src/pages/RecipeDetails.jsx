@@ -27,6 +27,15 @@ function RecipeDetails() {
   useEffect(() => setId(location.pathname.split('/')[2]), []);
 
   useEffect(() => {
+    const getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (getLocal === undefined || getLocal === null) {
+      localStorage.setItem(
+        'inProgressRecipes',
+        JSON.stringify([]),
+      );
+    }
+
+    // setChangeBtn(false);
     if (foodRecomendation) {
       setMealsReco(foodRecomendation);
       const done = JSON.parse(localStorage.getItem('doneRecipes')) !== null
@@ -45,17 +54,22 @@ function RecipeDetails() {
 
   const click = () => {
     // console.log(foodId);
-    setFoodLocal([...foodLocal, id]);
+    // setFoodLocal([...foodLocal, id]);
     //  console.log(foodLocal);
-    localStorage.setItem('inProgressRecipes', JSON.stringify(foodLocal));
+    const getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    localStorage.setItem('inProgressRecipes', JSON.stringify([...getLocal, id]));
+    setChangeBtn(true);
     // console.log(checkTheState());
     console.log(id);
   };
   useEffect(() => {
-    const check = foodLocal.some((element1) => element1.includes(id));
-    console.log(foodLocal);
+    const getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const check = getLocal.some((element1) => element1.includes(id));
+    if (check) { setChangeBtn(true); } else { setChangeBtn(false); }
+    console.log(getLocal);
     console.log(check);
-    if (check) { setChangeBtn(true); }
+
+    // console.log(getLocal);
   }, [id, JSON.stringify(foodLocal)]);
   // console.log(drinksReco);
 
@@ -132,8 +146,9 @@ function RecipeDetails() {
               data-testid="start-recipe-btn"
               className="startBtn"
               type="button"
+              onClick={ click }
             >
-              Start Recipe
+              {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
 
             </button>
           )}
