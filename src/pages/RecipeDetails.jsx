@@ -20,7 +20,7 @@ function RecipeDetails() {
     drinkRecomendation,
   } = useContext(DetailsPageContext);
 
-  const { setChangeBtn, changeBtn } = useContext(FoodContext);
+  const { setChangeBtn, changeBtn, foodLocal, setFoodLocal } = useContext(FoodContext);
   const [mealsReco, setMealsReco] = useState([]);
   const [drinksReco, setDrinksReco] = useState([]);
   const [recipeIsDone, setRecipeIsDone] = useState(false);
@@ -36,7 +36,6 @@ function RecipeDetails() {
       );
     }
 
-    // setChangeBtn(false);
     if (foodRecomendation) {
       setMealsReco(foodRecomendation);
       const done = JSON.parse(localStorage.getItem('doneRecipes')) !== null
@@ -54,14 +53,42 @@ function RecipeDetails() {
   }, [JSON.stringify(foodRecomendation), JSON.stringify(drinkRecomendation)]);
 
   const click = () => {
-    // console.log(foodId);
-    // setFoodLocal([...foodLocal, id]);
-    //  console.log(foodLocal);
+    // console.log(drinkInfos);
+  //  console.log(mealInfos);
+    const inProgressRecipes1 = [];
+    if (location.pathname === `/drinks/${id}`) {
+      const drinks = {
+        drinks: {
+          [drinkInfos.idDrink]: [drinkInfos.strInstructions] },
+
+      };
+      inProgressRecipes1.push(drinks);
+      setFoodLocal([...foodLocal, inProgressRecipes1]);
+    } else {
+      console.log(foodLocal);
+      console.log(Object.keys(mealInfos));
+      const allObj = Object.entries(mealInfos);
+
+      const ingre = allObj.filter((element) => (element[0]
+        .includes('strIngredient')));
+      console.log(ingre);
+      console.log(mealInfos);
+      const meals = {
+        meals: {
+          [mealInfos.idMeal]: [ingre] },
+      };
+      inProgressRecipes1.push(meals);
+      setFoodLocal([...foodLocal, inProgressRecipes1]);
+    }
+
+    // mealInfos.forEach((e) => console.log(e[ingre]));
+
+    //  const filterIngre = () => { }
     const getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
     localStorage.setItem('inProgressRecipes', JSON.stringify([...getLocal, id]));
     setChangeBtn(true);
-    // console.log(checkTheState());
-    console.log(id);
+
+    // console.log(id);
     if (location.pathname === `/drinks/${id}`) {
       history.push(`/drinks/${id}/in-progress`);
     } else { history.push(`/meals/${id}/in-progress`); }
@@ -70,8 +97,8 @@ function RecipeDetails() {
     const getLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
     const check = getLocal.some((element1) => element1.includes(id));
     if (check) { setChangeBtn(true); } else { setChangeBtn(false); }
-    console.log(getLocal);
-    console.log(check);
+    // console.log(getLocal);
+    // console.log(check);
 
     // console.log(getLocal);
   }, [id]);
@@ -216,24 +243,16 @@ function RecipeDetails() {
               </div>
             )) : null}
           </div>
-          {recipeIsDone || (
-            <>
-              { drinksReco.slice(0, six).map((ele, i) => (
+          {!recipeIsDone && (
+            <button
+              data-testid="start-recipe-btn"
+              className="startBtn"
+              type="button"
+              onClick={ click }
+            >
+              {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
 
-                <button
-                  key={ i }
-                  name={ ele.idDrink }
-                  data-testid="start-recipe-btn"
-                  className="startBtn"
-                  type="button"
-                  onClick={ click }
-                >
-                  {changeBtn ? 'Continue Recipe' : 'Start Recipe' }
-
-                </button>
-              ))}
-
-            </>
+            </button>
           )}
         </div>
       ) : null}
