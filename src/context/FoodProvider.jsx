@@ -6,7 +6,6 @@ import FoodContext from './FoodContext';
 
 export default function FoodProvider({ children }) {
   const [foodLocal, setFoodLocal] = useState([]);
-  const [changeBtn, setChangeBtn] = useState(false);
   const [mealFilter, setMealFilter] = useState('all');
   const [searchFilter, setSearchFilter] = useState('');
   const [searchValue, setSearchValue] = useState('');
@@ -19,6 +18,7 @@ export default function FoodProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const location = useLocation();
   const history = useHistory();
+
   const handleSearchClick = async () => {
     if (searchFilter === 'first-letter' && searchValue.length > 1) {
       global.alert('Your search must have only 1 (one) character');
@@ -89,8 +89,6 @@ export default function FoodProvider({ children }) {
 
   const value = useMemo(() => ({ searchFilter,
     setSearchFilter,
-    changeBtn,
-    setChangeBtn,
     searchValue,
     setSearchValue,
     handleSearchClick,
@@ -104,7 +102,6 @@ export default function FoodProvider({ children }) {
     setFoodLocal,
 
   }), [searchFilter,
-    changeBtn,
     searchValue,
     foodRecipes,
     drinkRecipes,
