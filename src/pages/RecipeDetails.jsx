@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { useHistory, useLocation } from 'react-router-dom';
+import FavoriteButton from '../components/recipeDetails/FavoriteButton';
+import ShareButton from '../components/recipeDetails/ShareButton';
 import DetailsPageContext from '../context/DetailsPageContext';
 import './RecipeDetails.css';
 
@@ -131,6 +133,8 @@ function RecipeDetails() {
             allowFullScreen
           />
           <div className="carousel">
+            <FavoriteButton />
+            <ShareButton />
             {drinkRecomendation ? drinksReco.slice(0, six).map((element2, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
                 <p data-testid={ `${i}-recommendation-title` }>{element2.strDrink}</p>
@@ -205,6 +209,8 @@ function RecipeDetails() {
           >
             {drinkInfos.strInstructions}
           </p>
+          <FavoriteButton />
+          <ShareButton />
           <div className="carousel">
             {foodRecomendation ? mealsReco.slice(0, six).map((element1, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
