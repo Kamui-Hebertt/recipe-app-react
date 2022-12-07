@@ -31,8 +31,6 @@ export default function Login() {
             className="loginBtn"
             disabled={ disabled }
             onClick={ () => {
-              localStorage.setItem('mealToken', 1);
-              localStorage.setItem('cocktailToken', 1);
               const user = {
                 email,
               };

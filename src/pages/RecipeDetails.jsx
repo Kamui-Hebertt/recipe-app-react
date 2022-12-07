@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import DetailsPageContext from '../context/DetailsPageContext';
 import './RecipeDetails.css';
 
 function RecipeDetails() {
   const six = 6;
   const location = useLocation();
+  const history = useHistory();
   const {
     ingredientsAndMeasures,
     mealInfos,
@@ -15,12 +16,32 @@ function RecipeDetails() {
     setId,
     foodRecomendation,
     drinkRecomendation,
+    changeBtn,
+    id,
+    setChangeBtn,
+    checkContinueBtn,
   } = useContext(DetailsPageContext);
+
   const [mealsReco, setMealsReco] = useState([]);
   const [drinksReco, setDrinksReco] = useState([]);
   const [recipeIsDone, setRecipeIsDone] = useState(false);
 
-  useEffect(() => setId(location.pathname.split('/')[2]), []);
+  useEffect(
+    () => {
+      setId(location.pathname.split('/')[2]);
+      if (localStorage.getItem('inProgressRecipes') === null) {
+        const inProgressObj = {
+          drinks: {
+          },
+          meals: {
+          },
+        };
+        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressObj));
+      }
+      checkContinueBtn();
+    },
+    [],
+  );
 
   useEffect(() => {
     if (foodRecomendation) {
@@ -38,6 +59,20 @@ function RecipeDetails() {
       setRecipeIsDone(done.some((recipe) => drinkInfos.strDrink === recipe));
     }
   }, [JSON.stringify(foodRecomendation), JSON.stringify(drinkRecomendation)]);
+
+  const handleClickStartRecipe = () => {
+    const fromLocal = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (location.pathname.includes('/drinks/')) {
+      fromLocal.drinks[id] = ingredientsAndMeasures.ingredients;
+      localStorage.setItem('inProgressRecipes', JSON.stringify(fromLocal));
+      history.push(`/drinks/${id}/in-progress`);
+    } else if (location.pathname.includes('/meals/')) {
+      fromLocal.meals[id] = ingredientsAndMeasures.ingredients;
+      localStorage.setItem('inProgressRecipes', JSON.stringify(fromLocal));
+      history.push(`/meals/${id}/in-progress`);
+    }
+    setChangeBtn(true);
+  };
 
   return (
     <div>
@@ -96,10 +131,14 @@ function RecipeDetails() {
             allowFullScreen
           />
           <div className="carousel">
-            {drinkRecomendation ? drinksReco.slice(0, six).map((element, i) => (
+            {drinkRecomendation ? drinksReco.slice(0, six).map((element2, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
-                <p data-testid={ `${i}-recommendation-title` }>{element.strDrink}</p>
-                <img className="img-carousel" src={ element.strDrinkThumb } alt="drink" />
+                <p data-testid={ `${i}-recommendation-title` }>{element2.strDrink}</p>
+                <img
+                  className="img-carousel"
+                  src={ element2.strDrinkThumb }
+                  alt="drink"
+                />
               </div>
             )) : null}
           </div>
@@ -108,8 +147,9 @@ function RecipeDetails() {
               data-testid="start-recipe-btn"
               className="startBtn"
               type="button"
+              onClick={ handleClickStartRecipe }
             >
-              Start Recipe
+              {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
 
             </button>
           )}
@@ -166,20 +206,21 @@ function RecipeDetails() {
             {drinkInfos.strInstructions}
           </p>
           <div className="carousel">
-            {foodRecomendation ? mealsReco.slice(0, six).map((element, i) => (
+            {foodRecomendation ? mealsReco.slice(0, six).map((element1, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
-                <p data-testid={ `${i}-recommendation-title` }>{element.strMeal}</p>
-                <img className="img-carousel" src={ element.strMealThumb } alt="drink" />
+                <p data-testid={ `${i}-recommendation-title` }>{element1.strMeal}</p>
+                <img className="img-carousel" src={ element1.strMealThumb } alt="drink" />
               </div>
             )) : null}
           </div>
-          {recipeIsDone || (
+          {!recipeIsDone && (
             <button
               data-testid="start-recipe-btn"
               className="startBtn"
               type="button"
+              onClick={ handleClickStartRecipe }
             >
-              Start Recipe
+              {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
 
             </button>
           )}
