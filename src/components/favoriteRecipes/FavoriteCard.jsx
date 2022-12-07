@@ -50,8 +50,8 @@ function FavoriteCard({
             data-testid={ `${index}-horizontal-share-btn` }
             src={ iconShare }
             onClick={ () => {
-              navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
               setCopy(true);
+              navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
             } }
           >
             Share
@@ -64,8 +64,8 @@ function FavoriteCard({
             onClick={ () => {
               const favorite = document.getElementById(id);
               favorite.parentNode.removeChild(favorite);
-              const getRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'))
-               || JSON.parse(localStorage.getItem('setFavoriteRecipes'));
+              const getRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+
               if (getRecipes.length > 1) {
                 const newFavorite = getRecipes.filter((value) => value.id !== id);
                 localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorite));
