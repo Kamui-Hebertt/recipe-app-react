@@ -55,4 +55,19 @@ describe('Tests Favorite Recipes Component', () => {
     const newImage = await screen.findAllByRole('img', { alt: 'name' });
     expect(image).toEqual(newImage);
   });
+  test('', () => {
+    const { history } = renderWithRouter(<App />);
+    act(() => history.push(favoriteRecipes));
+    userEvent.click(screen.getByTestId('profile-favorite-btn'));
+    const image = screen.getAllByRole('img');
+    image.forEach((e, i) => {
+      expect(e).toBeInTheDocument();
+      const img = screen.getByTestId(`${i}-horizontal-image`);
+      const name = screen.getByTestId(`${i}-horizontal-name`);
+      const topText = screen.findByTestId(`${i}-horizontal-top-text`);
+      const favorite = screen.getByTestId(`${i}-horizontal-favorite-btn`);
+      const share = screen.getByTestId(`${i}-horizontal-share-btn`);
+      expect(img && name && topText && favorite && share).toBeInTheDocument();
+    });
+  });
 });
