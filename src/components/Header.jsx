@@ -26,6 +26,8 @@ function Header(props) {
         </button>
       ) : null}
       <button
+        name="profile"
+        id="profile"
         data-testid="profile-top-btn"
         src={ profile }
         alt="profile"

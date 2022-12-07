@@ -6,6 +6,7 @@ export default function LoginProvider({ children }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [emailProfile, setEmailProfile] = useState({ email: '' });
 
   useEffect(() => {
     const emailCheck = email.toLowerCase().match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
@@ -17,16 +18,14 @@ export default function LoginProvider({ children }) {
     }
   }, [email, password]);
 
-  const [emailProfile, setEmailProfile] = useState({ email: '' });
-
   const value = useMemo(() => ({
     setEmail,
     email,
     setPassword,
     disabled,
     password,
-    setEmailProfile,
     emailProfile,
+    setEmailProfile,
   }), [email, disabled, password, emailProfile]);
   return (
     <LoginContext.Provider value={ value }>
