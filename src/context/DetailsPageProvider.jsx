@@ -15,6 +15,7 @@ export default function DetailsPageProvider({ children }) {
   });
   const [foodRecomendation, setFoodRecomendation] = useState([]);
   const [drinkRecomendation, setDrinkRecomendation] = useState([]);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   const foodRecomendationFunc = async () => {
     const foodRequest = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
@@ -27,7 +28,7 @@ export default function DetailsPageProvider({ children }) {
     const drinkJson = await drinkRequest.json();
     setDrinkRecomendation(drinkJson.drinks);
   };
-  console.log(id);
+  // console.log(id);
   useEffect(() => {
     foodRecomendationFunc();
     drinkRecomendationFunc();
@@ -117,6 +118,8 @@ export default function DetailsPageProvider({ children }) {
     changeBtn,
     checkContinueBtn,
     setChangeBtn,
+    linkCopied,
+    setLinkCopied,
   }), [ingredientsAndMeasures,
     mealInfos,
     changeBtn,
@@ -124,7 +127,9 @@ export default function DetailsPageProvider({ children }) {
     ytVideo,
     foodRecomendation,
     drinkRecomendation,
-    id]);
+    id,
+    linkCopied,
+  ]);
   return (
     <DetailsPageContext.Provider value={ value }>
       <div>
