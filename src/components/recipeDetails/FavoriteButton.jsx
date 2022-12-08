@@ -1,37 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import propTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
+import DetailsPageContext from '../../context/DetailsPageContext';
 
 const checkingFavorite = (recipe) => {
   const returnToStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (returnToStorage) {
-    const recipeId = recipe.mealId || recipe.drinkId;
+    const recipeId = recipe.idMeal || recipe.idDrink;
     const searchFavoriteId = returnToStorage.some(({ id }) => id === recipeId);
     return searchFavoriteId;
   }
   return false;
 };
 
-function FavoriteButton({ recipe }) {
+function FavoriteButton() {
+  const location = useLocation();
+  const { mealInfos, drinkInfos, id } = useContext(DetailsPageContext);
+
+  const [recipe, setRecipe] = useState({});
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
+    if (location.pathname.includes('/meals/')) {
+      setRecipe(mealInfos);
+    } else {
+      setRecipe(drinkInfos);
+    }
+  }, [mealInfos, drinkInfos]);
+
+  useEffect(() => {
     setFavorite(checkingFavorite(recipe));
-  }, []);
+  }, [id]);
 
   const addFavoriteRecipeBtn = () => {
-    const recipeId = recipe.mealId || recipe.drinkId;
+    const recipeId = recipe.idMeal || recipe.idDrink;
     const returnToStorage = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     if (favorite) {
-      const favoriteIdFilter = returnToStorage.filter(({ id }) => id !== recipeId);
+      const favoriteIdFilter = returnToStorage.filter(({ el }) => el !== recipeId);
       localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteIdFilter));
       setFavorite(false);
     } else {
       const recipeStorage = [
         ...returnToStorage, {
-          id: recipe.mealId || recipe.drinkId,
-          type: recipe.mealId ? 'meal' : 'drink',
+          id: recipe.idMeal || recipe.idDrink,
+          type: recipe.idMeal ? 'meal' : 'drink',
           nationality: recipe.strArea || '',
           category: recipe.strCategory || '',
           alcoholicOrNot: recipe.strAlcoholic || '',
@@ -48,9 +62,10 @@ function FavoriteButton({ recipe }) {
       <button
         type="button"
         onClick={ () => addFavoriteRecipeBtn() }
+        data-testid="favorite-btn"
+        src={ favorite ? blackHeartIcon : whiteHeartIcon }
       >
         <img
-          data-testid="favorite-btn"
           src={ favorite ? blackHeartIcon : whiteHeartIcon }
           alt="favorite-btn"
         />
