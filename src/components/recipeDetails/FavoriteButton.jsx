@@ -17,7 +17,7 @@ import DetailsPageContext from '../../context/DetailsPageContext';
 
 function FavoriteButton() {
   const location = useLocation();
-  const { mealInfos, drinkInfos, id } = useContext(DetailsPageContext);
+  const { mealInfos, drinkInfos } = useContext(DetailsPageContext);
 
   const [recipe, setRecipe] = useState({});
   const [favorite, setFavorite] = useState(false);
