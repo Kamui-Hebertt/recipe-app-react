@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginContext from '../context/LoginContext';
 import './Login.css';
-import tomato from '../assets/tomato.png';
+
 import logo from '../assets/logo.png';
 
 export default function Login() {
@@ -15,7 +15,7 @@ export default function Login() {
       <div className="tomatoDiv">
         <img src={ logo } className="logo" alt="login" />
         {' '}
-      
+
       </div>
       <section className="allSection">
 

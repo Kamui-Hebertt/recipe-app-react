@@ -3,6 +3,7 @@
   --purple: #41197F;
   --orange: #FCC436;
   --otheWhite: #F5F5F5;
+  --lighpurple: rgb(189, 143, 219);
   --kindgrey: rgb(187, 173, 171);
 }
 
@@ -14,9 +15,9 @@
 .allContent{
 
   background-color: var(--purple);
-  border:  1px solid black;
+  
   height: 115vh;
-  width: 98vw;
+  width: 100vw;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
@@ -28,14 +29,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgb(156, 43, 43);
-  width: 99vw;
+ 
+  width: 100vw;
   height: 65vh;
-  background-color: var(--otheWhite);
+  background-color: var(--lighpurple);
   
 }
 
-.field{ border:  1px solid var(--kindgrey);
+.field{
   flex-wrap: wrap;
   gap:10px;
   align-items: center;
@@ -45,13 +46,17 @@ height: 300px;
 display: flex;
 flex-direction: column;
 border-radius: 15px;
-background-color: var(--kindgrey);
+background-color: rgba(255,255,255,0.13);
 box-shadow: 10px 10px 8px #888888;
 
 
 }
+
+::placeholder {
+  font-family: "Poppins";
+}
 .tomatoDiv{
-  border: 1px solid black;
+
   height: 200px;
   width: 99vw;
   height: 50vh;
@@ -127,6 +132,7 @@ box-shadow: 10px 10px 8px #888888;
   border: none;
   margin-left: 5px;
   margin-top: 15px;
+  font-family: "Poppins";
   
 }
 
@@ -139,4 +145,44 @@ box-shadow: 10px 10px 8px #888888;
   margin-left: 5px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+
+@media only screen and (max-width: 540px) {
+  .field {
+    width: 60vw;
+   
+  
+  }
+  #emailInp2{
+    width: 50vw;
+    height: 5vh;
+    margin-right: 40px;
+    margin-left: 20px;
+   
+  }
+  #emailInp{
+    
+    width: 50vw;
+    height: 5vh;
+    margin-top: -55px;
+    
+    margin-left: 20px;
+  }
+  .loginBtn {
+    width: 40vw;
+    margin-top: 3vh;
+    margin-right: 30px;
+  }
+
+  .logo{
+
+ 
+    margin: auto;
+    margin-top: 50%;
+    align-items: center;
+    
+     
+   }
+  
 }
