@@ -5,19 +5,20 @@ import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import DetailsPageContext from '../../context/DetailsPageContext';
 
-const checkingFavorite = (recipe) => {
-  const returnToStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  if (returnToStorage) {
-    const recipeId = recipe.idMeal || recipe.idDrink;
-    const searchFavoriteId = returnToStorage.some(({ id }) => id === recipeId);
-    return searchFavoriteId;
-  }
-  return false;
-};
+// const checkingFavorite = (recipe) => {
+//   const returnToStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+//   if (returnToStorage) {
+//     const recipeId = recipe.idMeal || recipe.idDrink;
+//     const searchFavoriteId = returnToStorage.some(({ id }) => id === recipeId);
+//     return searchFavoriteId;
+//   }
+//   return false;
+// };
 
 function FavoriteButton() {
   const location = useLocation();
   const { mealInfos, drinkInfos, id } = useContext(DetailsPageContext);
+
   const [recipe, setRecipe] = useState({});
   const [favorite, setFavorite] = useState(false);
 
@@ -29,9 +30,23 @@ function FavoriteButton() {
     }
   }, [mealInfos, drinkInfos]);
 
+  // useEffect(() => {
+  //   setFavorite(checkingFavorite(recipe));
+  // }, [id]);
+
   useEffect(() => {
-    setFavorite(checkingFavorite(recipe));
-  }, [id]);
+    const recipeId = recipe.idMeal || recipe.idDrink;
+    const returnToStorage = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+    // console.log(Object.entries(returnToStorage));
+    const checkLocal = Object.entries(returnToStorage)
+      .some((el) => el[1].id.includes(recipeId));
+    console.log(checkLocal);
+    if (checkLocal) {
+      setFavorite(true);
+    } else {
+      setFavorite(false);
+    }
+  }, [recipe]);
 
   const addFavoriteRecipeBtn = () => {
     const recipeId = recipe.idMeal || recipe.idDrink;
