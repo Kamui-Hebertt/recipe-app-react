@@ -15,6 +15,7 @@ function ShareButton() {
     linkCopied,
     setLinkCopied,
   } = useContext(DetailsPageContext);
+
   const shareRecipe = () => {
     if (pathname.match(/in-progress/)) {
       const newPathName = pathname.replace('/in-progress', '');
@@ -25,6 +26,7 @@ function ShareButton() {
     }
     const recipeLink = homePath + pathname;
     clipboardCopy(recipeLink);
+    console.log(recipeLink);
     setTimeout(() => setLinkCopied(false), oneSecond);
     setLinkCopied(true);
   };
