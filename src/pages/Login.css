@@ -1,5 +1,142 @@
+:root{
+  --white: #ffffff;
+  --purple: #41197F;
+  --orange: #FCC436;
+  --otheWhite: #F5F5F5;
+  --kindgrey: rgb(187, 173, 171);
+}
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+.allContent{
+
+  background-color: var(--purple);
+  border:  1px solid black;
+  height: 115vh;
+  width: 98vw;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-top: -100px;
+}
+
+.allSection{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(156, 43, 43);
+  width: 99vw;
+  height: 65vh;
+  background-color: var(--otheWhite);
+  
+}
+
+.field{ border:  1px solid var(--kindgrey);
+  flex-wrap: wrap;
+  gap:10px;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+height: 300px;
+display: flex;
+flex-direction: column;
+border-radius: 15px;
+background-color: var(--kindgrey);
+box-shadow: 10px 10px 8px #888888;
+
+
+}
+.tomatoDiv{
+  border: 1px solid black;
+  height: 200px;
+  width: 99vw;
+  height: 50vh;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+
+
+
+#emailInp {
+  display: flex;
+  flex-direction: column;
+  width: 276px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  margin-bottom: 13px;
+}
+
+#emailInp:focus{
+  border: 3px solid var(--purple);
+}
+
+.logo{
+
+ 
+ margin: auto;
+ margin-top: 20%;
+ align-items: center;
+ 
+  
+}
+#emailInp2 {
+  width: 276px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  margin-top: 10px;
+}
+
+#emailInp2:focus{
+  border: 3px solid var(--purple);
+}
+.input {
+  border: 1px solid color rgb(88, 29, 29);
+}
+
+.login {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+
+  font-family: "Epilogue";
+  color: var(--purple);
+}
+
 .loginBtn {
-  background-color: rgb(48, 231, 48);
+  width: 276px;
+  height: 40px;
+  background-color: var(--orange);
+  color:var(--white);
   border: none;
   margin-left: 5px;
+  margin-top: 15px;
+  
+}
+
+.loginBtn:hover {
+  width: 276px;
+  height: 40px;
+  background-color: rgb(250, 163, 2);
+  color:var(--white);
+  border: none;
+  margin-left: 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
