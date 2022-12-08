@@ -68,11 +68,11 @@
 }
 
 .one-ingredient {
+  align-items: center;
+  border: 1px solid black;
   display: flex;
   gap: 10px;
-  align-items: center;
   justify-content: center;
-  border: 1px solid black;
   width: 150px;
 }
 
