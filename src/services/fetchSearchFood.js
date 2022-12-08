@@ -10,11 +10,9 @@ const fetchSearchFood = async (searchValue, searchFilter) => {
       const data = await request.json();
       return data.meals == null || data.meals.length < 1 ? [] : data.meals;
     }
-    if (searchFilter === 'first-letter') {
-      const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchValue}`);
-      const data = await request.json();
-      return data.meals == null || data.meals.length < 1 ? [] : data.meals;
-    }
+    const request = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchValue}`);
+    const data = await request.json();
+    return data.meals == null || data.meals.length < 1 ? [] : data.meals;
   } catch (error) {
     return error;
   }
