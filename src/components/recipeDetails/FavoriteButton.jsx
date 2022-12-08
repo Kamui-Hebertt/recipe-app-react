@@ -18,7 +18,6 @@ const checkingFavorite = (recipe) => {
 function FavoriteButton() {
   const location = useLocation();
   const { mealInfos, drinkInfos, id } = useContext(DetailsPageContext);
-
   const [recipe, setRecipe] = useState({});
   const [favorite, setFavorite] = useState(false);
 
