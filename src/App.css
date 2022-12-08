@@ -66,3 +66,16 @@
     transform: rotate(-10deg);
   }
 }
+
+.one-ingredient {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  width: 150px;
+}
+
+.done {
+  text-decoration: line-through;
+}
