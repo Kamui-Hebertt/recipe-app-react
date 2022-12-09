@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../components/doneRecipes/Card';
 import Header from '../components/Header';
+import mealIcon from '../images/mealIcon.svg';
 
 function DoneRecipes() {
   const [pressedBtn, setPressedBtn] = useState('all');
@@ -52,7 +53,7 @@ function DoneRecipes() {
           type="button"
           onClick={ () => setPressedBtn('all') }
         >
-          All
+          <img src={ mealIcon } alt="plate" />
         </button>
         <button
           data-testid="filter-by-meal-btn"

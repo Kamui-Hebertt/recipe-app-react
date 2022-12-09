@@ -40,12 +40,13 @@ function Recipes() {
       ) : null}
 
       {recipes.drinks ? (
-        <div>
+        <div className="meals">
           <p>recipes</p>
           {recipes.drinks.slice(0, twelve).map((element1, i) => (
             <Link to={ `/drinks/${element1.idDrink}` } key={ i }>
 
               <div
+                className="card-img"
                 data-testid={ `${i}-recipe-card` }
               >
 

@@ -5,6 +5,8 @@ import FoodContext from '../context/FoodContext';
 import profile from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import './Header.css';
+import mealIcon from '../images/mealIcon.svg';
 
 function Header(props) {
   const history = useHistory();
@@ -12,34 +14,42 @@ function Header(props) {
   const { search, pageName } = props;
   const [searchBar, setSearchBar] = useState(false);
   return (
-    <section>
-      {search ? (
+    <section className="all-btn">
+      <div className="all">
+
+        {search ? (
+          <button
+            type="button"
+            src={ searchIcon }
+            data-testid="search-top-btn"
+            onClick={ () => (searchBar === false
+              ? setSearchBar(true) : setSearchBar(false)) }
+          >
+
+            <img src={ searchIcon } alt="profile" />
+          </button>
+        ) : null}
+
         <button
+          name="profile"
+          id="profile"
+          data-testid="profile-top-btn"
+          src={ profile }
+          alt="profile"
+          onClick={ () => history.push('/profile') }
           type="button"
-          src={ searchIcon }
-          data-testid="search-top-btn"
-          onClick={ () => (searchBar === false
-            ? setSearchBar(true) : setSearchBar(false)) }
         >
+          <img src={ profile } alt="profile" />
 
-          <img src={ searchIcon } alt="profile" />
         </button>
-      ) : null}
-      <button
-        name="profile"
-        id="profile"
-        data-testid="profile-top-btn"
-        src={ profile }
-        alt="profile"
-        onClick={ () => history.push('/profile') }
-        type="button"
-      >
-        <img src={ profile } alt="profile" />
+      </div>
 
-      </button>
-      <div data-testid="page-title">{pageName}</div>
+      <div data-testid="page-title" className="header-page-title">
+        <img src={ mealIcon } alt="meal icon" className="mealIcon" />
+        {pageName }
+      </div>
       {searchBar ? (
-        <div>
+        <div className="header-search-bar">
           <input
             type="text"
             data-testid="search-input"

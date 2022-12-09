@@ -1,0 +1,18 @@
+.meals {
+  align-items: center;
+  background: white;
+  color: #464646;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: sans-serif;
+  justify-content:  space-evenly;
+}
+
+.card-img {
+  align-items: center;
+  display: inline-block;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  size: 150px;
+  border-radius: 10px;
+}

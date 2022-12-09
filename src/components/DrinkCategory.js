@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import FoodContext from '../context/FoodContext';
+import mealIcon from '../images/mealIcon.svg';
 
 function DrinkCategory() {
   const [categories, setCategories] = useState([]);
@@ -29,7 +30,7 @@ function DrinkCategory() {
           onClick={ ({ target }) => setMealFilter(target.value) }
           value="all"
         >
-          All
+          <img src={ mealIcon } alt="meal icon" />
 
         </button>
       </div>

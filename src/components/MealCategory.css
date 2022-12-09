@@ -1,0 +1,13 @@
+.category-btn:nth-child(1) {
+  /* background-image: url('goat.svg');  */
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  border: 1.81121px solid;
+  border-radius: 50px;
+  color: #FCC436;
+  width: 45.28px;
+  height: 45.28px;
+
+}
+

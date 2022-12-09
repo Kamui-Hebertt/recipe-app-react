@@ -1,9 +1,14 @@
 import { React, useContext, useEffect, useState } from 'react';
 import FoodContext from '../context/FoodContext';
+import mealIcon from '../images/mealIcon.svg';
+import './MealCategory.css';
+import goatIcon from './goat.svg';
+import chickenIcon from './chicken.png';
 
 function MealCategory() {
   const { setMealFilter, mealFilter } = useContext(FoodContext);
   const [categories, setCategories] = useState([]);
+  const mealCategory = [goatIcon, chickenIcon];
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -30,13 +35,14 @@ function MealCategory() {
           value="all"
           onClick={ () => setMealFilter('all') }
         >
-          All
-
+          <img src={ mealIcon } alt="meal icon" />
         </button>
+        <p>All</p>
       </div>
-      <div>
+      <div className="category-btn">
         {categories.slice(0, five)
           .map((element, i) => (
+
             <button
               key={ i }
               type="button"
@@ -45,9 +51,12 @@ function MealCategory() {
               value={ element.strCategory }
               onClick={ ({ target }) => setFilter(target.value) }
             >
-              {element.strCategory}
+              <img src={ goatIcon } alt={ element.strCategory } />
+
+              { element.strCategory }
 
             </button>
+
           ))}
       </div>
     </div>

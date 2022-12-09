@@ -18,10 +18,16 @@ export default function Footer() {
             src={ drinkIcon }
             alt="drinks"
             data-testid="drinks-bottom-btn"
+            className="rockGlass"
           />
         </Link>
         <Link to="/meals" onClick={ () => history.push('/meals') }>
-          <img src={ mealIcon } alt="meals" data-testid="meals-bottom-btn" />
+          <img
+            src={ mealIcon }
+            alt="meals"
+            data-testid="meals-bottom-btn"
+            className="mealLogo"
+          />
         </Link>
       </section>
     </footer>
