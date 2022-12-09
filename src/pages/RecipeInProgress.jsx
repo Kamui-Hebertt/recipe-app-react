@@ -63,6 +63,10 @@ function MealInProgress() {
     }
   };
 
+  // const handleFinish = () => {
+
+  // }
+
   return (
     <main>
       {location.pathname.includes('/drinks/') ? (
