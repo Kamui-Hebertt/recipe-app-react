@@ -37,10 +37,8 @@ function FavoriteButton() {
   useEffect(() => {
     const recipeId = recipe.idMeal || recipe.idDrink;
     const returnToStorage = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-    // console.log(Object.entries(returnToStorage));
     const checkLocal = Object.entries(returnToStorage)
       .some((el) => el[1].id.includes(recipeId));
-    console.log(checkLocal);
     if (checkLocal) {
       setFavorite(true);
     } else {

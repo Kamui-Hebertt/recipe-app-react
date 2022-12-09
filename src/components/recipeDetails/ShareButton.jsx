@@ -26,7 +26,6 @@ function ShareButton() {
     }
     const recipeLink = homePath + pathname;
     clipboardCopy(recipeLink);
-    console.log(recipeLink);
     setTimeout(() => setLinkCopied(false), oneSecond);
     setLinkCopied(true);
   };

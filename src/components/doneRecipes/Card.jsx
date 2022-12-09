@@ -15,6 +15,7 @@ function Card({
   nationality,
   alcoholicOrNot,
 }) {
+  console.log(tags);
   const checkType = type === 'meal' ? nationality : alcoholicOrNot;
   const [copy, setCopy] = useState(false);
   return (
@@ -48,7 +49,7 @@ function Card({
             </p>
             <br />
             <span>
-              {tags.map((tag) => (
+              {tags && tags.map((tag) => (
                 <span key={ tag } data-testid={ `${index}-${tag}-horizontal-tag` }>
                   {` ${tag}`}
                 </span>
