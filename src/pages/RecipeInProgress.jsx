@@ -7,7 +7,16 @@ function MealInProgress() {
   const location = useLocation();
   // const [item, setItem] = useState([]);
   const [fullRecipe, setFullRecipe] = useState(null);
-  console.log(fullRecipe);
+  const [allDone, setAllDone] = useState(true);
+  const initialChecked = localStorage.getItem('itemsDone')
+    ? JSON.parse(localStorage.getItem('itemsDone'))
+    : [];
+  const checkedObj = initialChecked.reduce((acc, curr) => ({
+    ...acc,
+    [curr]: true,
+  }), {});
+  const [checked, setChecked] = useState({ ...checkedObj });
+  const path = location.pathname.split('/')[1];
 
   const getInProgressItem = async (id) => {
     let END_POINT = '';
@@ -24,15 +33,35 @@ function MealInProgress() {
   useEffect(() => {
     // const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
     const id = location.pathname.split('/')[2];
-    // if (local !== null) {
-    //   if (location.pathname.includes('/meals/')) {
-    //     setItem(local.meals[id]);
-    //   } else {
-    //     setItem(local.drinks[id]);
-    //   }
-    // }
     getInProgressItem(id);
   }, []);
+
+  const handleChecked = (ingredient) => {
+    if (checked[ingredient]) {
+      const local = JSON.parse(localStorage.getItem('itemsDone'));
+      const filterLocal = local.filter((ele) => ele !== ingredient);
+      localStorage.setItem('itemsDone', JSON.stringify(filterLocal));
+      setChecked({ ...checked, [ingredient]: !checked[ingredient] });
+    } else {
+      const local = localStorage.getItem('itemsDone') !== null
+        ? JSON.parse(localStorage.getItem('itemsDone'))
+        : [];
+      localStorage.setItem('itemsDone', JSON.stringify([...local, ingredient]));
+      setChecked({ ...checked, [ingredient]: true });
+    }
+    const items = JSON.parse(localStorage.getItem('itemsDone'));
+    const recipeIngredients = Object.entries(fullRecipe[path][0])
+      .filter((ingredientArr2) => ingredientArr2[1] !== null
+        && ingredientArr2[0].includes('strIngredient')
+        && ingredientArr2[1].length > 1).map((e) => e[1]);
+    console.log(items.length, recipeIngredients.length);
+    const checkDisable = items.length === recipeIngredients.length;
+    if (checkDisable) {
+      setAllDone(false);
+    } else {
+      setAllDone(true);
+    }
+  };
 
   return (
     <main>
@@ -41,24 +70,38 @@ function MealInProgress() {
           <div>
 
             {fullRecipe !== null
-              && Object.entries(fullRecipe.drinks[0]).map((ingredientArr, index) => (
-                ingredientArr[1] !== null
-              && ingredientArr[0].includes('strIngredient') && ingredientArr[1].length > 1
-                && (
-                  <div
-                    data-testid="ingredient-step"
-                    key={ index }
-                    className="one-ingredient"
-                  >
-                    <label htmlFor="checkbox" data-testid={ `${index}-ingredient-step` }>
-                      <input type="checkbox" name="checkbox" id="checkbox" />
-                      <p>{ingredientArr[1]}</p>
+              && Object.entries(fullRecipe.drinks[0])
+                .filter((ingredientArr) => ingredientArr[1] !== null
+                  && ingredientArr[0].includes('strIngredient')
+                  && ingredientArr[1].length > 1).map(([, ingredient], index) => (
+                  (
+                    <div
+                      key={ index }
+                      className="one-ingredient"
+                    >
+                      <label
+                        htmlFor={ ingredient }
+                        className={ checked[ingredient] ? 'done' : '' }
+                        data-testid={ `${index}-ingredient-step` }
+                      >
+                        <input
+                          type="checkbox"
+                          name={ ingredient }
+                          id={ ingredient }
+                          checked={ !!checked[ingredient] }
+                          onChange={ () => handleChecked(ingredient) }
+                        />
+                        <p
+                          data-testid="ingredient-step"
+                        >
+                          {ingredient}
 
-                    </label>
-                  </div>
-                )
-              ))}
+                        </p>
 
+                      </label>
+                    </div>
+                  )
+                ))}
             <div>
               {fullRecipe !== null
             && (
@@ -76,6 +119,7 @@ function MealInProgress() {
                 <button
                   type="button"
                   data-testid="finish-recipe-btn"
+                  disabled={ allDone }
                 >
                   Finished Recipe
                 </button>
@@ -87,19 +131,38 @@ function MealInProgress() {
         : fullRecipe !== null && (
           <section>
             <div>
-              {Object.entries(fullRecipe.meals[0]).map((ingredientArr, index) => (
-                ingredientArr[1] !== null
-                  && ingredientArr[0].includes('strIngredient')
-                   && ingredientArr[1].length > 1
-          && (
-            <div data-testid="ingredient-step" key={ index } className="one-ingredient">
-              <label htmlFor="checkbox" data-testid={ `${index}-ingredient-step` }>
-                <input type="checkbox" name="checkbox" id="checkbox" />
-                <p>{ingredientArr[1]}</p>
-              </label>
-            </div>
-          )
-              ))}
+              {fullRecipe !== null
+              && Object.entries(fullRecipe.meals[0])
+                .filter((ingredientArr1) => ingredientArr1[1] !== null
+                  && ingredientArr1[0].includes('strIngredient')
+                  && ingredientArr1[1].length > 1)
+                .map(([, ingredient1], index) => (
+                  (
+                    <div
+                      key={ index }
+                      className="one-ingredient"
+                    >
+                      <label
+                        htmlFor={ ingredient1 }
+                        className={ checked[ingredient1] ? 'done' : '' }
+                        data-testid={ `${index}-ingredient-step` }
+                      >
+                        <input
+                          type="checkbox"
+                          name={ ingredient1 }
+                          id={ ingredient1 }
+                          checked={ !!checked[ingredient1] }
+                          onChange={ () => handleChecked(ingredient1) }
+                        />
+                        <p
+                          data-testid="ingredient-step"
+                        >
+                          {ingredient1}
+                        </p>
+                      </label>
+                    </div>
+                  )
+                ))}
             </div>
             <img
               src={ fullRecipe.meals[0].strMealThumb }
@@ -111,7 +174,15 @@ function MealInProgress() {
             <p data-testid="instructions">{fullRecipe.meals[0].strInstructions}</p>
             <ShareButton />
             <FavoriteButton />
-            <button type="button" data-testid="finish-recipe-btn">Finished Recipe</button>
+            <button
+              type="button"
+              data-testid="finish-recipe-btn"
+              disabled={ allDone }
+              onClick={ handleFinish }
+            >
+              Finished Recipe
+
+            </button>
           </section>
         )}
     </main>
