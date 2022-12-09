@@ -1,26 +1,11 @@
-header {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.header-button-profile button, .header-button-search button {
-  /* background-color: rgb(230, 21, 24); */
-  border: none;
-  box-shadow: none;
- 
-}
-
-.header-button-profile button img, .header-button-search button img {
-  width: 37px;
-}
-
-.header-button-search {
-  min-width: 40px;
+:root {
+ --yellow: rgba(252, 220, 54, 1);
+  
 }
 
 .header-page-title {
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid rgb(202, 87, 87);
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -32,23 +17,52 @@ header {
   width: 99vw;
 }
 
-.header-search-bar input {
-  padding: 10px;
-  border: 2px solid black;
-  outline: none;
-  width: 100%;
-}
 
 .all {
-  display: inline-flex;
-  height: 15vh;
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
   justify-content: end;
   border: 1px solid black;
-  width: 99vw;
-  margin-left: -50px;
+  width: 100%;
+  height: 15vh;
+  align-items: center;
+  background-color: var(--yellow);
+  box-sizing: border-box;
+  
 }
 
-.mealIcon {
-  width: 50px;
+.searchBtn {
+  width: 4vw;
+  height: 8vh;
+  background-color: transparent;
+  border: none;
+  
+  
+}
+
+
+.profileBtn{
+  width: 4vw;
+  height: 8vh;
+  background-color: transparent;
+  border: none;
+}
+
+
+#iconR{
+  margin-right: 1vw;
+}
+
+.title{
+  display: flex;
+  
+  flex-direction: row-reverse;
+  margin-right: 72vw;
+  gap: 10px;
+ 
+}
+
+.title img{
+  width: 71px;
+  height: 20px;
 }

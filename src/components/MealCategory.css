@@ -88,7 +88,16 @@ display: none;
   .theNames {
     display: flex;
     flex-direction: row;
+    gap: 3%;
+    margin-left: 10px;
+
     
+  }
+
+  .category-btn{
+    display: flex;
+    gap: 3%;
+    margin-left: 20px;
   }
 
   .btnWithNames{
