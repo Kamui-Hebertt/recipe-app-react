@@ -2,13 +2,13 @@ import { React, useContext, useEffect, useState } from 'react';
 import FoodContext from '../context/FoodContext';
 import mealIcon from '../images/mealIcon.svg';
 import './MealCategory.css';
-import goatIcon from './goat.svg';
-import chickenIcon from './chicken.png';
+// import goatIcon from './goat.svg';
+// import chickenIcon from './chicken.png';
 
 function MealCategory() {
   const { setMealFilter, mealFilter } = useContext(FoodContext);
   const [categories, setCategories] = useState([]);
-  const mealCategory = [goatIcon, chickenIcon];
+  const names = ['Beef', 'Breakfast', 'Chicken', 'Dessert', 'Goat'];
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -28,7 +28,7 @@ function MealCategory() {
 
   return (
     <div>
-      <div>
+      <div className="allBtn">
         <button
           type="button"
           data-testid="All-category-filter"
@@ -39,25 +39,31 @@ function MealCategory() {
         </button>
         <p>All</p>
       </div>
-      <div className="category-btn">
-        {categories.slice(0, five)
-          .map((element, i) => (
+      <div className="btnWithNames">
+        <div className="category-btn">
 
-            <button
-              key={ i }
-              type="button"
-              data-testid={ `${element.strCategory}-category-filter` }
-              name={ element.strCategory }
-              value={ element.strCategory }
-              onClick={ ({ target }) => setFilter(target.value) }
-            >
-              <img src={ goatIcon } alt={ element.strCategory } />
+          {categories.slice(0, five)
+            .map((element, i) => (
 
-              { element.strCategory }
+              <button
+                key={ i }
+                type="button"
+                data-testid={ `${element.strCategory}-category-filter` }
+                name={ element.strCategory }
+                value={ element.strCategory }
+                onClick={ ({ target }) => setFilter(target.value) }
+              >
 
-            </button>
+                <p className="names">{element.strCategory}</p>
 
+              </button>
+            ))}
+        </div>
+        <div className="theNames">
+          {names.map((elementName, i2) => (
+            <p key={ i2 }>{elementName}</p>
           ))}
+        </div>
       </div>
     </div>
 

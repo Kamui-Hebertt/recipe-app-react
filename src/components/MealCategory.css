@@ -1,13 +1,99 @@
-.category-btn:nth-child(1) {
-  /* background-image: url('goat.svg');  */
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  border: 1.81121px solid;
-  border-radius: 50px;
-  color: #FCC436;
-  width: 45.28px;
-  height: 45.28px;
+.category-btn :nth-child(5) {
+
+
+ border-radius: 100%;
+ width: 45px;
+ height: 45px;
+ border-color: yellow;
+ background-image: url("goat.svg");
+ background-position: center;
+ background-size: 89%;
 
 }
+.category-btn :nth-child(4) {
 
+
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  border-color: yellow;
+  background-image: url("dessert.png");
+  background-position: bottom 40px left 1px;
+  background-size: 96%;
+ 
+ }
+
+ .category-btn :nth-child(2) {
+
+
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  border-color: yellow;
+  background-image: url("breakfast.png");
+  background-position: bottom 95px left 193px;
+  background-size: 120%;
+ 
+ }
+
+
+
+
+
+.category-btn :nth-child(3) {
+
+
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  border-color: yellow;
+  background-image: url("chicken.png");
+  background-position: center;
+  background-size: 90%;
+ 
+ }
+
+ .category-btn :nth-child(1) {
+
+
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  border-color: yellow;
+  background-image: url("beef.png");
+  background-position: bottom 20px ;
+  background-size: 110%;
+ 
+ }
+
+
+ .allBtn button {
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  background-image: url("All.png");
+  border: yellow;
+  background-size: 98%;
+  background-position: bottom 20px;
+ }
+ .allBtn img{
+display: none;
+ }
+
+.names {
+ display: none;
+  
+  }
+
+  .theNames {
+    display: flex;
+    flex-direction: row;
+    
+  }
+
+  .btnWithNames{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid black;
+  }
