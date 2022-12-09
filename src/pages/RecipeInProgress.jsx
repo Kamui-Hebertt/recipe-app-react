@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import FavoriteButton from '../components/recipeDetails/FavoriteButton';
 import ShareButton from '../components/recipeDetails/ShareButton';
 
 function MealInProgress() {
   const location = useLocation();
-  // const [item, setItem] = useState([]);
+  const history = useHistory();
   const [fullRecipe, setFullRecipe] = useState(null);
   const [allDone, setAllDone] = useState(true);
   const initialChecked = localStorage.getItem('itemsDone')
@@ -54,7 +54,6 @@ function MealInProgress() {
       .filter((ingredientArr2) => ingredientArr2[1] !== null
         && ingredientArr2[0].includes('strIngredient')
         && ingredientArr2[1].length > 1).map((e) => e[1]);
-    console.log(items.length, recipeIngredients.length);
     const checkDisable = items.length === recipeIngredients.length;
     if (checkDisable) {
       setAllDone(false);
@@ -63,9 +62,41 @@ function MealInProgress() {
     }
   };
 
-  // const handleFinish = () => {
-
-  // }
+  const handleFinish = (recipe) => {
+    if (path === 'drinks') {
+      const local = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+      const obj = {
+        id: recipe.idDrink,
+        type: 'drink',
+        nationality: '',
+        category: recipe.strCategory,
+        alcoholicOrNot: recipe.strAlcoholic,
+        name: recipe.strDrink,
+        image: recipe.strDrinkThumb,
+        doneDate: new Date().toISOString(),
+        tags: recipe?.strTags?.split(',') || [],
+      };
+      localStorage.setItem('doneRecipes', JSON.stringify([...local, obj]));
+      history.push('/done-recipes');
+    } else {
+      const local = JSON.parse(localStorage.getItem('doneRecipes')) !== null
+        ? JSON.parse(localStorage.getItem('doneRecipes'))
+        : [];
+      const obj = {
+        id: recipe.idMeal,
+        type: 'meal',
+        nationality: recipe.strArea,
+        category: recipe.strCategory,
+        alcoholicOrNot: '',
+        name: recipe.strMeal,
+        image: recipe.strMealThumb,
+        tags: recipe.strTags?.split(',') || [],
+        doneDate: new Date().toISOString(),
+      };
+      localStorage.setItem('doneRecipes', JSON.stringify([...local, obj]));
+      history.push('/done-recipes');
+    }
+  };
 
   return (
     <main>
@@ -124,6 +155,7 @@ function MealInProgress() {
                   type="button"
                   data-testid="finish-recipe-btn"
                   disabled={ allDone }
+                  onClick={ () => handleFinish(fullRecipe.drinks[0]) }
                 >
                   Finished Recipe
                 </button>
@@ -182,7 +214,7 @@ function MealInProgress() {
               type="button"
               data-testid="finish-recipe-btn"
               disabled={ allDone }
-              onClick={ handleFinish }
+              onClick={ () => handleFinish(fullRecipe.meals[0]) }
             >
               Finished Recipe
 
