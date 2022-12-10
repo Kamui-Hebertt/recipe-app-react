@@ -28,8 +28,8 @@
   transition: 0.3s
 
 }
-.foodLinkNames{
-
+.foodLinkNames:active {
+text-decoration: none;
 }
 .thefoods p{
   display: flex;
@@ -38,11 +38,11 @@
   border-radius: 15px;
   
   font-family: "Poppins";
-  color: white;
+  color: rgb(126, 98, 163);
   
-  background-color: rgb(199, 158, 199);
-  transition: 0.3s
- 
+  background-color: yellow;
+  transition: 0.3s;
+  outline: none;
   
 }
 .thefoods p:hover{
