@@ -26,6 +26,7 @@ function Recipes() {
                     data-testid={ `${i}-recipe-card` }
                   >
                     <p
+                      className="foodLinkNames"
                       key={ i }
                       data-testid={ `${i}-card-name` }
                     >
