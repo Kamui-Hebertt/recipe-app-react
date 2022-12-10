@@ -66,11 +66,20 @@
  
  }
 
+.allBtn {
 
+display: flex;
+flex-direction: column;
+align-items: center;
+
+
+  height: 15vh;
+}
  .allBtn button {
+
   border-radius: 100%;
-  width: 45px;
-  height: 45px;
+  width: 47px;
+  height: 47px;
   background-image: url("All.png");
   border: yellow;
   background-size: 98%;
@@ -88,21 +97,25 @@ display: none;
   .theNames {
     display: flex;
     flex-direction: row;
-    gap: 3%;
+    gap: 5%;
     margin-left: 10px;
-
+justify-content: center;
     
   }
 
   .category-btn{
     display: flex;
-    gap: 3%;
-    margin-left: 20px;
+    gap: 5%;
+    justify-content: center;
   }
+
+
+
 
   .btnWithNames{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     border: 1px solid black;
+ 
   }
