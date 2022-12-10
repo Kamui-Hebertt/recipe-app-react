@@ -1,0 +1,37 @@
+:root{
+  --PCard: rgb(200, 185, 223);
+}
+
+.thefoods {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+ 
+  justify-content: center;
+  margin-bottom: 100px;
+  
+  
+}
+
+.foodImages{
+ 
+ background-color: var(--PCard);
+
+  padding: 25px;
+  border-radius: 8%;
+  margin-top: 5%;
+}
+.thefoods img{
+  width: 20vw;
+
+}
+
+.thefoods img:hover{
+  opacity: 0.5;
+
+}
+
+.titleR {
+  display: none;
+}

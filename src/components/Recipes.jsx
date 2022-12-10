@@ -2,6 +2,7 @@ import { React, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FoodContext from '../context/FoodContext';
+import './recipes.css';
 
 function Recipes() {
   const { recipes } = useContext(FoodContext);
@@ -11,31 +12,34 @@ function Recipes() {
     <>
       {recipes.meals ? (
         <div>
-          <p>recipes</p>
-          {recipes.meals.slice(0, twelve)
-            .map((element, i) => (
-              <Link
-                to={ `/meals/${element.idMeal}` }
-                key={ i }
+          <p className="titleR">recipes</p>
+          <div className="thefoods">
+            {recipes.meals.slice(0, twelve)
+              .map((element, i) => (
+                <Link
+                  to={ `/meals/${element.idMeal}` }
+                  key={ i }
 
-              >
-                <div
-                  data-testid={ `${i}-recipe-card` }
                 >
-                  <p
-                    key={ i }
-                    data-testid={ `${i}-card-name` }
+                  <div
+                    className="foodImages"
+                    data-testid={ `${i}-recipe-card` }
                   >
-                    {element.strMeal}
-                  </p>
-                  <img
-                    data-testid={ `${i}-card-img` }
-                    src={ element.strMealThumb }
-                    alt={ element.strMeal }
-                  />
-                </div>
-              </Link>
-            ))}
+                    <p
+                      key={ i }
+                      data-testid={ `${i}-card-name` }
+                    >
+                      {element.strMeal}
+                    </p>
+                    <img
+                      data-testid={ `${i}-card-img` }
+                      src={ element.strMealThumb }
+                      alt={ element.strMeal }
+                    />
+                  </div>
+                </Link>
+              ))}
+          </div>
         </div>
       ) : null}
 
