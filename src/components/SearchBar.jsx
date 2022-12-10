@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import './searchBar.css';
 
 import FoodContext from '../context/FoodContext';
 
@@ -9,7 +10,7 @@ function SearchBar() {
   const location = useLocation();
   const twelve = 12;
   return (
-    <div>
+    <div className="searchBar">
       <label htmlFor="ingredient">
         ingredient:
         <input

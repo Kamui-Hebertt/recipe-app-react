@@ -1,0 +1,25 @@
+.searchBar  {
+  border: 1px solid rgb(218, 138, 138);
+  font-family: "Poppins";
+  height: 10vw;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(65, 25, 127, 1);
+  color: white;
+}
+.searchBar input{
+  border: 1px solid rgb(10, 0, 0);
+}
+
+.searchBar button {
+  
+  border: 1px solid rgb(218, 138, 138);
+  background-color: rgba(252, 196, 54, 1);
+  width: 208px;
+  height: 3vw;
+  color: aliceblue;
+  font-family: "Poppins";
+border-radius: 5px;
+
+
+}

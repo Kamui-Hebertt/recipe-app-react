@@ -8,7 +8,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2%;
- 
+  
   justify-content: center;
   margin-bottom: 100px;
   
@@ -25,6 +25,7 @@
 }
 .thefoods img{
   width: 20vw;
+  
   transition: 0.3s
 
 }
@@ -39,7 +40,7 @@ text-decoration: none;
   
   font-family: "Poppins";
   color: rgb(126, 98, 163);
-  
+  width: 270px;
   background-color: yellow;
   transition: 0.3s;
   outline: none;
