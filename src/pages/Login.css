@@ -1,5 +1,202 @@
+:root{
+  --white: #ffffff;
+  --purple: #41197F;
+  --orange: #FCC436;
+  --otheWhite: #F5F5F5;
+  --lighpurple: rgb(189, 143, 219);
+  --kindgrey: rgb(187, 173, 171);
+}
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+.allContent{
+
+  background-color: var(--purple);
+  
+  height: 115vh;
+  width: 100vw;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-top: -100px;
+}
+
+.allSection{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  width: 100vw;
+  height: 65vh;
+  background-color: var(--lighpurple);
+  
+}
+
+.field{
+  flex-wrap: wrap;
+  gap:10px;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+height: 300px;
+display: flex;
+flex-direction: column;
+border-radius: 15px;
+background-color: rgba(255,255,255,0.13);
+box-shadow: 10px 10px 8px #888888;
+
+
+}
+
+::placeholder {
+  font-family: "Poppins";
+}
+.tomatoDiv{
+
+ 
+  width: 99vw;
+  height: 50vh;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+
+
+
+#emailInp {
+  display: flex;
+  flex-direction: column;
+  width: 276px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.6s;
+  outline: none;
+  margin-bottom: 13px;
+}
+
+#emailInp:focus{
+  border: 3px solid var(--purple);
+}
+
+.logo{
+
+ 
+ margin: auto;
+ margin-top: 20%;
+
+ 
+  
+}
+#emailInp2 {
+  width: 276px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.6s;
+  outline: none;
+  margin-top: 10px;
+}
+
+#emailInp2:focus{
+  border: 3px solid var(--purple);
+}
+.input {
+  border: 1px solid color rgb(88, 29, 29);
+}
+
+.login {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+
+  font-family: "Epilogue";
+  color: var(--purple);
+}
+
 .loginBtn {
-  background-color: rgb(48, 231, 48);
+  width: 276px;
+  height: 40px;
+  background-color: var(--orange);
+  color:var(--white);
   border: none;
   margin-left: 5px;
+  margin-top: 15px;
+  font-family: "Poppins";
+  
+}
+
+.loginBtn:hover {
+  width: 276px;
+  height: 40px;
+  background-color: rgb(250, 163, 2);
+  color:var(--white);
+  border: none;
+  margin-left: 5px;
+  
+  transition: 0.5s;
+}
+
+
+@media only screen and (max-width: 540px) {
+  .field {
+    width: 60vw;
+   
+  
+  }
+  #emailInp2{
+    width: 50vw;
+    height: 5vh;
+    margin-right: 40px;
+  
+    margin-left: 5vw;
+   
+  }
+  #emailInp{
+    
+    width: 50vw;
+    height: 5vh;
+    margin-top: -55px;
+    
+    margin-left: 5vw;
+  }
+  .loginBtn {
+    width: 40vw;
+    margin-top: 3vh;
+    margin-right: 30px;
+  }
+
+  .logo{
+
+ 
+    margin: auto;
+    margin-top: 55%;
+    align-items: center;
+    
+     
+   }
+  
+}
+
+@media only screen and (max-height: 600px){
+
+  .logo{
+
+ 
+    margin: auto;
+  
+   
+    
+     
+   }
 }
