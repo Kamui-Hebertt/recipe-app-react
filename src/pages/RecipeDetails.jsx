@@ -152,7 +152,6 @@ function RecipeDetails() {
                 allowFullScreen
               />
             </div>
-
           </div>
           <div className="carousel">
             {drinkRecomendation ? drinksReco.slice(0, six).map((element2, i) => (
