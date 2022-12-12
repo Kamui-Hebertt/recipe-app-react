@@ -1,0 +1,63 @@
+:root{
+  --PCard: rgb(200, 185, 223);
+  
+}
+
+.thefoods {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  
+  justify-content: center;
+  margin-bottom: 100px;
+  
+  
+}
+
+.foodImages{
+ 
+ background-color: var(--PCard);
+
+  padding: 25px;
+  border-radius: 8%;
+  margin-top: 5%;
+}
+.thefoods img{
+  width: 20vw;
+  transition: 0.3s;
+
+}
+.foodLinkNames:active {
+text-decoration: none;
+}
+.thefoods p{
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  border-radius: 15px;
+  
+  font-family: "Poppins";
+  color: rgb(126, 98, 163);
+  width: 270px;
+  background-color: yellow;
+  transition: 0.3s;
+  outline: none;
+  
+  
+}
+.thefoods p:hover{
+  opacity: 0.5;
+  transition: 0.3s
+
+}
+
+.thefoods img:hover{
+  opacity: 0.5;
+  transition: 0.3s
+
+}
+
+.titleR {
+  display: none;
+}

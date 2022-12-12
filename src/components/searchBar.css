@@ -1,0 +1,65 @@
+.searchBar {
+  font-family: "Poppins";
+  height: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+ 
+
+
+}
+
+
+.searchBtn {
+  margin-top: 10px;
+}
+
+.header-search-bar {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+  background-color: rgba(65, 25, 127, 1);
+  color: aliceblue;
+  padding: 5px;
+  
+
+}
+
+
+.header-search-bar > input {
+  width: 40vw;
+  margin: auto;
+  
+  border-radius: 10px;
+  border: purple;
+
+  
+}
+
+.searchBar input {
+  
+  width: 27px;
+  
+  
+}
+
+
+.searchBar button {
+  border: 1px solid rgb(218, 138, 138);
+  background-color: rgb(247, 188, 40);
+  width: 20vw;
+  height: 3vw;
+  color: aliceblue;
+  font-family: "Poppins";
+  border-radius: 5px;
+  margin-left: 10px;
+ 
+
+
+}
+
+.searchBar button:hover {
+  background-color: rgb(255, 251, 0);
+}
