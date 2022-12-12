@@ -12,16 +12,9 @@ function RecipeDetails() {
   const history = useHistory();
   const {
     ingredientsAndMeasures,
-    mealInfos,
-    drinkInfos,
-    ytVideo,
-    setId,
-    foodRecomendation,
-    drinkRecomendation,
-    changeBtn,
-    id,
-    setChangeBtn,
-    checkContinueBtn,
+    mealInfos, drinkInfos, ytVideo, setId,
+    foodRecomendation, drinkRecomendation,
+    changeBtn, id, setChangeBtn, checkContinueBtn,
   } = useContext(DetailsPageContext);
 
   const [mealsReco, setMealsReco] = useState([]);
@@ -80,83 +73,113 @@ function RecipeDetails() {
     <div>
       {location.pathname.includes('/meals') ? (
         <div>
-          <img
-            src={ mealInfos.strMealThumb }
-            alt="imagem"
-            data-testid="recipe-photo"
-          />
-          <p
-            data-testid="recipe-title"
-          >
-            {mealInfos.strMeal}
-
-          </p>
+          <div className="favoriteAndShare">
+            <FavoriteButton />
+            <ShareButton />
+          </div>
           <p
             data-testid="recipe-category"
+            className="recipe-category"
           >
             {mealInfos.strCategory}
           </p>
-          <h4>Ingredientes:</h4>
-          {
-            ingredientsAndMeasures.ingredients.map((el, index) => (
+          <div className="imageAndTitle">
+            <h1
+              data-testid="recipe-title"
+              className="recipe-title"
+            >
+              {mealInfos.strMeal}
+
+            </h1>
+            <img
+              src={ mealInfos.strMealThumb }
+              alt="imagem"
+              data-testid="recipe-photo"
+              className="recipe-photo"
+            />
+          </div>
+          <div className="ingredientsAndMeasuresParent">
+            <div className="ingredientsAndMeasures">
+              <div className="ingredients">
+                <h4 className="ingredients-title">Ingredients:</h4>
+                {
+                  ingredientsAndMeasures.ingredients.map((el, index) => (
+                    <p
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                      key={ el[0] }
+                    >
+                      {el[1]}
+                    </p>
+                  ))
+                }
+              </div>
+              <div className="measures">
+                <h4 className="measures-title">Measures:</h4>
+                {
+                  ingredientsAndMeasures.measures.map((e, index) => (
+                    <p
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                      key={ e[0] }
+
+                    >
+                      {e[1]}
+                    </p>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+          <div className="instructionsParent">
+            <div className="instructions">
+              <h4>Instructions:</h4>
               <p
-                data-testid={ `${index}-ingredient-name-and-measure` }
-                key={ el[0] }
+                data-testid="instructions"
               >
-                {el[1]}
+                {mealInfos.strInstructions}
               </p>
-            ))
-          }
-          <h4>Medidas:</h4>
-          {
-            ingredientsAndMeasures.measures.map((e, index) => (
-              <p
-                data-testid={ `${index}-ingredient-name-and-measure` }
-                key={ e[0] }
-              >
-                {e[1]}
-              </p>
-            ))
-          }
-          <p
-            data-testid="instructions"
-          >
-            {mealInfos.strInstructions}
-          </p>
-          <iframe
-            width="853"
-            height="480"
-            data-testid="video"
-            src={ ytVideo }
-            title="YouTube Video Player"
-            frameBorder="0"
-            allowFullScreen
-          />
+            </div>
+          </div>
+          <h2 className="videoTitle">
+            Video:
+          </h2>
+          <div className="video">
+            <div>
+              <iframe
+                data-testid="video"
+                src={ ytVideo }
+                title="YouTube Video Player"
+                frameBorder="0"
+                allowFullScreen
+              />
+            </div>
+
+          </div>
           <div className="carousel">
-            <FavoriteButton />
-            <ShareButton />
             {drinkRecomendation ? drinksReco.slice(0, six).map((element2, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
-                <p data-testid={ `${i}-recommendation-title` }>{element2.strDrink}</p>
                 <img
                   className="img-carousel"
                   src={ element2.strDrinkThumb }
                   alt="drink"
                 />
+                <p data-testid={ `${i}-recommendation-title` }>{element2.strDrink}</p>
               </div>
             )) : null}
           </div>
-          {!recipeIsDone && (
-            <button
-              data-testid="start-recipe-btn"
-              className="startBtn"
-              type="button"
-              onClick={ handleClickStartRecipe }
-            >
-              {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
+          <div className="StartBtnDiv">
+            {!recipeIsDone && (
+              <button
+                data-testid="start-recipe-btn"
+                className="startBtn"
+                type="button"
+                onClick={ handleClickStartRecipe }
+              >
+                {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
 
-            </button>
-          )}
+              </button>
+            )}
+          </div>
+
         </div>
 
       )
@@ -165,71 +188,92 @@ function RecipeDetails() {
       {location.pathname.includes('/drinks') ? (
 
         <div>
-          <img
-            src={ drinkInfos.strDrinkThumb }
-            alt="imagem"
-            data-testid="recipe-photo"
-          />
-          <p
-            data-testid="recipe-title"
-          >
-            {drinkInfos.strDrink}
-
-          </p>
-          <p
+          <div className="favoriteAndShare">
+            <FavoriteButton />
+            <ShareButton />
+          </div>
+          <div
             data-testid="recipe-category"
+            className="recipe-category"
           >
-            {drinkInfos.strCategory}
-            {drinkInfos.strAlcoholic}
-          </p>
-          <h4>Ingredientes: </h4>
-          {
-            ingredientsAndMeasures.ingredients.map((el1, index) => (
+            <p>{drinkInfos.strCategory}</p>
+            <p>{drinkInfos.strAlcoholic}</p>
+          </div>
+          <div className="imageAndTitle">
+            <h1
+              data-testid="recipe-title"
+              className="recipe-title"
+            >
+              {drinkInfos.strDrink}
+            </h1>
+            <img
+              src={ drinkInfos.strDrinkThumb }
+              alt="imagem"
+              data-testid="recipe-photo"
+              className="recipe-photo"
+            />
+          </div>
+          <div className="ingredientsAndMeasuresParent">
+            <div className="ingredientsAndMeasures">
+              <div className="ingredients">
+                <h4 className="ingredients-title">Ingredients:</h4>
+                {
+                  ingredientsAndMeasures.ingredients.map((el1, index) => (
+                    <p
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                      key={ el1[0] }
+                    >
+                      {el1[1]}
+                    </p>
+                  ))
+                }
+              </div>
+              <div className="measures">
+                <h4 className="measures-title">Measures:</h4>
+                {
+                  ingredientsAndMeasures.measures.map((e1, index) => (
+                    <p
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                      key={ e1[0] }
+                    >
+                      {e1[1]}
+                    </p>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+          <div className="instructionsParent">
+            <div className="instructions">
+              <h4>Instructions:</h4>
               <p
-                data-testid={ `${index}-ingredient-name-and-measure` }
-                key={ el1[0] }
+                data-testid="instructions"
               >
-                {el1[1]}
+                {drinkInfos.strInstructions}
               </p>
-            ))
-          }
-          <h4>Medidas: </h4>
-          {
-            ingredientsAndMeasures.measures.map((e1, index) => (
-              <p
-                data-testid={ `${index}-ingredient-name-and-measure` }
-                key={ e1[0] }
-              >
-                {e1[1]}
-              </p>
-            ))
-          }
-          <p
-            data-testid="instructions"
-          >
-            {drinkInfos.strInstructions}
-          </p>
-          <FavoriteButton />
-          <ShareButton />
+            </div>
+          </div>
           <div className="carousel">
             {foodRecomendation ? mealsReco.slice(0, six).map((element1, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
-                <p data-testid={ `${i}-recommendation-title` }>{element1.strMeal}</p>
                 <img className="img-carousel" src={ element1.strMealThumb } alt="drink" />
+                <p data-testid={ `${i}-recommendation-title` }>{element1.strMeal}</p>
               </div>
             )) : null}
           </div>
-          {!recipeIsDone && (
-            <button
-              data-testid="start-recipe-btn"
-              className="startBtn"
-              type="button"
-              onClick={ handleClickStartRecipe }
-            >
-              {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
+          <div className="StartBtnDiv">
+            {!recipeIsDone && (
+              <button
+                data-testid="start-recipe-btn"
+                className="startBtn"
+                type="button"
+                onClick={ handleClickStartRecipe }
+              >
+                {changeBtn ? 'Continue Recipe' : 'Start Recipe'}
 
-            </button>
-          )}
+              </button>
+            )}
+          </div>
         </div>
       ) : null}
     </div>

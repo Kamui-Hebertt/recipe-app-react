@@ -1,14 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Epilogue:wght@200;300;700;800;900&family=Poppins:wght@200;300&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Epilogue;
+  overflow-x: hidden;
+  /* background-color: #f0f0f0; */
+}
+
+.imageAndTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-photo {
+  filter: brightness(65%);
+  width: 100vw;
+  height: 70vh;
+  -webkit-mask-image: linear-gradient(to top, transparent 1%, black 50%);
+  object-fit: cover;
+}
+
+.recipe-category {
+  z-index: 1;
+  position: absolute;
+  color: #FCC436;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 25px 0px 0px 30px;
+  display: inline-block;
+}
+
+.favoriteAndShare {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  right: 10px;
+  margin: 15px 20px 0px 0px;
+  padding: 10px;
+  justify-content: space-evenly;
+}
+
+.recipe-title {
+  z-index: 1;
+  position: absolute;
+  color: #FFFF;
+  font-weight: 900;
+  font-size: 50px;
+  text-transform: uppercase;
+}
+
+.ingredientsAndMeasuresParent {
+  display: flex;
+  justify-content: center;
+}
+
+.ingredientsAndMeasures {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px #B1B1B1 solid;
+  border-radius: 5px;
+  width: 80vw;
+  padding: 30px 30px 0px;
+}
+
+.ingredients {
+  text-align: center;
+}
+
+.measures {
+  text-align: center;
+}
+
+.instructionsParent {
+  display: flex;
+  justify-content: center;
+}
+
+.instructions {
+  text-align: justify;
+  margin: 20px 10vw 20px 10vw;
+  padding: 0px 40px 0px 40px;
+  border: 1px #B1B1B1 solid;
+  border-radius: 5px;
+  padding: 30px 30px 0px;
+  width: 80vw;
+}
+
+.videoTitle {
+  margin-top: 40px;
+  font-weight: 600;
+  margin-left: 10vw;
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0px 40px 0px;
+  /* max-width: 560;
+  max-height: 315;
+  min-width: 420;
+  min-height: 480; */
+}
+
 .carousel {
   display: flex;
-  overflow-y: auto;
+  text-align: center;
+  margin-bottom: 80px;
+  overflow: auto;
+}
 
+.carousel p {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px;
+  color: #3d443a;
 }
 
 .img-carousel {
   width: 200px;
+  border-radius: 100%;
+  margin: 0px 10px 0px 10px;
+  box-shadow: 10px 10px 20px #8b8b8b;
+}
+
+.StartBtnDiv {
+  display: flex;
+  justify-content: center;
 }
 
 .startBtn {
+  font-weight: 900;
   bottom: 0;
   position: fixed;
+  margin: auto;
+  color: #FFFF;
+  background: #FCC436;
+  border: none;
+  width: 336px;
+  height: 40px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 20px black;
+  text-transform: uppercase;
+}
+
+.startBtn:hover {
+  background-color: #f5ae14;
 }
