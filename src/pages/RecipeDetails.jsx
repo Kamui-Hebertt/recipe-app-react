@@ -61,7 +61,7 @@ function RecipeDetails() {
       fromLocal.drinks[id] = ingredientsAndMeasures.ingredients;
       localStorage.setItem('inProgressRecipes', JSON.stringify(fromLocal));
       history.push(`/drinks/${id}/in-progress`);
-    } else if (location.pathname.includes('/meals/')) {
+    } else {
       fromLocal.meals[id] = ingredientsAndMeasures.ingredients;
       localStorage.setItem('inProgressRecipes', JSON.stringify(fromLocal));
       history.push(`/meals/${id}/in-progress`);
@@ -71,7 +71,7 @@ function RecipeDetails() {
 
   return (
     <div>
-      {location.pathname.includes('/meals') ? (
+      {location.pathname.includes('/meals') && (
         <div>
           <div className="favoriteAndShare">
             <FavoriteButton />
@@ -154,7 +154,9 @@ function RecipeDetails() {
             </div>
           </div>
           <div className="carousel">
-            {drinkRecomendation ? drinksReco.slice(0, six).map((element2, i) => (
+            <FavoriteButton />
+            <ShareButton />
+            {drinkRecomendation && drinksReco.slice(0, six).map((element2, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
                 <img
                   className="img-carousel"
@@ -163,7 +165,7 @@ function RecipeDetails() {
                 />
                 <p data-testid={ `${i}-recommendation-title` }>{element2.strDrink}</p>
               </div>
-            )) : null}
+            ))}
           </div>
           <div className="StartBtnDiv">
             {!recipeIsDone && (
@@ -181,10 +183,9 @@ function RecipeDetails() {
 
         </div>
 
-      )
-        : null}
+      )}
 
-      {location.pathname.includes('/drinks') ? (
+      {location.pathname.includes('/drinks') && (
 
         <div>
           <div className="favoriteAndShare">
@@ -253,12 +254,12 @@ function RecipeDetails() {
             </div>
           </div>
           <div className="carousel">
-            {foodRecomendation ? mealsReco.slice(0, six).map((element1, i) => (
+            {foodRecomendation && mealsReco.slice(0, six).map((element1, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
                 <img className="img-carousel" src={ element1.strMealThumb } alt="drink" />
                 <p data-testid={ `${i}-recommendation-title` }>{element1.strMeal}</p>
               </div>
-            )) : null}
+            ))}
           </div>
           <div className="StartBtnDiv">
             {!recipeIsDone && (
@@ -274,7 +275,7 @@ function RecipeDetails() {
             )}
           </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

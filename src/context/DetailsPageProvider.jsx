@@ -69,14 +69,16 @@ export default function DetailsPageProvider({ children }) {
   const checkContinueBtn = () => {
     if (location.pathname.includes('/meals/')) {
       const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      if (Object.keys(inProgressRecipes.meals?.length > 0)) {
+      if (inProgressRecipes !== null
+        && Object.keys(inProgressRecipes?.meals?.length > 0)) {
         return Object.keys(inProgressRecipes.meals).some((idarr) => idarr === id)
           ? setChangeBtn(true)
           : setChangeBtn(false);
       }
     } else if (location.pathname.includes('/drinks/')) {
       const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      if (Object.keys(inProgressRecipes.drinks?.length > 0)) {
+      if (inProgressRecipes !== null
+         && Object.keys(inProgressRecipes?.drinks?.length > 0)) {
         console.log(Object.keys(inProgressRecipes.drinks));
         return Object.keys(inProgressRecipes.drinks).some((idarr) => idarr === id)
           ? setChangeBtn(true)
