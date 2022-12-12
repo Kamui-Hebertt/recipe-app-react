@@ -154,8 +154,6 @@ function RecipeDetails() {
             </div>
           </div>
           <div className="carousel">
-            <FavoriteButton />
-            <ShareButton />
             {drinkRecomendation && drinksReco.slice(0, six).map((element2, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
                 <img

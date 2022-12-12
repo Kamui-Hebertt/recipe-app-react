@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import DetailsPageContext from '../../context/DetailsPageContext';
+import '../../pages/RecipeDetails.css';
 
 // const checkingFavorite = (recipe) => {
 //   const returnToStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -70,7 +71,7 @@ function FavoriteButton() {
   };
 
   return (
-    <div>
+    <div className="favoriteBtn">
       <button
         type="button"
         onClick={ () => addFavoriteRecipeBtn() }

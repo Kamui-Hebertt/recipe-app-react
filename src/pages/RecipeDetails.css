@@ -38,8 +38,14 @@ body {
   display: flex;
   right: 10px;
   margin: 15px 20px 0px 0px;
-  padding: 10px;
-  justify-content: space-evenly;
+}
+
+.favoriteBtn {
+  color: transparent;
+}
+
+.shareBtn {
+  background-color: blue;
 }
 
 .recipe-title {

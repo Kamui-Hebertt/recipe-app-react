@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import DetailsPageContext from '../../context/DetailsPageContext';
 import shareIcon from '../../images/shareIcon.svg';
+import '../../pages/RecipeDetails.css';
 
 const homePath = 'http://localhost:3000';
 const clipboardCopy = require('clipboard-copy');
@@ -31,7 +32,7 @@ function ShareButton() {
   };
 
   return (
-    <div>
+    <div className="shareBtn">
       <button
         type="button"
         data-testid="share-btn"
