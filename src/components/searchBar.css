@@ -5,10 +5,15 @@
   justify-content: center;
   align-items: center;
   padding: 5px;
+ 
 
 
 }
 
+
+.searchBtn {
+  margin-top: 10px;
+}
 
 .header-search-bar {
   display: flex;
@@ -18,6 +23,7 @@
   background-color: rgba(65, 25, 127, 1);
   color: aliceblue;
   padding: 5px;
+  
 
 }
 
