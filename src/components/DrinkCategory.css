@@ -1,0 +1,112 @@
+.category-btn2 :nth-child(5) {
+
+
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  border-color: yellow;
+  background-image: url("cocoa.png");
+  background-position: center top 1px;
+  background-size: 102%;
+ 
+ }
+ .category-btn2 :nth-child(4) {
+ 
+ 
+   border-radius: 100%;
+   width: 45px;
+   height: 45px;
+   border-color: yellow;
+   background-image: url("other.png");
+ 
+   background-position: center top 1px;
+   
+   background-size: 125%;
+  
+  }
+ 
+  .category-btn2 :nth-child(2) {
+ 
+ 
+   border-radius: 100%;
+   width: 45px;
+   height: 45px;
+   border-color: yellow;
+   background-image: url("cocktail.png");
+  
+   background-size: 102%;
+  
+  }
+ 
+ 
+ 
+ 
+ 
+ .category-btn2 :nth-child(3) {
+ 
+ 
+   border-radius: 100%;
+   width: 45px;
+   height: 45px;
+   border-color: yellow;
+   background-image: url("shake.png");
+   
+   background-size: 102%;
+  
+  }
+ 
+  .category-btn2 :nth-child(1) {
+ 
+ 
+   border-radius: 100%;
+   width: 45px;
+   height: 45px;
+   border-color: yellow;
+   background-image: url("drink.png");
+  
+   background-size: 102%;
+  
+  }
+ 
+ .allBtn2 {
+ 
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ 
+ 
+   height: 15vh;
+ }
+  .allBtn2 button {
+ 
+   border-radius: 100%;
+   width: 47px;
+   height: 47px;
+   background-image: url("AllDrink.png");
+   border: yellow;
+   background-size: 98%;
+   background-position: bottom 20px;
+  }
+  .allBtn2 img{
+ display: none;
+  }
+ 
+ .names2 {
+  display: none;
+   
+   }
+ 
+   .theNames2 {
+     display: flex;
+     flex-direction: row;
+     gap: 5%;
+     margin-left: 10px;
+ justify-content: center;
+     
+   }
+ 
+   .category-btn2 {
+     display: flex;
+     gap: 5%;
+     justify-content: center;
+   }

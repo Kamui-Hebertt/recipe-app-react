@@ -44,6 +44,7 @@ text-decoration: none;
   transition: 0.3s;
   outline: none;
   
+  
 }
 .thefoods p:hover{
   opacity: 0.5;

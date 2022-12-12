@@ -45,31 +45,33 @@ function Recipes() {
       ) : null}
 
       {recipes.drinks ? (
-        <div className="meals">
-          <p>recipes</p>
-          {recipes.drinks.slice(0, twelve).map((element1, i) => (
-            <Link to={ `/drinks/${element1.idDrink}` } key={ i }>
+        <div>
+          <p className="titleR">recipes</p>
+          <div className="thefoods">
+            {recipes.drinks.slice(0, twelve).map((element1, i) => (
+              <Link to={ `/drinks/${element1.idDrink}` } key={ i }>
 
-              <div
-                className="card-img"
-                data-testid={ `${i}-recipe-card` }
-              >
+                <div
+                  className="foodImages"
+                  data-testid={ `${i}-recipe-card` }
+                >
 
-                <p data-testid={ `${i}-card-name` }>
+                  <p data-testid={ `${i}-card-name` }>
 
-                  {element1.strDrink}
+                    {element1.strDrink}
 
-                </p>
-                <img
-                  src={ element1.strDrinkThumb }
-                  alt={ element1.strDrink }
-                  data-testid={ `${i}-card-img` }
-                />
+                  </p>
+                  <img
+                    src={ element1.strDrinkThumb }
+                    alt={ element1.strDrink }
+                    data-testid={ `${i}-card-img` }
+                  />
 
-              </div>
-            </Link>
+                </div>
+              </Link>
 
-          ))}
+            ))}
+          </div>
         </div>
       )
         : null}
