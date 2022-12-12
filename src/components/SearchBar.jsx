@@ -11,6 +11,7 @@ function SearchBar() {
   const twelve = 12;
   return (
     <div className="searchBar">
+
       <label htmlFor="ingredient">
         ingredient:
         <input
@@ -33,6 +34,7 @@ function SearchBar() {
           value="name"
         />
       </label>
+
       <label htmlFor='"first-letter"'>
         First Letter:
         <input
@@ -43,6 +45,7 @@ function SearchBar() {
           value="first-letter"
         />
       </label>
+
       <button
         type="button"
         data-testid="exec-search-btn"
@@ -51,6 +54,7 @@ function SearchBar() {
         Search
 
       </button>
+
       {location.pathname === '/meals'
         ? foodRecipes?.slice(0, twelve).map((recipe, index) => (
           <div key={ index } data-testid={ `${index}-recipe-card` }>

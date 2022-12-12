@@ -55,13 +55,14 @@ function Header(props) {
 
       <div data-testid="page-title" className="header-page-title">
         <img src={ mealIcon } alt="meal icon" className="mealIcon" />
-        {pageName }
+        <p>{pageName }</p>
       </div>
       {searchBar ? (
         <div className="header-search-bar">
           <input
             type="text"
             data-testid="search-input"
+            placeholder="Search"
             value={ searchValue }
             onChange={ ({ target }) => setSearchValue(target.value) }
           />
