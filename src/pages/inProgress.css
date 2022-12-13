@@ -1,0 +1,17 @@
+.allInProgress img {
+ width: 20%;
+}
+
+.one-ingredient {
+  background-color: rgb(138, 138, 7);
+}
+
+.recipe {
+  border: 1px solid black;
+}
+
+.checks {
+  border: 1px solid black;
+  display: flex;
+  width: 10vw;
+}

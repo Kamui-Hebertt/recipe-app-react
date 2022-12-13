@@ -71,8 +71,9 @@
 display: flex;
 flex-direction: column;
 align-items: center;
+background-color: rgb(149, 125, 173);
 
-
+color: white;
   height: 15vh;
 }
  .allBtn button {
@@ -86,12 +87,12 @@ align-items: center;
   background-position: bottom 20px;
  }
  .allBtn img{
+
 display: none;
  }
 
 .names {
- display: none;
-  
+  display: none;
   }
 
   .theNames {
@@ -99,23 +100,20 @@ display: none;
     flex-direction: row;
     gap: 5%;
     margin-left: 10px;
-justify-content: center;
+    justify-content: center;
     
   }
 
-  .category-btn{
+  .category-btn {
     display: flex;
     gap: 5%;
     justify-content: center;
   }
 
 
-
-
-  .btnWithNames{
+  .btnWithNames {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid black;
- 
+  
   }

@@ -1,0 +1,21 @@
+.allProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgb(149, 125, 173);
+  height: 15vh;
+  border-radius: 20px;
+}
+
+.allProfile button {
+  background-color: rgb(224, 187, 228);
+  border-radius: 5px;
+  margin-left: 5px;
+  color: rgb(5, 3, 3);
+}
+
+.allProfile button:hover {
+  background-color:rgb(215, 151, 223);
+}

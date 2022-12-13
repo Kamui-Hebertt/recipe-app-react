@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import FavoriteButton from '../components/recipeDetails/FavoriteButton';
 import ShareButton from '../components/recipeDetails/ShareButton';
+import './inProgress.css';
 
 function MealInProgress() {
   const location = useLocation();
@@ -102,7 +103,7 @@ function MealInProgress() {
     <main>
       {location.pathname.includes('/drinks/') ? (
         <section>
-          <div>
+          <div className="allInProgress">
 
             {fullRecipe !== null
               && Object.entries(fullRecipe.drinks[0])
@@ -111,36 +112,40 @@ function MealInProgress() {
                   && ingredientArr[1].length > 1).map(([, ingredient], index) => (
                   (
                     <div
+                      className="checks"
                       key={ index }
-                      className="one-ingredient"
                     >
-                      <label
-                        htmlFor={ ingredient }
-                        className={ checked[ingredient] ? 'done' : '' }
-                        data-testid={ `${index}-ingredient-step` }
+                      <div
+                        className="one-ingredient"
                       >
-                        <input
-                          type="checkbox"
-                          name={ ingredient }
-                          id={ ingredient }
-                          checked={ !!checked[ingredient] }
-                          onChange={ () => handleChecked(ingredient) }
-                        />
-                        <p
-                          data-testid="ingredient-step"
+                        <label
+                          htmlFor={ ingredient }
+                          className={ checked[ingredient] ? 'done' : '' }
+                          data-testid={ `${index}-ingredient-step` }
                         >
-                          {ingredient}
+                          <input
+                            type="checkbox"
+                            name={ ingredient }
+                            id={ ingredient }
+                            checked={ !!checked[ingredient] }
+                            onChange={ () => handleChecked(ingredient) }
+                          />
+                          <p
+                            data-testid="ingredient-step"
+                          >
+                            {ingredient}
 
-                        </p>
+                          </p>
 
-                      </label>
+                        </label>
+                      </div>
                     </div>
                   )
                 ))}
             <div>
               {fullRecipe !== null
             && (
-              <div>
+              <div className="recipe">
                 <img
                   src={ fullRecipe.drinks[0].strDrinkThumb }
                   alt="drink"

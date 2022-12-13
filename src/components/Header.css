@@ -17,7 +17,7 @@
   width: 99vw;
 }
 
-.header-page-title p{
+.header-page-title p {
   color: rgba(65, 25, 127, 1);
   font-family: 'Poppins';
   font-weight:900;
@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
-  border: 1px solid black;
+  
   width: 100%;
   height: 15vh;
   align-items: center;
@@ -49,7 +49,7 @@
 }
 
 
-.profileBtn{
+.profileBtn {
   width: 4vw;
   height: 8vh;
   background-color: transparent;
@@ -73,4 +73,52 @@
 .title img{
   width: 71px;
   height: 20px;
+}
+
+@media only screen and (max-width: 540px) {
+
+  .title{
+    margin-right: 22vw;
+  
+   
+  }
+
+  .searchBtn {
+  margin-right: 8vw;
+    
+    
+  }
+  .profileBtn{
+    margin-right: 9vw;
+   
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+
+  .title{
+    margin-right: 18vw;
+  
+   
+  }
+}
+
+
+@media only screen and (max-width: 912px) and (min-width: 540px){
+  .title{
+    margin-right: 57vw;
+  
+   
+  }
+
+  .searchBtn {
+    margin-right: 3vw;
+      
+      
+    }
+    .profileBtn{
+      margin-right: 3vw;
+     
+    }
 }
