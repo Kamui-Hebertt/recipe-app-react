@@ -128,7 +128,7 @@ function MealInProgress() {
 
                         <input
                           type="checkbox"
-                          className="input"
+                          className="checkbox"
                           name={ ingredient }
                           id={ ingredient }
                           checked={ !!checked[ingredient] }
@@ -210,6 +210,7 @@ function MealInProgress() {
                           type="checkbox"
                           name={ ingredient1 }
                           id={ ingredient1 }
+                          className="checkbox"
                           checked={ !!checked[ingredient1] }
                           onChange={ () => handleChecked(ingredient1) }
                         />

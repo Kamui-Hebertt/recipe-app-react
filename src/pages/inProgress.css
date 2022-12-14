@@ -51,7 +51,7 @@ margin: auto;
 
 .a {
 
-  border: 1px solid rgb(204, 82, 157);
+
 
 display: flex;
 gap: 15px;
@@ -145,12 +145,16 @@ justify-content: center;
 
 
 }
+p{
+  margin-left: 15px;
+}
 
 @media only screen and (max-width: 414px) {
 
  .check2 {
   margin-bottom: 41vh;
   display: flex;
+
 
  }
 
@@ -163,5 +167,26 @@ justify-content: center;
  width: 50vw;
  }
 
+ .check {
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
+
+}
+
+.checkbox{
+  width: 50px;
+  margin-left: 30px;
+  
+}
+
+
+.checkbox:checked{
+  background-color: #FCC436;
 }
 
