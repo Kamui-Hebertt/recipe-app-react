@@ -20,9 +20,9 @@
   justify-content: center;
   flex-direction: column;
   margin-bottom: 50px;
-  background-color: rgba(65, 25, 127, 1);
+  background-color: rgb(149, 125, 173);
   color: aliceblue;
-  padding: 5px;
+  padding-bottom: 6vh;
   
 
 }
@@ -41,20 +41,21 @@
 .searchBar input {
   
   width: 27px;
-  
+ 
   
 }
 
 
 .searchBar button {
-  border: 1px solid rgb(218, 138, 138);
+
   background-color: rgb(247, 188, 40);
   width: 20vw;
   height: 3vw;
   color: aliceblue;
   font-family: "Poppins";
   border-radius: 5px;
-  margin-left: 10px;
+  margin-left: 15px;
+  
  
 
 
@@ -63,3 +64,46 @@
 .searchBar button:hover {
   background-color: rgb(255, 251, 0);
 }
+
+.radios {
+ 
+  margin-top: 5vh;
+}
+
+@media only screen and (max-width: 540px) {
+  .header-search-bar{
+    height: 25vh;
+  }
+  .searchBar button {
+    height: 20vh;
+    margin-left: 14vh;
+    
+  }
+ 
+}
+
+@media only screen and (max-width: 912px) {
+  .header-search-bar {
+    height: 20vh;
+   
+    
+  }
+  .radios {
+    margin-bottom: 7px;
+  }
+  
+
+  .searchBar button {
+    height: 4vh;
+    margin-top: 2px;
+
+  }
+
+  .header-search-bar > input {
+   margin-top: 20px;
+   
+  
+    
+  }
+}
+

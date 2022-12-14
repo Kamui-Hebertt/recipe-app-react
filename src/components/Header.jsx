@@ -54,7 +54,11 @@ function Header(props) {
       </div>
 
       <div data-testid="page-title" className="header-page-title">
-        <img src={ mealIcon } alt="meal icon" className="mealIcon" />
+
+        <button type="button">
+          <img src={ mealIcon } alt="meal icon" className="mealIcon" />
+        </button>
+
         <p>{pageName }</p>
       </div>
       {searchBar ? (

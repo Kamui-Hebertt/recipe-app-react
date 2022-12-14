@@ -1,0 +1,214 @@
+.inProgressImage {
+
+  filter: brightness(65%);
+  width: 50vw;
+  height: 80vh;
+margin: auto;
+margin-top: 20px;
+  border-radius: 16px;
+
+  -webkit-mask-image: linear-gradient(to top, transparent 1%, black 10%);
+  object-fit: cover;
+}
+
+.text {
+text-align: center;
+
+
+}
+.allInProgress {
+
+
+
+
+
+background-color: rgb(200, 185, 223);
+
+
+}
+
+.one-ingredient {
+ 
+border: 1px solid black;
+margin: auto;
+
+}
+.reverse {
+  
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  
+}
+.check {
+  
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 10px;
+  flex-wrap: wrap
+}
+
+.a {
+
+
+
+display: flex;
+gap: 15px;
+flex-direction: column;
+justify-content: center;
+margin-bottom: 9vh;
+
+ 
+
+ 
+}
+.separted {
+
+
+}
+
+
+
+
+
+.buttons1 {
+  margin-top: 10px;
+  display: flex;
+justify-content: center;
+  gap: 6px;
+  align-items: center;
+  
+  padding-bottom: 20px;
+}
+.checks2{ 
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  gap:15px;
+}
+.reverseDrink {
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: rgb(200, 185, 223);
+}
+
+.texts {
+
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column-reverse;
+ 
+}
+
+.finishBtn {
+  margin-top: 2vh;
+  
+  width: 20vw;
+  font-weight: 900;
+  height: 8vh;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #FCC436;
+  color: rgb(29, 21, 21);
+  color: aliceblue;
+  border-radius: 20px;
+  
+}
+
+.finishBtn:hover {
+  background-color: rgb(255, 255, 50);
+}
+
+.drinksDiv{
+  
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7vh;
+}
+.text{
+  font-family: "Poppins";
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 9px;
+  margin-top: 100px;
+  background-color: rgb(200, 185, 223);
+}
+
+.check2{
+  position: absolute;
+  display: flex;
+  margin-bottom: 51vh;
+  justify-content: center;
+  width: 100vw;
+  border-radius: 15px;
+  background-color: rgb(200, 185, 223);
+
+
+
+}
+p{
+  margin-left: 15px;
+}
+
+@media only screen and (max-width: 414px) {
+
+ .check2 {
+  margin-bottom: 41vh;
+  display: flex;
+
+
+ }
+
+ .inProgressImage{
+  width: 80vw;
+ }
+
+ .finishBtn{
+ 
+ width: 50vw;
+ }
+
+ .check {
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
+
+}
+
+.checkbox{
+  width: 50px;
+  margin-left: 30px;
+  
+  
+}
+
+
+.checkbox:checked{
+  background-color: #FCC436;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .check2 {
+    margin-bottom: 41vh;
+    display: flex;
+  
+  
+   }
+   .check {
+  
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+  }
+}
