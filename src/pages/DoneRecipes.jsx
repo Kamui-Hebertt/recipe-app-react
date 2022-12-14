@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Card from '../components/doneRecipes/Card';
 import Header from '../components/Header';
 import mealIcon from '../images/mealIcon.svg';
+import './done.css';
 
 function DoneRecipes() {
   const [pressedBtn, setPressedBtn] = useState('all');
@@ -47,13 +48,14 @@ function DoneRecipes() {
   return (
     <section>
       <Header search={ false } pageName="Done Recipes" />
-      <section>
+      <section className="allDone">
         <button
           data-testid="filter-by-all-btn"
           type="button"
           onClick={ () => setPressedBtn('all') }
         >
           <img src={ mealIcon } alt="plate" />
+          <p>All</p>
         </button>
         <button
           data-testid="filter-by-meal-btn"
@@ -70,9 +72,11 @@ function DoneRecipes() {
           Drinks
         </button>
       </section>
-      <ul>
-        { showCards() }
-      </ul>
+      <div className="itens">
+        <ul>
+          { showCards() }
+        </ul>
+      </div>
     </section>
   );
 }

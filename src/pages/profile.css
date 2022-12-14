@@ -7,13 +7,14 @@
   background-color: rgb(149, 125, 173);
   height: 15vh;
   border-radius: 20px;
+  color: aliceblue;
 }
 
 .allProfile button {
   background-color: rgb(224, 187, 228);
   border-radius: 5px;
   margin-left: 5px;
-  color: rgb(5, 3, 3);
+  color: rgb(241, 237, 237);
 }
 
 .allProfile button:hover {

@@ -18,8 +18,8 @@
   height: 45px;
   border-color: yellow;
   background-image: url("dessert.png");
-  background-position: bottom 40px left 1px;
-  background-size: 96%;
+  background-position: bottom 45px left ;
+  background-size: 102%;
  
  }
 
@@ -31,8 +31,8 @@
   height: 45px;
   border-color: yellow;
   background-image: url("breakfast.png");
-  background-position: bottom 95px left 193px;
-  background-size: 120%;
+  background-position: bottom 95px;
+  background-size: 109%;
  
  }
 
@@ -98,16 +98,18 @@ display: none;
   .theNames {
     display: flex;
     flex-direction: row;
-    gap: 5%;
-    margin-left: 10px;
+    
+    
     justify-content: center;
     
   }
 
+  
   .category-btn {
     display: flex;
-    gap: 5%;
+    gap:4%;
     justify-content: center;
+    
   }
 
 
