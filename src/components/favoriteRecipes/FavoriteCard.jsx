@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import iconShare from '../../images/shareIcon.svg';
-import iconFav from '../../images/blackHeartIcon.svg';
+import iconFav from '../../images/blackHeartIcon.png';
 // import iconFav2 from '../../images/whiteHeartIcon.svg';
 
 function FavoriteCard({

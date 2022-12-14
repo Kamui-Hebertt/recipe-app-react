@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import propTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../../images/blackHeartIcon.svg';
+import whiteHeartIcon from '../../images/whiteHeartIcon.png';
+import blackHeartIcon from '../../images/blackHeartIcon.png';
 import DetailsPageContext from '../../context/DetailsPageContext';
 import '../../pages/RecipeDetails.css';
 
@@ -71,12 +71,13 @@ function FavoriteButton() {
   };
 
   return (
-    <div className="favoriteBtn">
+    <div>
       <button
         type="button"
         onClick={ () => addFavoriteRecipeBtn() }
         data-testid="favorite-btn"
         src={ favorite ? blackHeartIcon : whiteHeartIcon }
+        className="favoriteBtn"
       >
         <img
           src={ favorite ? blackHeartIcon : whiteHeartIcon }

@@ -37,15 +37,22 @@ body {
   position: absolute;
   display: flex;
   right: 10px;
-  margin: 15px 20px 0px 0px;
+  margin: 25px 20px 0px 0px;
 }
 
 .favoriteBtn {
-  color: transparent;
+  background: transparent;
+  padding-right: 10px;
 }
 
 .shareBtn {
-  background-color: blue;
+  background: transparent;
+  padding-right: 10px;
+}
+
+.link-copied {
+  color:#FCC436;
+  gap: 100px;
 }
 
 .recipe-title {
@@ -70,6 +77,7 @@ body {
   border-radius: 5px;
   width: 80vw;
   padding: 30px 30px 0px;
+  margin-top: 10vh;
 }
 
 .ingredients {
@@ -101,14 +109,24 @@ body {
   margin-left: 10vw;
 }
 
-.video {
+.videoDiv {
   display: flex;
   justify-content: center;
   margin: 15px 0px 40px 0px;
-  /* max-width: 560;
-  max-height: 315;
-  min-width: 420;
-  min-height: 480; */
+}
+
+/* @media screen and (min-width: 820px) and (max-width: 1280px) {
+  .video {
+    height: 394px;
+    width: 700px;
+  }
+} */
+
+@media screen and (min-width: 768px) and (max-width: 1366px) {
+.video {
+  height: 394px;
+  width: 700px;
+}
 }
 
 .carousel {
