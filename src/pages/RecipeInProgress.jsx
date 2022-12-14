@@ -234,7 +234,7 @@ function MealInProgress() {
                   />
 
                 </div>
-                <div className="text">
+                <div className="text1">
                   <p data-testid="recipe-title">{fullRecipe.meals[0].strMeal}</p>
                   <p data-testid="recipe-category">{fullRecipe.meals[0].strCategory}</p>
                   <p data-testid="instructions">{fullRecipe.meals[0].strInstructions}</p>

@@ -20,9 +20,9 @@ text-align: center;
 
 
 
-border: 1px solid rgb(143, 16, 16);
 
 
+background-color: rgb(200, 185, 223);
 
 
 
@@ -35,17 +35,18 @@ margin: auto;
 
 }
 .reverse {
-  border: 1px solid rgb(92, 204, 82);
+  
   display:flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
 
 }
 .check {
-  border: 1px solid rgb(204, 82, 157);
+  
   display: flex;
   justify-content: center;
   gap: 20px;
+  padding-top: 10px;
 }
 
 .a {
@@ -142,6 +143,25 @@ justify-content: center;
   background-color: rgb(200, 185, 223);
 
 
+
+}
+
+@media only screen and (max-width: 414px) {
+
+ .check2 {
+  margin-bottom: 41vh;
+  display: flex;
+
+ }
+
+ .inProgressImage{
+  width: 80vw;
+ }
+
+ .finishBtn{
+ 
+ width: 50vw;
+ }
 
 }
 
