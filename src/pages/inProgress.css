@@ -46,6 +46,7 @@ margin: auto;
   justify-content: center;
   gap: 20px;
   padding-top: 10px;
+  flex-wrap: wrap
 }
 
 .a {
@@ -184,6 +185,7 @@ p{
   width: 50px;
   margin-left: 30px;
   
+  
 }
 
 
@@ -191,3 +193,22 @@ p{
   background-color: #FCC436;
 }
 
+
+
+@media only screen and (max-width: 768px) {
+
+  .check2 {
+    margin-bottom: 41vh;
+    display: flex;
+  
+  
+   }
+   .check {
+  
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+  }
+}
