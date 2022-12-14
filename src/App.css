@@ -83,11 +83,11 @@
 
 .one-ingredient {
   align-items: center;
-  border: 1px solid black;
+  
   display: flex;
   gap: 10px;
   justify-content: center;
-  width: 150px;
+ 
 }
 
 .done {

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import FavoriteButton from '../components/recipeDetails/FavoriteButton';
@@ -103,76 +104,92 @@ function MealInProgress() {
     <main>
       {location.pathname.includes('/drinks/') ? (
         <section>
-          <div className="allInProgress">
 
-            {fullRecipe !== null
+          <div className="reverseDrink">
+            <div className="check2">
+
+              {fullRecipe !== null
               && Object.entries(fullRecipe.drinks[0])
                 .filter((ingredientArr) => ingredientArr[1] !== null
                   && ingredientArr[0].includes('strIngredient')
                   && ingredientArr[1].length > 1).map(([, ingredient], index) => (
                   (
+
                     <div
-                      className="checks"
+                      className="separted"
                       key={ index }
                     >
-                      <div
-                        className="one-ingredient"
+
+                      <label
+                        htmlFor={ ingredient }
+                        className={ checked[ingredient] ? 'done' : '' }
+                        data-testid={ `${index}-ingredient-step` }
                       >
-                        <label
-                          htmlFor={ ingredient }
-                          className={ checked[ingredient] ? 'done' : '' }
-                          data-testid={ `${index}-ingredient-step` }
+
+                        <input
+                          type="checkbox"
+                          className="input"
+                          name={ ingredient }
+                          id={ ingredient }
+                          checked={ !!checked[ingredient] }
+                          onChange={ () => handleChecked(ingredient) }
+                        />
+                        <p
+                          data-testid="ingredient-step"
                         >
-                          <input
-                            type="checkbox"
-                            name={ ingredient }
-                            id={ ingredient }
-                            checked={ !!checked[ingredient] }
-                            onChange={ () => handleChecked(ingredient) }
-                          />
-                          <p
-                            data-testid="ingredient-step"
-                          >
-                            {ingredient}
+                          {ingredient}
 
-                          </p>
+                        </p>
 
-                        </label>
-                      </div>
+                      </label>
                     </div>
+
                   )
                 ))}
-            <div>
-              {fullRecipe !== null
+            </div>
+            {fullRecipe !== null
             && (
-              <div className="recipe">
+
+              <div className="drinksDiv">
+
                 <img
+                  className="inProgressImage"
                   src={ fullRecipe.drinks[0].strDrinkThumb }
                   alt="drink"
                   data-testid="recipe-photo"
                 />
-                <p data-testid="recipe-title">{fullRecipe.drinks[0].strDrink}</p>
-                <p data-testid="recipe-category">{fullRecipe.drinks[0].strCategory}</p>
-                <p data-testid="instructions">{fullRecipe.drinks[0].strInstructions}</p>
-                <ShareButton />
-                <FavoriteButton />
-                <button
-                  type="button"
-                  data-testid="finish-recipe-btn"
-                  disabled={ allDone }
-                  onClick={ () => handleFinish(fullRecipe.drinks[0]) }
-                >
-                  Finished Recipe
-                </button>
+                <div className="text">
+                  <p data-testid="recipe-title">{fullRecipe.drinks[0].strDrink}</p>
+                  <p data-testid="recipe-category">{fullRecipe.drinks[0].strCategory}</p>
+                  <p data-testid="instructions">{fullRecipe.drinks[0].strInstructions}</p>
+                </div>
+                <div className="buttons1">
+                  <ShareButton />
+                  <FavoriteButton />
+                </div>
+                <div className="buttons1">
+                  <button
+                    className="finishBtn"
+                    type="button"
+                    data-testid="finish-recipe-btn"
+                    disabled={ allDone }
+                    onClick={ () => handleFinish(fullRecipe.drinks[0]) }
+                  >
+                    Finished Recipe
+                  </button>
+                </div>
               </div>)}
-            </div>
           </div>
+
         </section>
       )
         : fullRecipe !== null && (
           <section>
-            <div>
-              {fullRecipe !== null
+            <div className="allInProgress">
+              <div className="a">
+                <div className="reverse">
+                  <div className="check">
+                    {fullRecipe !== null
               && Object.entries(fullRecipe.meals[0])
                 .filter((ingredientArr1) => ingredientArr1[1] !== null
                   && ingredientArr1[0].includes('strIngredient')
@@ -180,9 +197,10 @@ function MealInProgress() {
                 .map(([, ingredient1], index) => (
                   (
                     <div
+                      className="separted"
                       key={ index }
-                      className="one-ingredient"
                     >
+
                       <label
                         htmlFor={ ingredient1 }
                         className={ checked[ingredient1] ? 'done' : '' }
@@ -202,31 +220,50 @@ function MealInProgress() {
                         </p>
                       </label>
                     </div>
-                  )
-                ))}
-            </div>
-            <img
-              src={ fullRecipe.meals[0].strMealThumb }
-              alt="Meals"
-              data-testid="recipe-photo"
-            />
-            <p data-testid="recipe-title">{fullRecipe.meals[0].strMeal}</p>
-            <p data-testid="recipe-category">{fullRecipe.meals[0].strCategory}</p>
-            <p data-testid="instructions">{fullRecipe.meals[0].strInstructions}</p>
-            <ShareButton />
-            <FavoriteButton />
-            <button
-              type="button"
-              data-testid="finish-recipe-btn"
-              disabled={ allDone }
-              onClick={ () => handleFinish(fullRecipe.meals[0]) }
-            >
-              Finished Recipe
 
-            </button>
+                  )
+
+                ))}
+                  </div>
+
+                  <img
+                    className="inProgressImage"
+                    src={ fullRecipe.meals[0].strMealThumb }
+                    alt="Meals"
+                    data-testid="recipe-photo"
+                  />
+
+                </div>
+                <div className="text">
+                  <p data-testid="recipe-title">{fullRecipe.meals[0].strMeal}</p>
+                  <p data-testid="recipe-category">{fullRecipe.meals[0].strCategory}</p>
+                  <p data-testid="instructions">{fullRecipe.meals[0].strInstructions}</p>
+                </div>
+                <div className="buttons1">
+                  <ShareButton />
+                  <FavoriteButton />
+                </div>
+                <div className="buttons1">
+                  <button
+                    type="button"
+                    className="finishBtn"
+                    data-testid="finish-recipe-btn"
+                    disabled={ allDone }
+                    onClick={ () => handleFinish(fullRecipe.meals[0]) }
+                  >
+                    Finished Recipe
+
+                  </button>
+                </div>
+              </div>
+
+            </div>
           </section>
+
         )}
+
     </main>
+
   );
 }
 

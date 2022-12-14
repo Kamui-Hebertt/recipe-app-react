@@ -45,7 +45,7 @@ body {
 }
 
 .shareBtn {
-  background-color: blue;
+
 }
 
 .recipe-title {
@@ -136,6 +136,11 @@ body {
 .StartBtnDiv {
   display: flex;
   justify-content: center;
+}
+
+.text {
+  
+  
 }
 
 .startBtn {

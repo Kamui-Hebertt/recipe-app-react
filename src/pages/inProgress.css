@@ -1,17 +1,147 @@
-.allInProgress img {
- width: 20%;
+.inProgressImage {
+
+  filter: brightness(65%);
+  width: 50vw;
+  height: 80vh;
+margin: auto;
+margin-top: 20px;
+  border-radius: 16px;
+
+  -webkit-mask-image: linear-gradient(to top, transparent 1%, black 10%);
+  object-fit: cover;
+}
+
+.text {
+text-align: center;
+
+
+}
+.allInProgress {
+
+
+
+border: 1px solid rgb(143, 16, 16);
+
+
+
+
+
 }
 
 .one-ingredient {
-  background-color: rgb(138, 138, 7);
+ 
+border: 1px solid black;
+margin: auto;
+
+}
+.reverse {
+  border: 1px solid rgb(92, 204, 82);
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+
+}
+.check {
+  border: 1px solid rgb(204, 82, 157);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.recipe {
-  border: 1px solid black;
+.a {
+
+  border: 1px solid rgb(204, 82, 157);
+
+display: flex;
+gap: 15px;
+flex-direction: column;
+justify-content: center;
+
+
+ 
+
+ 
+}
+.separted {
+
+
 }
 
-.checks {
+
+
+
+
+.buttons1 {
+  margin-top: 10px;
+  display: flex;
+justify-content: center;
+  gap: 6px;
+  align-items: center;
+  
+  padding-bottom: 20px;
+}
+.checks2{ 
   border: 1px solid black;
   display: flex;
-  width: 10vw;
+  justify-content: center;
+  gap:15px;
 }
+.reverseDrink {
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: rgb(200, 185, 223);
+}
+
+.texts {
+
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column-reverse;
+ 
+}
+
+.finishBtn {
+  margin-top: 6vh;
+  width: 20vw;
+  font-weight: 900;
+  height: 8vh;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #FCC436;
+  color: rgb(29, 21, 21);
+  color: aliceblue;
+  border-radius: 20px;
+  
+}
+
+.finishBtn:hover {
+  background-color: rgb(255, 255, 50);
+}
+
+.drinksDiv{
+  
+  display: flex;
+  flex-direction: column;
+}
+.text{
+  font-family: "Poppins";
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 9px;
+  margin-top: 100px;
+  background-color: rgb(200, 185, 223);
+}
+
+.check2{
+  position: absolute;
+  display: flex;
+  margin-bottom: 51vh;
+  justify-content: center;
+  width: 100vw;
+  border-radius: 15px;
+  background-color: rgb(200, 185, 223);
+
+
+
+}
+
