@@ -1,9 +1,11 @@
 /* eslint-disable max-lines */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import Header from '../components/Header';
 import FavoriteButton from '../components/recipeDetails/FavoriteButton';
 import ShareButton from '../components/recipeDetails/ShareButton';
 import './inProgress.css';
+import Footer from '../components/Footer';
 
 function MealInProgress() {
   const location = useLocation();
@@ -102,6 +104,7 @@ function MealInProgress() {
 
   return (
     <main>
+      <Header />
       {location.pathname.includes('/drinks/') ? (
         <section>
 
@@ -262,7 +265,7 @@ function MealInProgress() {
           </section>
 
         )}
-
+<Footer />
     </main>
 
   );
