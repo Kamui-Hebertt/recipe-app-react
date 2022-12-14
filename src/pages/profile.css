@@ -6,11 +6,17 @@
   gap: 10px;
   background-color: rgb(149, 125, 173);
   height: 15vh;
+  width: 40vw;
   border-radius: 20px;
   color: aliceblue;
 }
+.allthem{
+  display: flex;
+  justify-content: center;
+}
 
 .allProfile button {
+
   background-color: rgb(224, 187, 228);
   border-radius: 5px;
   margin-left: 5px;
