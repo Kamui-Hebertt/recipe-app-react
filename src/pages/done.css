@@ -57,7 +57,7 @@ list-style-type: none;
   margin-top: 10px;
   margin-left: 4vw;
   width: 15vw;
-  height: 20vh;
+  height: 30vh;
   border-radius: 100%;
 
   
@@ -97,12 +97,16 @@ list-style-type: none;
 @media only screen and ( max-width : 375px ) {
   .itens button {
    margin-left: 28vw;
+   width: 100px;
+   height: 40px;
  }
 
  .itens img {
    margin-left: 30vw;
    
  }
+
+
 }
 
 @media only screen and ( max-width : 390px ) {

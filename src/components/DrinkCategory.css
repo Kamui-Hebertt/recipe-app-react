@@ -67,7 +67,9 @@
    background-size: 102%;
   
   }
- 
+ .allBtn2 p{
+  margin-right: 20px;
+ }
  .allBtn2 {
  
  display: flex;
