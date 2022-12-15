@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Epilogue:wght@200;300;700;800;900&family=Poppins:wght@200;300&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Epilogue;
+}
+
+.BtnDiv {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.AllBtn {
+    background: transparent;
+}
+
+.mealBtn {
+    background: transparent;
+    margin: 0px 20px 0px 20px;
+}
+
+.drinkBtn {
+    background: transparent;
+}
+
+.all-cards {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.recipe-card {
+    display: flex;
+    border: 1px solid #B1B1B1;
+    width: 80vw;
+    border-radius: 10px;
+}
+
+.card-infos{
+    margin-left: 5vw;
+    margin-top: 12px;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    border-radius: 9px 0px 0px 9px;
+}
+
+.name {
+    font-weight: 800;
+    font-size: 21px;
+}
+
+.shareBtnF {
+    background: transparent;
+}
+
+.favoriteBtnF {
+    background: transparent;
+    margin-left: 10px;
+}
