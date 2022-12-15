@@ -63,10 +63,6 @@ margin-bottom: 9vh;
 
  
 }
-.separted {
-
-
-}
 
 
 
@@ -149,6 +145,12 @@ justify-content: center;
 }
 p{
   margin-left: 15px;
+}
+
+ input {
+
+background: rgb(57, 192, 23);
+color: #FCC436;
 }
 
 @media only screen and (max-width: 414px) {

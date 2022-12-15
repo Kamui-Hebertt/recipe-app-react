@@ -128,21 +128,22 @@ function MealInProgress() {
                         className={ checked[ingredient] ? 'done' : '' }
                         data-testid={ `${index}-ingredient-step` }
                       >
+                        <div className="wrapCheck">
+                          <input
+                            type="checkbox"
+                            className="checkbox"
+                            name={ ingredient }
+                            id={ ingredient }
+                            checked={ !!checked[ingredient] }
+                            onChange={ () => handleChecked(ingredient) }
+                          />
+                          <p
+                            data-testid="ingredient-step"
+                          >
+                            {ingredient}
 
-                        <input
-                          type="checkbox"
-                          className="checkbox"
-                          name={ ingredient }
-                          id={ ingredient }
-                          checked={ !!checked[ingredient] }
-                          onChange={ () => handleChecked(ingredient) }
-                        />
-                        <p
-                          data-testid="ingredient-step"
-                        >
-                          {ingredient}
-
-                        </p>
+                          </p>
+                        </div>
 
                       </label>
                     </div>
@@ -265,7 +266,7 @@ function MealInProgress() {
           </section>
 
         )}
-<Footer />
+      <Footer />
     </main>
 
   );
