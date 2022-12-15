@@ -127,7 +127,7 @@
 @media only screen and (max-width: 280px) {
 
   .all{
-width: 110%;;
+width: 110%;
   }
 
 
@@ -146,5 +146,6 @@ width: 110%;;
       margin-left: -5vw;
      
     }
+    
 
 }

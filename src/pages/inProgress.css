@@ -139,7 +139,7 @@ justify-content: center;
   width: 100vw;
   border-radius: 15px;
   background-color: rgb(200, 185, 223);
-
+ flex-wrap: wrap;
 
 
 }
@@ -147,11 +147,7 @@ p{
   margin-left: 15px;
 }
 
- input {
-
-background: rgb(57, 192, 23);
-color: #FCC436;
-}
+ 
 
 @media only screen and (max-width: 414px) {
 
@@ -224,7 +220,7 @@ color: #FCC436;
 @media only screen and (min-width: 768px) {
   .check2 {
     z-index: 0;
-    margin-bottom: 37vh;
+    margin-bottom: 40vh;
     display: flex;
   
   
@@ -250,6 +246,10 @@ color: #FCC436;
   
   
    }
+   .reverse {
+   
+  width: 110% !important;
+  }
 }
 @media only screen and (max-width: 393px){
   .check2 {
@@ -260,3 +260,25 @@ color: #FCC436;
   
    }
 }
+
+@media only screen and (max-width: 390px) {
+
+  .check2 {
+    z-index: 0;
+    margin-bottom: 50vh !important;
+    display: flex;
+  
+  
+   }}
+
+
+   @media only screen and (max-width: 280px){
+    
+  .allInProgress{
+    display: flex;
+    justify-content: center;
+  }
+  body{
+  background-color: rgb(200, 185, 223);;
+  }
+  }
