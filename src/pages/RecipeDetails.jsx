@@ -143,7 +143,7 @@ function RecipeDetails() {
           <h2 className="videoTitle">
             Video:
           </h2>
-          <div className="video">
+          <div className="videoDiv">
             <div>
               <iframe
                 data-testid="video"
@@ -151,6 +151,7 @@ function RecipeDetails() {
                 title="YouTube Video Player"
                 frameBorder="0"
                 allowFullScreen
+                className="video"
               />
             </div>
           </div>

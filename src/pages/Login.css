@@ -29,7 +29,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
   width: 100vw;
   height: 65vh;
   background-color: var(--lighpurple);
@@ -57,7 +56,7 @@ box-shadow: 10px 10px 8px #888888;
 }
 .tomatoDiv{
 
- 
+
   width: 99vw;
   height: 50vh;
   z-index: 0;
@@ -133,7 +132,7 @@ box-shadow: 10px 10px 8px #888888;
   margin-left: 5px;
   margin-top: 15px;
   font-family: "Poppins";
-  
+  border-radius: 15px;
 }
 
 .loginBtn:hover {
@@ -151,17 +150,14 @@ box-shadow: 10px 10px 8px #888888;
 @media only screen and (max-width: 540px) {
   .field {
     width: 60vw;
-   
-  
   }
   #emailInp2{
     width: 50vw;
     height: 5vh;
     margin-right: 40px;
-  
     margin-left: 5vw;
-   
   }
+
   #emailInp{
     
     width: 50vw;
@@ -177,26 +173,16 @@ box-shadow: 10px 10px 8px #888888;
   }
 
   .logo{
-
- 
     margin: auto;
     margin-top: 55%;
     align-items: center;
-    
-     
-   }
+  }
   
 }
 
 @media only screen and (max-height: 600px){
 
   .logo{
-
- 
     margin: auto;
-  
-   
-    
-     
-   }
+  }
 }

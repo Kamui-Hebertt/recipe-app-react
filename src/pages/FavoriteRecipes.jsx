@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import FavoriteCard from '../components/favoriteRecipes/FavoriteCard';
+import './FavoriteRecipes.css';
+import AllsIcon from '../components/AllBtn.png';
+import MealsIcon from '../components/food.png';
+import DrinksIcon from '../components/drinks.png';
 
 function FavoriteRecipes() {
   const [pressedBtn, setPressedBtn] = useState('all');
@@ -42,35 +46,44 @@ function FavoriteRecipes() {
   return (
     <>
       <Header search={ false } pageName="Favorite Recipes" />
-      <section>
+      <div className="BtnDiv">
         <button
           data-testid="filter-by-all-btn"
           type="button"
           onClick={ () => setPressedBtn('all') }
+          className="AllBtn"
         >
-          All
-
+          <img
+            src={ AllsIcon }
+            alt="All Icon"
+          />
         </button>
         <button
           data-testid="filter-by-meal-btn"
           type="button"
           onClick={ () => setPressedBtn('meal') }
+          className="mealBtn"
         >
-          Meal
-
+          <img
+            src={ MealsIcon }
+            alt="Meals Icon"
+          />
         </button>
         <button
           data-testid="filter-by-drink-btn"
           type="button"
           onClick={ () => setPressedBtn('drink') }
+          className="drinkBtn"
         >
-          Drink
-
+          <img
+            src={ DrinksIcon }
+            alt="Drinks Icon"
+          />
         </button>
-      </section>
-      <ul>
+      </div>
+      <div>
         { showCards() }
-      </ul>
+      </div>
     </>
   );
 }

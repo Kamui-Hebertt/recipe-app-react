@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import iconShare from '../../images/shareIcon.svg';
-import iconFav from '../../images/blackHeartIcon.svg';
+import shareIcon from '../../images/shareIcon.svg';
+import blackHeartIcon from '../../images/blackHeartIcon.png';
 // import iconFav2 from '../../images/whiteHeartIcon.svg';
+import '../../pages/FavoriteRecipes.css';
 
 function FavoriteCard({
   index,
@@ -18,49 +19,37 @@ function FavoriteCard({
   const checkType = type === 'meal' ? nationality : alcoholicOrNot;
   const [copy, setCopy] = useState(false);
   return (
-    <li key={ id } id={ id }>
-      <div>
+    <div className="all-cards">
+      <div key={ id } id={ id } className="recipe-card">
         <Link key={ id } to={ `/${type}s/${id}` }>
           <img
             data-testid={ `${index}-horizontal-image` }
             src={ image }
             alt={ name }
-            width="100px"
-            height="100px"
+            className="image"
           />
+        </Link>
+        <div className="card-infos">
           <div>
+            <p
+              data-testid={ `${index}-horizontal-name` }
+              className="name"
+            >
+              { name }
+            </p>
             <p
               data-testid={ `${index}-horizontal-top-text` }
               name="result-top-text"
             >
               {`${checkType} - ${category}`}
             </p>
-            <br />
-            <p
-              data-testid={ `${index}-horizontal-name` }
-            >
-              { name }
-            </p>
-            <br />
           </div>
-        </Link>
-        <div>
-          <button
-            type="button"
-            data-testid={ `${index}-horizontal-share-btn` }
-            src={ iconShare }
-            onClick={ () => {
-              setCopy(true);
-              navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
-            } }
-          >
-            Share
-          </button>
           { copy && <p>Link copied!</p>}
           <button
             data-testid={ `${index}-horizontal-favorite-btn` }
             type="button"
-            src={ iconFav }
+            src={ blackHeartIcon }
+            className="favoriteBtnF"
             onClick={ () => {
               const favorite = document.getElementById(id);
               favorite.parentNode.removeChild(favorite);
@@ -74,12 +63,29 @@ function FavoriteCard({
               }
             } }
           >
-            Unfavorite
-
+            <img
+              src={ blackHeartIcon }
+              alt="Heart Icon"
+            />
+          </button>
+          <button
+            type="button"
+            data-testid={ `${index}-horizontal-share-btn` }
+            src={ shareIcon }
+            className="shareBtnF"
+            onClick={ () => {
+              setCopy(true);
+              navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
+            } }
+          >
+            <img
+              src={ shareIcon }
+              alt="Share Button"
+            />
           </button>
         </div>
       </div>
-    </li>
+    </div>
   );
 }
 
