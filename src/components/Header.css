@@ -122,3 +122,29 @@
      
     }
 }
+
+
+@media only screen and (max-width: 280px) {
+
+  .all{
+width: 110%;;
+  }
+
+
+  .title{
+    margin-right: 10vw;
+  
+   
+  }
+
+  .searchBtn {
+    margin-right: 15vw;
+      
+      
+    }
+    .profileBtn{
+      margin-left: -5vw;
+     
+    }
+
+}

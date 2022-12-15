@@ -103,6 +103,34 @@
      justify-content: center;
      
    }
+   .theNames2 p:nth-child(5){
+    
+   margin-left: 33vw;
+    position: absolute;
+
+   }
+
+   .theNames2 p:nth-child(2){
+    
+   margin-left: -16vw;
+    position: absolute;
+
+   }
+
+   .theNames2 p:nth-child(4){
+    
+   margin-left: 17vw;
+    position: absolute;
+
+   }
+
+   .theNames2 p:nth-child(1){
+  
+   margin-left: -32vw;
+    position: absolute;
+
+   }
+
 
    
  
@@ -110,4 +138,127 @@
      display: flex;
      gap: 5%;
      justify-content: center;
+   }
+
+
+   @media only screen and (max-width: 414px){
+    .theNames2 p:nth-child(5){
+      font-size: small;
+      margin-left: 78vw;
+       position: absolute;
+   
+      }
+   
+      .theNames2 p:nth-child(2){
+       font-size: small;
+      margin-left: -30vw;
+       position: absolute;
+   
+      }
+
+      .theNames2 p:nth-child(3){
+        font-size: small;
+       margin-left: 1vw;
+        position: absolute;
+    
+       }
+    
+   
+      .theNames2 p:nth-child(4){
+        font-size: small;
+      margin-left: 40vw;
+       position: absolute;
+   
+      }
+   
+      .theNames2 p:nth-child(1){
+        font-size: small;
+      margin-left: -72vw;
+       position: absolute;
+   
+      }
+   
+   
+   }
+
+
+   @media only screen and (max-width: 375px){
+    .theNames2 p:nth-child(5){
+      font-size: small;
+      margin-left: 78vw;
+       position: absolute;
+   
+      }
+   
+      .theNames2 p:nth-child(2){
+       font-size: small;
+      margin-left: -30vw;
+       position: absolute;
+   
+      }
+
+      .theNames2 p:nth-child(3){
+        font-size: small;
+       margin-left: 1vw;
+        position: absolute;
+    
+       }
+    
+   
+      .theNames2 p:nth-child(4){
+        font-size: small;
+      margin-left: 40vw;
+       position: absolute;
+   
+      }
+   
+      .theNames2 p:nth-child(1){
+        font-size: small;
+      margin-left: -72vw;
+       position: absolute;
+   
+      }
+   
+   
+   }
+
+
+   @media only screen and (max-width: 280px){
+    .theNames2 p:nth-child(5){
+      font-size: 10px;
+      margin-left: 85vw;
+       position: absolute;
+   
+      }
+   
+      .theNames2 p:nth-child(2){
+       font-size: 10px;
+      margin-left: -35vw;
+       position: absolute;
+   
+      }
+
+      .theNames2 p:nth-child(3){
+        font-size: 10px;
+       margin-left: 1vw;
+        position: absolute;
+  
+       }
+    
+   
+      .theNames2 p:nth-child(4){
+        font-size: 10px;
+      margin-left: 45vw;
+       position: absolute;
+   
+      }
+   
+      .theNames2 p:nth-child(1){
+        font-size: 10px;
+      margin-left: -77vw;
+       position: absolute;
+   
+      }
+   
+   
    }

@@ -64,6 +64,7 @@ function MealCategory() {
             <p key={ i2 }>{elementName}</p>
           ))}
         </div>
+
       </div>
     </div>
 
