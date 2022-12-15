@@ -122,11 +122,22 @@ body {
   }
 } */
 
-@media screen and (min-width: 768px) and (max-width: 1366px) {
+@media screen and (min-width: 768px) and (max-width: 1600px) {
 .video {
   height: 394px;
   width: 700px;
 }
+}
+
+.taste-textDiv {
+  border-top: 1px solid #B1B1B1;
+  width: 85vw;
+  margin: auto;
+}
+
+.taste-text {
+  font-weight: 600;
+  margin: 40px 0px 50px 4vw;
 }
 
 .carousel {

@@ -155,6 +155,11 @@ function RecipeDetails() {
               />
             </div>
           </div>
+          <div className="taste-textDiv">
+            <h4 className="taste-text">
+              Taste With This Meal:
+            </h4>
+          </div>
           <div className="carousel">
             {drinkRecomendation && drinksReco.slice(0, six).map((element2, i) => (
               <div key={ i } data-testid={ `${i}-recommendation-card` }>
@@ -252,6 +257,11 @@ function RecipeDetails() {
                 {drinkInfos.strInstructions}
               </p>
             </div>
+          </div>
+          <div className="taste-textDiv">
+            <h4 className="taste-text">
+              Taste With This Drink:
+            </h4>
           </div>
           <div className="carousel">
             {foodRecomendation && mealsReco.slice(0, six).map((element1, i) => (
