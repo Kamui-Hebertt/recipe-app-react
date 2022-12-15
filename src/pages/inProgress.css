@@ -153,12 +153,14 @@ p{
 
 @media only screen and (max-width: 414px) {
 
+ 
  .check2 {
-  margin-bottom: 41vh;
+  margin-bottom: 39vh;
   display: flex;
 
 
  }
+ 
 
  .inProgressImage{
   width: 80vw;
@@ -196,9 +198,14 @@ p{
 
 
 @media only screen and (max-width: 768px) {
-
+  .inProgressImage{
+    height: 100vh;
+    margin-bottom: 10vh;
+    width: 80vw;
+  }
   .check2 {
-    margin-bottom: 41vh;
+    z-index: 0;
+    margin-bottom: 50vh !important;
     display: flex;
   
   
@@ -211,4 +218,43 @@ p{
     flex-wrap: wrap;
     padding-top: 10px;
   }
+}
+@media only screen and (min-width: 768px) {
+  .check2 {
+    z-index: 0;
+    margin-bottom: 37vh;
+    display: flex;
+  
+  
+   }
+   
+}
+
+@media only screen and (min-width: 1024px){
+  .check2 {
+    z-index: 0;
+    margin-bottom: 51vh;
+    display: flex;
+  
+  
+   }
+}
+
+@media only screen and (max-width: 280px){
+  .check2 {
+    z-index: 0;
+    margin-bottom: 75vh !important;
+    display: flex;
+  
+  
+   }
+}
+@media only screen and (max-width: 393px){
+  .check2 {
+    z-index: 0;
+    margin-bottom: 65vh !important;
+    display: flex;
+  
+  
+   }
 }
