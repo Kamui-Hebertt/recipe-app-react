@@ -202,7 +202,7 @@ p{
   }
   .check2 {
     z-index: 0;
-    margin-bottom: 50vh !important;
+    margin-bottom: 45vh !important;
     display: flex;
   
   
@@ -264,7 +264,7 @@ p{
 
   .check2 {
     z-index: 0;
-    margin-bottom: 50vh !important;
+    margin-bottom: 59vh !important;
     display: flex;
   
   
@@ -280,4 +280,11 @@ p{
   body{
   background-color: rgb(200, 185, 223);;
   }
+  .check2 {
+    z-index: 0;
+    margin-bottom: 65vh !important;
+    display: flex;
+  
+  
+   }
   }
