@@ -154,6 +154,9 @@ color: rgb(3, 3, 3);
   
   }
 
+  
+  
+
   @media only screen and (max-width: 912px) and (min-width: 375px){
     .theNames p:nth-child( 1 ) {
     
@@ -267,4 +270,7 @@ color: rgb(3, 3, 3);
   position: absolute;
   font-size: small;
 }
+
+
+
   }
