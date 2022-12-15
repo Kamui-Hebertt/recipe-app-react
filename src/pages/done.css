@@ -57,7 +57,7 @@ list-style-type: none;
   margin-top: 10px;
   margin-left: 4vw;
   width: 15vw;
-  height: 30vh;
+  height: 25vh;
   border-radius: 100%;
 
   
@@ -104,6 +104,7 @@ list-style-type: none;
  .itens img {
    margin-left: 30vw;
    
+   
  }
 
 
@@ -116,7 +117,7 @@ list-style-type: none;
 
  .itens img {
    margin-left: 20vw !important;
-   width: 20vw !important;
+   width: 25vw !important;
    
  }
 }
