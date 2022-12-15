@@ -5,10 +5,11 @@
   align-items: center;
   gap: 10px;
   background-color: rgb(149, 125, 173);
-  height: 15vh;
-  width: 40vw;
+  height: 25vh;
+  width: 80%;
   border-radius: 20px;
   color: aliceblue;
+  padding: 20px;
 }
 .allthem{
   display: flex;
@@ -16,11 +17,11 @@
 }
 
 .allProfile button {
-
+margin-top: 10px;
   background-color: rgb(224, 187, 228);
   border-radius: 5px;
   margin-left: 5px;
-  color: rgb(241, 237, 237);
+  color: rgb(99, 91, 91);
 }
 
 .allProfile button:hover {
