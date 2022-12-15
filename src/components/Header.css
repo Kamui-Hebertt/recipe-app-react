@@ -2,7 +2,9 @@
  --yellow: rgba(252, 220, 54, 1);
   
 }
-
+.iconMain {
+  background-color: var(--yellow);
+}
 .header-page-title {
   align-items: center;
   

@@ -16,12 +16,16 @@ function Header(props) {
   const { searchValue, setSearchValue } = useContext(FoodContext);
   const { search, pageName } = props;
   const [searchBar, setSearchBar] = useState(false);
-
+  const backPage = () => {
+    history.push('/meals');
+  };
   return (
     <section className="all-btn">
 
       <div className="all">
-        <img src={ Recipe } id="iconR" alt="recipe icon" />
+        <button type="button" onClick={ backPage } className="iconMain">
+          <img src={ Recipe } id="iconR" alt="recipe icon" />
+        </button>
         <div className="title">
           <img src={ app } id="app" alt="app" />
           <img src={ recipes } id="re" alt="recipe" />
