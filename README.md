@@ -26,4 +26,4 @@ Neste projeto desenvolvemos um site de receitas que também é responsivo para m
 
 - Este projeto foi desenvolvido por mim e minha equipe.
 
-link/implantação do projeto: https://recipe-app-react-jade.vercel.app/
+link do projeto/deploy: https://recipe-app-react-jade.vercel.app/
