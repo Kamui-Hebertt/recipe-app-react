@@ -23,7 +23,7 @@ Neste projeto desenvolvemos um site de receitas que também é responsivo para m
 
 - Uma API externa de receita foi usada para construir este projeto.
 
-- A API de contexto foi usada neste projeto.
+- Context  foi usado neste projeto.
 
 - este projeto contém mais de 5 páginas.
 
