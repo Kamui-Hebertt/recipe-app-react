@@ -9,3 +9,21 @@ In this project we developed a recipe web site which is also a responsive for ov
 - This project was developed by me and my team.
 
 project link/deployment: https://recipe-app-react-jade.vercel.app/
+
+
+PT
+
+------------------------------------
+
+
+Neste projeto desenvolvemos um site de receitas que também é responsivo para mais de 4 tipos de telas de celular.
+
+- Uma API externa de receita foi usada para construir este projeto.
+
+- A API de contexto foi usada neste projeto.
+
+- este projeto contém mais de 5 páginas.
+
+- Este projeto foi desenvolvido por mim e minha equipe.
+
+link/implantação do projeto: https://recipe-app-react-jade.vercel.app/
