@@ -11,9 +11,10 @@ In this project we developed a recipe web site which is also a responsive for ov
 project link/deployment: https://recipe-app-react-jade.vercel.app/
 
 
-PT
 
 ------------------------------------
+
+Pt:
 
 
 Neste projeto desenvolvemos um site de receitas que também é responsivo para mais de 4 tipos de telas de celular.
