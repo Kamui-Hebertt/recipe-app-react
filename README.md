@@ -8,6 +8,8 @@ In this project we developed a recipe web site which is also a responsive for ov
 
 - This project was developed by me and my team.
 
+- RTL tests was used.
+
 project link/deployment: https://recipe-app-react-jade.vercel.app/
 
 
@@ -26,5 +28,7 @@ Neste projeto desenvolvemos um site de receitas que também é responsivo para m
 - este projeto contém mais de 5 páginas.
 
 - Este projeto foi desenvolvido por mim e minha equipe.
+
+- Testes em Rtl também foram aplicados.
 
 link do projeto/deploy: https://recipe-app-react-jade.vercel.app/
