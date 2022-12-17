@@ -109,9 +109,7 @@ box-shadow: 10px 10px 8px #888888;
 #emailInp2:focus{
   border: 3px solid var(--purple);
 }
-.input {
-  border: 1px solid color rgb(88, 29, 29);
-}
+
 
 .login {
   margin-top: 30px;
