@@ -1,3 +1,4 @@
+(You can sign in with any email and password)
 In this project we developed a recipe web site which is also a responsive for over 4 types of mobile screen.
 
 - A recipe external api was used to build this project.
