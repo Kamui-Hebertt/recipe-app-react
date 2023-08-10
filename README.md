@@ -1,4 +1,4 @@
-(You can sign in with any email and password)
+(You can sign in with any email and any password with at least 10 characters)
 In this project we developed a recipe web site which is also a responsive for over 4 types of mobile screen.
 
 - A recipe external api was used to build this project.
@@ -19,6 +19,7 @@ project link/deployment: https://recipe-app-react-jade.vercel.app/
 
 Pt:
 
+(Você pode fazer login com qualquer e-mail e qualquer senha com pelo menos 10 caracteres)
 
 Neste projeto desenvolvemos um site de receitas que também é responsivo para mais de 4 tipos de telas de celular.
 
